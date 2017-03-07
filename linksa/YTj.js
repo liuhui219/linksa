@@ -68,7 +68,7 @@ export default class YTj extends Component {
 				  </View>         
 				</View>
 				<View style={{flex:1,backgroundColor:'#fafafa'}}>
-				    <YTjinfo />        
+				    <YTjinfo navigator = {this.props.navigator} {...this.props}/>        
 				</View>
 		 </View>
 	 )

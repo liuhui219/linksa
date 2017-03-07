@@ -19,13 +19,13 @@ import {
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Token from './Token';
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import Gonggaob from './Gonggaob';        
- 
+import YTjinfoa from './YTjinfoa';
 var array = []; 
 export default class YTjinfo extends React.Component {
     
     constructor(props) {
         super(props); 
+		 
 		this.state = { 
 		  dataSource: new ListView.DataSource({
 			rowHasChanged: (row1, row2) => row1 !== row2,
@@ -41,6 +41,7 @@ export default class YTjinfo extends React.Component {
 		  isRefreshing:false,
 		  isNull:false,
 		  sx:false,
+		  datda:null,
 	  };
     }
  
@@ -48,13 +49,17 @@ export default class YTjinfo extends React.Component {
         //这里获取传递过来的参数: name
 		 array = [];                                                    
          aa=[];
-		    
+		 this.setState({datda:data.data.domain})   
 		 this.timer = setTimeout(
 			  () => {this.fetchData('' + data.data.domain + '/index.php?app=Legwork&m=MLegwork&a=lists&sta=1&num=15&access_token=' + data.data.token + '&p='+this.state.p);},800); 
 			  
     }
                              
-	 
+	componentWillUnmount() {    
+	     this.timer && clearTimeout(this.timer);
+		 
+    }
+	
 	fetchData(url) {
 		var that=this;
 		fetch(url)
@@ -119,13 +124,29 @@ export default class YTjinfo extends React.Component {
     }
 	   
 	 
-	
+	infos(data){
+		const { navigator } = this.props; 
+	     
+        if(navigator) {
+			InteractionManager.runAfterInteractions(() => {
+            this.props.navigator.push({
+                name: 'YTjinfoa',
+                component: YTjinfoa,
+				params: {
+					data: data,
+					imgs: {uri: this.state.datda.slice(0,-6)+data.img.slice(1)} 
+					 
+				}
+            })
+			})
+        }
+	}
 	
 	
     render() {
           if(!this.state.loaded){
 		  return (
-		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-170,}}>
+		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-90,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
 						<Text style={styles.loadingTitle}>加载中……</Text>
@@ -188,22 +209,24 @@ export default class YTjinfo extends React.Component {
 		} 		
 		else{ 
 			return (
-			   <View style={{paddingBottom:15, justifyContent:'center',alignItems:'center', backgroundColor:'#fff',borderBottomWidth:1, borderColor:'#eee'}}>                          
+			   <View style={{paddingBottom:15, justifyContent:'center',alignItems:'center', backgroundColor:'#fff',borderBottomWidth:1, borderColor:'#eee'}}>  
+                  <TouchableOpacity activeOpacity={0.8} onPress={this.infos.bind(this,data)} style={{justifyContent:'center',alignItems:'center', }}>
 				   <View style={{flexDirection:'row',paddingTop:15,}}>
 					  <View style={{marginLeft:15,marginRight:15,width: 40, height: 40,borderRadius:20,backgroundColor:'#ccc',alignItems:'center', justifyContent:'center'}}>
 						   <Image source={require('./imgs/ren.png')} style={{width: 20, height: 20, }} />
 					  </View>
 					  <View style={{flex:1,flexDirection:'column',}}>
 					       <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-						      <Text style={{fontSize:16,}}>{data.userid}</Text>
+						      <Text style={{fontSize:14,}}>{data.userid}</Text>
 							  <Text style={{color:'#999',paddingRight:15,}}>{data.time}</Text>
-						   </View>       
-						   <View style={{ borderRadius:3,marginTop:5,}}> 
-							  <Text style={{flexWrap:'wrap',marginTop:10, paddingRight:15,}}>{data.address}</Text>    
+						   </View>          
+						   <View style={{ borderRadius:3,}}> 
+							  <Text style={{flexWrap:'wrap',marginTop:5,fontSize:14, paddingRight:15,}}>{data.address}</Text>    
 						   </View>
 						   
 					  </View>
 				   </View>
+				  </TouchableOpacity>
 				</View>
 				)	
         }			

@@ -95,8 +95,8 @@ export default class Webviews extends Component {
 						</TouchableOpacity>                   
 					 </View>
 				     <View style={styles.loading}>
-						<ActivityIndicator color="#999" size="large"/>
-						<Text style={styles.loadingTitle}>正在加载中...</Text>
+						<ActivityIndicator color="#fff" />
+						<Text style={styles.loadingTitle}>加载中...</Text>
 					</View>
 				</View>
 				
@@ -210,7 +210,22 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column', 
 	backgroundColor:'#fafafa', 
-  },   
+  },  
+  loading: {
+	backgroundColor: 'gray',
+	height: 80,
+	width: 100,
+	borderRadius: 10,
+	justifyContent: 'center',
+	alignItems: 'center',
+   
+  },
+
+  loadingTitle: {
+	marginTop: 10,
+	fontSize: 14,
+	color: 'white'
+  },  
   card: { 
     height:45,
 	backgroundColor:'#4385f4',

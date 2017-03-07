@@ -52,7 +52,20 @@ export default class ContactInfo extends React.Component {
 	  this.timer = setTimeout(
 		  () => { this.fetchData('' + data.data.domain + '/index.php?app=Kaoqin&m=KaoqinReportApi&a=get_my_set&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + ''); 
           this.fetchDatas();	   
-	  Geolocation.getCurrentPosition()
+	      this.location();
+	   
+	    },800);
+	 this.Times=setInterval(() => {
+				       this.setState({
+						   nowa:this.state.nowa+1000, 
+						   nows:new Date(this.state.nowa+1), 
+					   })     
+				}, 1000);  
+	}    
+     
+	location(){
+		
+		Geolocation.getCurrentPosition()
               .then(data => {
 				  console.log(data.address) 
 				  if(data.country == undefined){  
@@ -82,18 +95,9 @@ export default class ContactInfo extends React.Component {
               .catch(e =>{
                 console.warn(e, 'error');
               })
-	   
-	    },
-		  800
-		);
-	 this.Times=setInterval(() => {
-				       this.setState({
-						   nowa:this.state.nowa+1000, 
-						   nows:new Date(this.state.nowa+1), 
-					   })     
-				}, 1000);  
-	}    
-
+		
+	} 
+	 
 	componentWillUnmount() {        
 	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton); 
 	  clearInterval(this.Times);
@@ -172,21 +176,44 @@ export default class ContactInfo extends React.Component {
 			  .then((response) => response.json())   
 			  .then((responseData) => {           
 						   
-						   this.setState({
+						  this.setState({
 								 statu:responseData.data.infos,
 							})
-							
+						  this.location();	
+						  this.fetchDatas();  
 						  this.timerx = setTimeout(() => {
 							  this.setState({   
 								 statu:'',
-							})
+						  });
+						  Animated.timing(                                                                                           
+							this.state.fadeAnim,  
+							{
+							  toValue: 0,         
+							  duration: 1000,    
+							},   
+							 
+						  ).start();
 						  },1500)	                                                                       
 			  })
 			  .catch((error) => { 
-				 
-
+				   this.setState({
+						 statu:'打卡失败',
+					})
+				   this.timerx = setTimeout(() => {
+						   this.setState({   
+									 statu:'',
+						   });
+						   Animated.timing(                                                                                           
+							this.state.fadeAnim,  
+							{
+							  toValue: 0,         
+							  duration: 1000,    
+							},   
+							 
+						  ).start();
+                    },1500)	   
 			  });
-		this.fetchDatas();  
+		
 		Animated.timing(                                                                                           
             this.state.fadeAnim,  
             {
