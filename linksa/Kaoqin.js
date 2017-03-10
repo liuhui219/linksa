@@ -67,7 +67,7 @@ export default class ContactInfo extends React.Component {
 		
 		Geolocation.getCurrentPosition()
               .then(data => {
-				  console.log(data.address) 
+				 
 				  if(data.country == undefined){  
 					  this.setState({
 						  map:'定位失败，请检查网络',
@@ -93,7 +93,7 @@ export default class ContactInfo extends React.Component {
 				  }
               })
               .catch(e =>{
-                console.warn(e, 'error');
+               
               })
 		
 	} 
@@ -265,7 +265,7 @@ export default class ContactInfo extends React.Component {
         this.fetchDatas();
 		Geolocation.getCurrentPosition()
               .then(data => {
-				  console.log(data.address) 
+				 
 				  if(data.country == undefined){  
 					  this.setState({
 						  map:'定位失败，请检查网络',
@@ -283,7 +283,7 @@ export default class ContactInfo extends React.Component {
 				  }
               })
               .catch(e =>{
-                console.warn(e, 'error');
+                
               })
 	}
 	
@@ -296,13 +296,13 @@ export default class ContactInfo extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 							 
-										<Text style={{color:'white',fontSize:18}}>考勤打卡</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>考勤打卡</Text>
 							 
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -317,8 +317,8 @@ export default class ContactInfo extends React.Component {
 				<View style={{flexDirection:'column',backgroundColor:'#ececec',borderBottomWidth:1,borderColor:'#ececec',}}>
 				    <View style={{flexDirection:'row',backgroundColor:'#4385f4',height:100,justifyContent:'space-between',alignItems:'center',paddingLeft:15,paddingRight:15,}}>
 					   <View style={{flexDirection:'column',}}>
-					      <Text style={{color:'#fff',fontSize:22}}>{this.state.day}</Text>
-						  <Text style={{color:'#fff',fontSize:18,marginTop:5,}}>{this.state.time}</Text>
+					      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:22}}>{this.state.day}</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:18,marginTop:5,}}>{this.state.time}</Text>
 					   </View>
 					   <View style={{alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/rc.png')} style={{width: 50, height: 50,}} />
@@ -327,7 +327,7 @@ export default class ContactInfo extends React.Component {
 					<View style={{flexDirection:'row',height:50,alignItems:'center',paddingLeft:15,backgroundColor:'#fff',}}>
 					   <Icon name="ios-locate-outline" color="#4385f4"size={28}  />
 					   <View style={{flex:1,marginLeft:15,}}>
-					      <Text style={{fontSize:15,}}>{this.state.map}</Text>
+					      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:15,}}>{this.state.map}</Text>
 					   </View>
 					</View>
 				</View>
@@ -336,11 +336,11 @@ export default class ContactInfo extends React.Component {
 					{this.state.times.map((data,i) => {
 						return <View key={i} style={{flexDirection:'row',justifyContent:'space-around',height:70,alignItems:'center',backgroundColor:'#fff',borderBottomWidth:1,borderColor:'#ececec',}}>
 					    <View style={{flexDirection:'column',flex:1,alignItems:'center',}}>
-						   <Text style={{fontSize:15,}}>第{data.order}次打卡</Text>
+						   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:15,}}>第{data.order}次打卡</Text>
 						   
 						</View>
 						<View style={{flexDirection:'column',flex:1,alignItems:'center',}}> 
-						   <Text style={{fontSize:14,}}>{data.qd_time}</Text>   
+						   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>{data.qd_time}</Text>   
 						</View>
 					</View>
 					})}
@@ -355,15 +355,15 @@ export default class ContactInfo extends React.Component {
 				   							
 				   <View style={{width:100,height:100,borderRadius:50,backgroundColor:'#cdcdcd',alignItems:'center',justifyContent:'center',}}>
 				      <View style={{width:90,height:90,borderRadius:50,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',}}>
-					      <Text style={{color:'#fff',fontSize:20,}}>打卡</Text>
-						  <Text style={{color:'#fff',marginTop:5,}}>{this.Gdate(new Date(this.state.nowa).getHours())}:{this.Gdate(new Date(this.state.nowa).getMinutes())}:{this.Gdate(parseInt(this.state.nowa/1000%60))}</Text>
+					      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:20,}}>打卡</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',marginTop:5,}}>{this.Gdate(new Date(this.state.nowa).getHours())}:{this.Gdate(new Date(this.state.nowa).getMinutes())}:{this.Gdate(parseInt(this.state.nowa/1000%60))}</Text>
 					  </View>   
 				   </View> 
 				   </TouchableOpacity>
 				</View> : <View></View>}   
 				{this.state.statu.length>0 ? <Animated.View style={{opacity: this.state.fadeAnim,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				  <Icon name="ios-close-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>{this.state.statu}</Text>   
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>{this.state.statu}</Text>   
 	           </Animated.View> : null}
 			   {this.state.add ? <TouchableOpacity onPress={this._adds.bind(this)}  style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,position:'absolute',top:45,left:0,}}><View style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,backgroundColor:'rgba(61, 61, 62, 0)',position:'absolute',top:0,left:0,}}></View></TouchableOpacity> : <View></View>}
 			   {this.state.add ? <View style={{position:'absolute',top:40,right:5,flexDirection:'column',width:120,height:100,}}> 
@@ -371,13 +371,13 @@ export default class ContactInfo extends React.Component {
 				     <TouchableOpacity  onPress={this._Tj.bind(this)}>
 					   <View style={{borderBottomWidth:1,borderColor:'#ccc',width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
 						  <Icon name="ios-pie-outline" color="#4385f4"size={22}  />
-						  <Text style={{marginLeft:15,fontSize:16,}}>统计</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:15,fontSize:16,}}>统计</Text>
 					   </View>
 					 </TouchableOpacity> 
                      <TouchableOpacity>					 
 					   <View style={{width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
 					      <Icon name="ios-person-outline" color="#4385f4"size={30}  />
-						  <Text style={{marginLeft:15,fontSize:16,}}>审核</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:15,fontSize:16,}}>审核</Text>
 					   </View>
 					 </TouchableOpacity>    
 				   </View>  		   
@@ -387,13 +387,13 @@ export default class ContactInfo extends React.Component {
 			   {!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',backgroundColor: '#F5FCFF',height:80,position:'absolute',top:(Dimensions.get('window').height-80)/2,left:(Dimensions.get('window').width-100)/2,}}>
 						<View style={styles.loading}>
 							<ActivityIndicator color="white"/>                                                                           
-							<Text style={styles.loadingTitle}>加载中……</Text>
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 						</View>                                                                                                                      
 				  </View> : <View></View>} 		                                                                                                          
 				{this.state.statua ? <Animated.View style={{opacity: this.state.fadeAnims,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				 <TouchableOpacity activeOpacity={1}  style={{justifyContent:'flex-start',alignItems:'center',}} onPress={this._shuax.bind(this)} >
 				  <Icon name="ios-refresh-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
                  </TouchableOpacity>				  
 	           </Animated.View> : <View></View>}                                                
 	  </View>			                                                                                  

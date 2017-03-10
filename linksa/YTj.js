@@ -54,13 +54,13 @@ export default class YTj extends Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 							 
-										<Text style={{color:'white',fontSize:18}}>考勤统计</Text>
+										<Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>考勤统计</Text>
 							 
 				  </View>           
 				  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   

@@ -134,7 +134,7 @@ export default class Setting extends React.Component {
 				   if (supported) {
 					   Linking.openURL('http://www.linksame.com/phone/android/Linksame.apk');
 				   } else {
-					  console.log('无法打开该URI: ');   
+					    
 				   }
 				})
 	}
@@ -156,15 +156,8 @@ export default class Setting extends React.Component {
 	render() {
         return (
 		   <View style={{flex:1,flexDirection:'column',backgroundColor:'#ececec', }}>   
-		                <StatusBar
-						    animated = {true}
-							backgroundColor={'#4385f4'}
-							hidden={false} 
-							barStyle="light-content"   
-							translucent={false}    
-							style={{height: 25}}
-						 />
-						<View style={{flex:1,flexDirection:'column',}}> 
+		                 
+						<View style={{flexDirection:'column',}}> 
 						    <TouchableOpacity   
 						         activeOpacity={1}    
                                  onPress={this._pers.bind(this)}
@@ -181,20 +174,21 @@ export default class Setting extends React.Component {
 										   <View  style={{alignItems:'center',justifyContent:'center',height:60,backgroundColor:'#4385f4',width:60,borderRadius:40,}}>
 										      <Image source={this.state.img} style={{width: 60, height: 60,borderRadius:30,}} />   
 										   </View>
-										   <View style={{marginLeft:15,}}><Text style={{fontSize:18,color:'#fff'}}>{data.data.name}</Text></View> 
+										   <View style={{marginLeft:15,}}><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#fff'}}>{data.data.name}</Text></View> 
 									   </View>
 							           <Icon name="ios-arrow-forward" color="#fff"size={27}  />   
 						           </View>
 							   </View>  
 						       
 						    </TouchableOpacity  >  	
-						   
-						   <View style={{marginTop:10,flexDirection:'column', backgroundColor:'#fff'}}>
+						</View>    
+						<ScrollView style={{flex:1,marginBottom:5,}}>  
+						   <View style={{marginTop:10,flexDirection:'column', backgroundColor:'#fff',flex:1,}}>
 							   <TouchableNativeFeedback onPress={this.update.bind(this)}  >
 									<View style={{flex:1,flexDirection:'row',height:60,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:16,marginLeft:5,}}>检测版本</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,marginLeft:5,}}>检测版本</Text>
 										</View> 
 										<Icon name="ios-arrow-forward" color="#ccc"size={27}  />  
 									</View>                  
@@ -203,7 +197,7 @@ export default class Setting extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:60,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										   
-										   <Text style={{fontSize:16,marginLeft:5,}}>清除缓存</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,marginLeft:5,}}>清除缓存</Text>
 										</View>   
 										<Icon name="ios-arrow-forward" color="#ccc"size={27}  />  
 									</View>
@@ -212,7 +206,7 @@ export default class Setting extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:60,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:16,marginLeft:5,}}>关于邻盛</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,marginLeft:5,}}>关于邻盛</Text>
 										</View> 
 										<Icon name="ios-arrow-forward" color="#ccc"size={27}  />  
 									</View>
@@ -221,45 +215,47 @@ export default class Setting extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:60,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:16,marginLeft:5,}}>新版本介绍</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,marginLeft:5,}}>新版本介绍</Text>
 										</View> 
 										<Icon name="ios-arrow-forward" color="#ccc"size={27}  />  
 									</View>
-							   </TouchableNativeFeedback>							   
+							   </TouchableNativeFeedback>	
+ 								   
                            </View>
 						   <View style={{marginTop:20, }}>
 						       <TouchableNativeFeedback onPress={this._exits.bind(this)}  style={{marginTop:15,}}  delayPressIn={0} >
 									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15,backgroundColor:'#fff',justifyContent:'center',}}> 
-									    <Text style={{fontSize:18}}>退出登录</Text> 
+									    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18}}>退出登录</Text> 
 									</View>
 							   </TouchableNativeFeedback>
 						   </View>
+						   
 						   					   
-						</View> 
+						</ScrollView>
 						{this.state._update ? <View style={{justifyContent: 'center',alignItems: 'center', height:Dimensions.get('window').height-120,overflow:'hidden',position:'absolute',width:Dimensions.get('window').width,}}>
 							<View style={styles.loading}>
 								<ActivityIndicator color="white"/>
-								<Text style={styles.loadingTitle}>正在检测更新中……</Text>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>正在检测更新中……</Text>
 							</View>
 						</View> : null}
 						{this.state._infos ? <View style={{justifyContent: 'center',alignItems: 'center', height:Dimensions.get('window').height-120,overflow:'hidden',position:'absolute',width:Dimensions.get('window').width,}}>
 							<View style={styles.loading}> 
-								<Text style={styles.loadingTitle}>{this.state.info}</Text>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>{this.state.info}</Text>
 							</View>
 						</View> : null}
 						{this.state.statust ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.2)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-270)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
 								 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
-								 <Text style={{fontSize:18,color:'#000'}}>操作</Text>
+								 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>操作</Text>
 								 </View>
 								 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
-									 <Text style={{fontSize:16,}}>检测到新版本,立即下载？{this.state.output}</Text>
+									 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>检测到新版本,立即下载？{this.state.output}</Text>
 								 </View>
 								 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
 									<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
-									 <View ><Text style={{color:'#666',fontSize:16}}>取消</Text></View>
+									 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>取消</Text></View>
 									</TouchableOpacity>
 									<TouchableOpacity onPress={this._yes.bind(this)} style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
-									 <View><Text style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
+									 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
 									</TouchableOpacity>  
 								 </View>
 						 </View></View> : null}	

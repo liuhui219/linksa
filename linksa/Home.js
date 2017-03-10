@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import Calendar from './Calendar'; 
 import News from './News';  
+import Netinfo from './Netinfo';
 import Approval from './Approval';
 import Operation from './Operation';
 import RNFS from 'react-native-fs';
@@ -51,20 +52,12 @@ export default class Home extends React.Component {
     }
 	
 	componentDidMount() {
-           console.log(data);
+           
 	       this.fetchData('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '');
            this.fetchData_a('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '');
            this.fetchData_b('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '');		
            this.fetchUpdate('http://www.linksame.com/phone/update.php');		   
-		 storage.load({
-			key: 'loginState', 
-			autoSync: true, 
-			syncInBackground: true
-		  }).then(ret => {  
-			console.log(ret.data); 
-		  }).catch(err => { 
-			console.warn(err.message); 
-		  })
+		  
     }
 	
 	toQueryString(obj) {
@@ -114,7 +107,7 @@ export default class Home extends React.Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					  that.setState({
 						   isNull:result.count,   
 						   isRefreshing:false,
@@ -151,7 +144,7 @@ export default class Home extends React.Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					  that.setState({
 						   isNull_a:result.count,  
 						   data_a:null,
@@ -182,7 +175,7 @@ export default class Home extends React.Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					  that.setState({
 						   isNull_b:result.count,  
 						   data_b:null,
@@ -291,7 +284,7 @@ export default class Home extends React.Component {
 				   if (supported) {
 					   Linking.openURL('http://www.linksame.com/phone/android/Linksame.apk');
 				   } else {
-					  console.log('无法打开该URI: ');   
+					  
 				   }
 				})
 	}
@@ -299,6 +292,14 @@ export default class Home extends React.Component {
 	render() {
         return (
 		  <View style={{flex:1}}>   
+		   <View style={styles.card}>  
+			  <View style={{flex:1,alignItems:'center',justifyContent:'center',}}>
+				<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>{data.data.companyName}</Text>
+				</View>
+			  </View>  
+			</View>   
+			<Netinfo  {...this.props}/>
 		   <ScrollView style={{flex:1,flexDirection:'column',}}
 		     refreshControl={
               <RefreshControl
@@ -309,24 +310,24 @@ export default class Home extends React.Component {
                 />
             }
 		   >
-					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fafafa',}}>
+					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fff',}}>
 					       <TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._newButton.bind(this)}
                                    
 								 style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#000', }}>  
-						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fafafa',paddingLeft:10,}}>
+						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fff',paddingLeft:10,}}>
 							   <View style={{width: 50, height: 50,borderRadius:25,backgroundColor:'#1ADA9A',alignItems:'center', justifyContent:'center'}}>
 						           <Image source={require('./imgs/xiaox.png')} style={{width: 30, height: 30,}} />
 							   </View>
 							   <View style={{marginLeft:10,flex:1,flexDirection:'row',borderBottomWidth:0.5, borderColor:'#ccc', height: 70,paddingTop:2,paddingBottom:10, }}>
 								   <View style={{flex:1,flexDirection:'column', height: 70,paddingTop:8,paddingBottom:10, }}>  
-									  <Text style={{ fontSize:18,color:'#666'}}>消息</Text>
-									  {this.state.data ? <Text numberOfLines={1} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data}</Text> : <Text style={{color:'#ccc'}}></Text>}   
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{ fontSize:18,color:'#666'}}>消息</Text>
+									  {this.state.data ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} numberOfLines={1} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data}</Text> : <Text style={{color:'#ccc'}}></Text>}   
 								   </View>
 								   <View style={{width:50,height:50,alignItems:'center',justifyContent:'center'}}>
 									 <View style={{backgroundColor:'#F53B5C',borderRadius:18,}}>
-										 {this.state.isNull>0 ? <Text style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull}</Text> : <Text></Text>}   
+										 {this.state.isNull>0 ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull}</Text> : <Text></Text>}   
 									 </View>  
 								   </View>   
 							   </View>  
@@ -334,23 +335,23 @@ export default class Home extends React.Component {
 						   </TouchableOpacity  >  
 						  
 					   </View>
-					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fafafa',}}>
+					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fff',}}>
 					       <TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._AppButton.bind(this)} 
 								 style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#000', }}>  
-						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fafafa',paddingLeft:10,}}>
+						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fff',paddingLeft:10,}}>
 						        <View style={{width: 50, height: 50,borderRadius:25,backgroundColor:'#35DCEF',alignItems:'center', justifyContent:'center'}}>
 						           <Image source={require('./imgs/sp.png')} style={{width: 30, height: 30,}} />
 							   </View>
                                  <View style={{marginLeft:10,flex:1,flexDirection:'row',borderBottomWidth:0.5, borderColor:'#ccc', height: 70,paddingTop:2,paddingBottom:10, }}>
 								   <View style={{flex:1,flexDirection:'column', height: 70,paddingTop:8,paddingBottom:10, }}>  
-									  <Text style={{ fontSize:18,color:'#666'}}>办公审批</Text>
-									  {this.state.data_a ? <Text numberOfLines={1} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data_a}</Text> : <Text style={{color:'#ccc'}}></Text>}
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{ fontSize:18,color:'#666'}}>办公审批</Text>
+									  {this.state.data_a ? <Text numberOfLines={1} allowFontScaling={false} adjustsFontSizeToFit={false} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data_a}</Text> : <Text style={{color:'#ccc'}}></Text>}
 								   </View>
 								   <View style={{width:50,height:50,alignItems:'center',justifyContent:'center'}}>
 									 <View style={{backgroundColor:'#F53B5C',borderRadius:18,}}>
-									  {this.state.isNull_a>0 ? <Text style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull_a}</Text> : <Text></Text>}   
+									  {this.state.isNull_a>0 ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull_a}</Text> : <Text></Text>}   
 									 </View>  
 								   </View>   
 							   </View> 
@@ -358,42 +359,42 @@ export default class Home extends React.Component {
 							 </View>  
 						   </TouchableOpacity  >    
 					   </View>
-					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fafafa',}}>
+					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fff',}}>
 					       <TouchableOpacity   
 						          activeOpacity={0.8}     
                                   onPress={this._OperationButton.bind(this)} 
                                   
 								 style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#000', }}>  
-						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fafafa',paddingLeft:10,}}>
+						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fff',paddingLeft:10,}}>
 						       <View style={{width: 50, height: 50,borderRadius:25,backgroundColor:'#718DC1',alignItems:'center', justifyContent:'center'}}>
 						           <Image source={require('./imgs/sp1.png')} style={{width: 30, height: 30,}} />
 							   </View>
 							   <View style={{marginLeft:10,flex:1,flexDirection:'row',borderBottomWidth:0.5, borderColor:'#ccc', height: 70,paddingTop:2,paddingBottom:10, }}>
 								   <View style={{flex:1,flexDirection:'column', height: 70,paddingTop:8,paddingBottom:10, }}>  
-									  <Text style={{ fontSize:18,color:'#666'}}>业务审批</Text>
-									  {this.state.data_b ? <Text numberOfLines={1} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data_b}</Text> : <Text style={{color:'#ccc'}}></Text>}
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{ fontSize:18,color:'#666'}}>业务审批</Text>
+									  {this.state.data_b ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} numberOfLines={1} style={{ fontSize:13,paddingTop:6,flex:1,overflow:'hidden',}}>{this.state.data_b}</Text> : <Text style={{color:'#ccc'}}></Text>}
 								   </View>
 								   <View style={{width:50,height:50,alignItems:'center',justifyContent:'center'}}>
 									 <View style={{backgroundColor:'#F53B5C',borderRadius:18,}}>
-									  {this.state.isNull_b>0 ? <Text style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull_b}</Text> : <Text></Text>}
+									  {this.state.isNull_b>0 ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#ffffff',paddingTop:1,paddingBottom:1,paddingLeft:6,paddingRight:6,fontSize:12,}}>{this.state.isNull_b}</Text> : <Text></Text>}
 									 </View>  
 								   </View>   
 							   </View> 
 							 </View>  
 						   </TouchableOpacity  >  
 					   </View>   
-					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fafafa',}}>
+					   <View  style={{flex:1,flexDirection:'row',alignItems:'center', backgroundColor:'#fff',}}>
 					       <TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._pressButton.bind(this)}
                                   
 								 style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#000', }}>  
-						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fafafa',paddingLeft:10,}}>
+						     <View style={{flex:1,flexDirection:'row',alignItems:'center',backgroundColor:'#fff',paddingLeft:10,}}>
 						       <View style={{width: 50, height: 50,borderRadius:25,backgroundColor:'#978BC3',alignItems:'center', justifyContent:'center'}}>
 						           <Image source={require('./imgs/rc.png')} style={{width: 30, height: 30,}} />
 							   </View>
 							  <View style={{marginLeft:10,flex:1,flexDirection:'column',borderBottomWidth:0.5, borderColor:'#ccc', height: 70,paddingTop:10,paddingBottom:10, }}>  
-							      <Text style={{ fontSize:18,color:'#666'}}>日程</Text>
+							      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{ fontSize:18,color:'#666'}}>日程</Text>
 								  <Text style={{ fontSize:13,paddingTop:6,}}> </Text>
 							   </View>
 							 </View>  
@@ -404,17 +405,17 @@ export default class Home extends React.Component {
 					</ScrollView>	
                        {this.state.statust ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.51)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-270)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
 					 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
-					 <Text style={{fontSize:18,color:'#000'}}>操作</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>操作</Text>
 					 </View>
 					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
-						 <Text style={{fontSize:16,}}>检测到新版本,立即下载？{this.state.output}</Text>
+						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>检测到新版本,立即下载？{this.state.output}</Text>
 					 </View>
 					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
 						<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
-						 <View ><Text style={{color:'#666',fontSize:16}}>取消</Text></View>
+						 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>取消</Text></View>
 						</TouchableOpacity>
 						<TouchableOpacity onPress={this._yes.bind(this)} style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
-						 <View><Text style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
+						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
 						</TouchableOpacity>  
 					 </View>
 			 </View></View> : null}					

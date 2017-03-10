@@ -91,7 +91,7 @@ export class Login extends Component {
 		      <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-60,width:Dimensions.get('window').width, position:'absolute',top:0,left:0,}}>
 				     <View style={styles.loading}>
 						<ActivityIndicator color="#999" size="large"/>
-						<Text style={styles.loadingTitle}>正在加载中...</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>正在加载中...</Text>
 					</View>
 				</View>
 		   )                                  
@@ -103,7 +103,7 @@ export class Login extends Component {
 			<TouchableOpacity activeOpacity={1} onPress={this._shuax.bind(this)}>
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-60,}}>
 				    <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>                  
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>                  
 				</View>
 			  </TouchableOpacity>                                      
 		   ) 
@@ -152,7 +152,7 @@ export class Login extends Component {
 					style={{height: 25}}
 				 /> 
 			    <View style={{height:45,backgroundColor:'#4385f4',alignItems:'center', justifyContent:'center'}}>
-				  <Text style={{color:'#fff',fontSize:18}}>登录</Text>
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:18}}>登录</Text>
 				</View>
 				<WebView style={{  flex:1,}} 
                       ref={WEBVIEW_REF}					
@@ -171,7 +171,7 @@ export class Login extends Component {
 				{this.state.isshow ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-60,width:Dimensions.get('window').width,backgroundColor:'#fff',position:'absolute',top:45,left:0,}}>
 				     <View style={styles.loading}>
 						<ActivityIndicator color="#999" size="large"/>
-						<Text style={styles.loadingTitle}>正在加载...</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>正在加载...</Text>
 					</View>
 				</View> : <View></View>}
 				     

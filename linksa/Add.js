@@ -13,6 +13,7 @@ import {
 	Animated,
 	Dimensions,
 	BackAndroid, 
+	StatusBar,
 	Image
 } from 'react-native';
 
@@ -61,14 +62,14 @@ export default class Add extends Component {
 		  token:data.data.token, 
 		  uid:data.data.uid,  
 		})
-		this.fetchData();
+		this.timer = setTimeout(() => {this.fetchData();},800);
 	  }
 	
 	fetchData() {
 		fetch('' + data.data.domain + '/index.php?app=Calendar2&m=CalendarApi&a=Calendar_category&access_token=' + data.data.token + '')
 		  .then((response) => response.json())   
 		  .then((responseData) => { 
-		       console.log(responseData)
+		       
 			   this.setState({
 					   datas:responseData,
 					   statu:true,
@@ -76,7 +77,7 @@ export default class Add extends Component {
 			   responseData.cate.forEach((data ,i)=>{
 				   key = {data}
 				   dataImpor.push(responseData.cate[i].important)
-				   console.log(dataImpor)
+				  
 				   
 				    this.setState({
 					   pickerData:dataImpor,
@@ -110,6 +111,7 @@ export default class Add extends Component {
     }
 	componentWillUnmount() {     
 	  this.timerx && clearTimeout(this.timerx);
+	  this.timer && clearTimeout(this.timer);
 	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton); 
 	}
     _pressButton() {
@@ -241,11 +243,11 @@ export default class Add extends Component {
 							}
             },
             onPickerCancel: pickedValue => {
-                console.log('area', pickedValue);
+                
             },
             onPickerSelect: pickedValue => {
-                //Picker.select(['山东', '青岛', '黄岛区'])
-                console.log('area', pickedValue);
+                
+                
             }
         });
         Picker.show();
@@ -270,11 +272,10 @@ export default class Add extends Component {
 							}
             },
             onPickerCancel: pickedValue => {
-                console.log('area', pickedValue);
+               
             },
             onPickerSelect: pickedValue => {
-                //Picker.select(['山东', '青岛', '黄岛区'])
-                console.log('area', pickedValue);
+              
             }
         });
         Picker.show();
@@ -297,11 +298,11 @@ export default class Add extends Component {
 							})
             },
             onPickerCancel: pickedValue => {
-                console.log('area', pickedValue);
+                
             },
             onPickerSelect: pickedValue => {
                  
-                console.log('area', pickedValue);
+                
             }
         });
         Picker.show();
@@ -371,7 +372,7 @@ export default class Add extends Component {
 				return response.json();
 			})
 			.then(function (result) {
-				console.log(result);
+				 
 				if(result.statu == 1){
 					ToastAndroid.show('提交成功', ToastAndroid.SHORT)
 					dataImpor = [];
@@ -395,18 +396,26 @@ export default class Add extends Component {
     render() {
     return ( 
 	   <View style={{flex:1,flexDirection:'column',}}>
+	            <StatusBar
+					animated = {true} 
+					hidden={false} 
+					backgroundColor={'#4385f4'}
+					barStyle={this.state.bars}   
+					translucent={false}    
+					 
+				 />
                 <View style={styles.card}>
 				  <View style={{flex:1,justifyContent:'center'}}>
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>新增日程</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>新增日程</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -421,7 +430,7 @@ export default class Add extends Component {
 				<ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec'}} >
 				 
 				    <View style={{flexDirection:'row',height:45,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderTopWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>日程名称</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>日程名称</Text>
 						<View style={{flex:1,marginLeft:15,justifyContent:'flex-start',height:45,}}>
 					    <TextInput
 						  numberOfLines={1}
@@ -435,14 +444,14 @@ export default class Add extends Component {
 					</View>
                     
                     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderTopWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>开始时间</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>开始时间</Text>
 						<TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._datetime.bind(this)}
 								 style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.result}
 								</Text>
 								 
@@ -452,14 +461,14 @@ export default class Add extends Component {
 						</TouchableOpacity  >    
 					</View>	
                     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>结束时间</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>结束时间</Text>
 						<TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._datetime1.bind(this)}
 								 style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.result1}
 								</Text>
 								 
@@ -470,14 +479,14 @@ export default class Add extends Component {
 					</View>	
 					
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderTopWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>日程类型</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>日程类型</Text>
 						<TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._onPressHandles.bind(this)}
 								 style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.richeng}
 								</Text>
 								 
@@ -487,14 +496,14 @@ export default class Add extends Component {
 						</TouchableOpacity  >  
 					</View>	
                     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>优先等级</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>优先等级</Text>
 						<TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._onPressHandlea.bind(this)}
 								 style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.youxian}
 								</Text>
 								 
@@ -504,14 +513,14 @@ export default class Add extends Component {
 						</TouchableOpacity  >  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>提前通知</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>提前通知</Text>
 						<TouchableOpacity   
 						         activeOpacity={0.8}    
                                  onPress={this._onPressHandle.bind(this)}
 								 style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.language}
 								</Text>
 								 
@@ -522,7 +531,7 @@ export default class Add extends Component {
 					</View>
 					
 					 <View style={{flexDirection:'row',backgroundColor:'#fff',alignItems:'flex-start',justifyContent:'center',borderTopWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666', paddingTop:5,}}>日程内容</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666', paddingTop:5,}}>日程内容</Text>
 						<View style={{flex:1,marginLeft:15,}}>
 					    <TextInput
 						  onChangeText={(textaera) => this.setState({textaera})}
@@ -537,7 +546,7 @@ export default class Add extends Component {
 					</View>
 					
 					<TouchableOpacity activeOpacity={0.8} onPress={this._tijiao.bind(this)}   style={{marginTop:30,backgroundColor:'#4385f4',marginLeft:20,marginRight:20,height:50,alignItems:'center',justifyContent:'center',borderRadius:5,}}>
-					     <Text style={{color:'#fff',fontSize:16,}}>提交</Text>
+					     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:16,}}>提交</Text>
 					</TouchableOpacity>
 					</ScrollView>
 				    
@@ -545,7 +554,7 @@ export default class Add extends Component {
 				 
 				{this.state.statu ? <Animated.View style={{opacity: this.state.fadeAnim,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				  <Icon name="ios-close-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
 	           </Animated.View> : <View></View>}
 	  </View>	
 	  

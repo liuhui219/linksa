@@ -71,7 +71,7 @@ export default class Scanner extends React.Component {
 			var { navigator } = this.props; 
 			if(navigator) {
 				InteractionManager.runAfterInteractions(() => {
-				navigator.push({
+				navigator.replace({
 					name: 'Webviewst',
 					component: Webviewst,  
 					params: {
@@ -116,7 +116,7 @@ export default class Scanner extends React.Component {
 							   <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								 <View style={{justifyContent:'flex-start',alignItems:'center',paddingLeft:0,backgroundColor:'transparent',flexDirection:'row'}}> 
 								   <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-								   <Text style={{color:'white',fontSize:16,marginLeft:-5,}}allowFontScaling={false}>返回</Text>
+								   <Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 								 </View>
 							   </TouchableOpacity>
 							</View> 

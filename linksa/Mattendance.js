@@ -311,16 +311,15 @@ export default class Mattendance extends Component {
     };
 
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-
+      
       if (response.didCancel) {
-        console.log('User cancelled photo picker');
+        
       }
       else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
+        
       }
       else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
+        
       }
       else {
         var source;
@@ -330,7 +329,7 @@ export default class Mattendance extends Component {
         } else {
           source = {uri: response.uri.replace('file://', ''), isStatic: true};
         }
-        console.log(response)
+       
         this.setState({
 		  imguri:response.uri,	
           avatarSource: source,
@@ -394,7 +393,7 @@ export default class Mattendance extends Component {
 				return response.json();
 			})
 			.then(function (result) {
-				console.log(result);
+			 
 				that.setState({
 					qiandao:false,
 					avatarSource:'',
@@ -437,7 +436,7 @@ export default class Mattendance extends Component {
         this.fetchDatatime('' + data.data.domain + '/index.php?app=Car&m=IndexMobile&a=date&access_token=' + data.data.token + '');
 		Geolocation.getCurrentPosition()
 				  .then(data => {
-					  console.log(data.address) 
+					 
 					  if(data.country == undefined){  
 						  this.setState({
 							  map:'定位失败，请检查网络',
@@ -469,7 +468,7 @@ export default class Mattendance extends Component {
 					  }
 				  })
 				  .catch(e =>{
-					console.warn(e, 'error');
+					 
 				  })
 		
 	}
@@ -496,29 +495,29 @@ render() {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 							 
-										<Text style={{color:'white',fontSize:18}}>外勤签到</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>外勤签到</Text>
 							 
 				  </View>           
 				  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
 				        <TouchableOpacity onPress={this._TJ.bind(this)}>
-				           <Text style={{color:'#fff',fontSize:16,marginRight:5,}}>统计</Text>    
+				           <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:16,marginRight:5,}}>统计</Text>    
                         </TouchableOpacity>  						   
 				  </View>         
 				</View>
 				<View style={{flex:1,backgroundColor:'#fff'}}>
 				    <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
 					    <Icon name="ios-time-outline" color="#ccc"size={20}  />
-					    <Text style={{paddingLeft:10,color:'#aaa'}}>{this.state.times}</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,color:'#aaa'}}>{this.state.times}</Text>
 					</View> 
                     <View style={{flexDirection:'row',height:50,alignItems:'center',paddingLeft:10,}}>
 					    <Icon name="ios-locate-outline" color="#aaa"size={20}  />
-					    <Text style={{fontSize:15,paddingLeft:8}}>{this.state.map}</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:15,paddingLeft:8}}>{this.state.map}</Text>
 					</View>	
                     <View style={{height:150,width: Dimensions.get('window').width,justifyContent: 'center',alignItems: 'center',backgroundColor:'#fff',paddingBottom:30,borderBottomWidth:1,borderColor:'#ececec',}}>
 					    {this.state.maps ? <MapView 
@@ -538,23 +537,23 @@ render() {
 						</MapView> : null}
 					</View>	
                     <View style={{flexDirection:'row',justifyContent: 'space-between',height:60,alignItems:'center',paddingLeft:10,paddingRight:10,}}>
-					    <Text style={{fontSize:16,width:70,}}>客户名称</Text>
-						<Text style={{flex:1,paddingLeft:30,fontSize:15,}}>{this.state.names}</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,width:70,}}>客户名称</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flex:1,paddingLeft:30,fontSize:15,}}>{this.state.names}</Text>
 						<TouchableOpacity   activeOpacity={0.6} onPress={this._xz.bind(this,true)}>
 							<View style={{flexDirection:'column',alignItems:'center',justifyContent:'center',}}>
 							   <Image source={require('./imgs/xz.png')} style={{width: 26, height: 26}} />
-							   <Text style={{color:'#4385f4',fontSize:13,}}>选择</Text>
+							   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:13,}}>选择</Text>
 							</View>
 						</TouchableOpacity>
 					</View>   
 					<View style={{height:5,backgroundColor:'#ececec'}}></View>
 					{this.state.isfalses ? <View style={{flexDirection:'row',justifyContent: 'space-between',height:60,alignItems:'center',paddingLeft:10,paddingRight:10,borderTopWidth:1,borderColor:'#ececec'}}>    
-					    <Text style={{fontSize:16,width:70,}}>联系人</Text>
-						<Text style={{flex:1,paddingLeft:30,fontSize:15,}}>{this.state.name}</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,width:70,}}>联系人</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flex:1,paddingLeft:30,fontSize:15,}}>{this.state.name}</Text>
 						<TouchableOpacity   activeOpacity={0.6} onPress={this._lxr.bind(this,true)}>
 							<View style={{flexDirection:'column',alignItems:'center',justifyContent:'center',}}>
 							   <Image source={require('./imgs/xz.png')} style={{width: 26, height: 26}} />
-							   <Text style={{color:'#4385f4',fontSize:13,}}>选择</Text>
+							   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:13,}}>选择</Text>
 							</View>
 						</TouchableOpacity>
 					</View> : <View></View>}					
@@ -563,7 +562,7 @@ render() {
 						  <TouchableOpacity   activeOpacity={0.6} onPress={this._qiandao.bind(this,true)}>
 							<View style={{width:120,height:120,borderRadius:60,backgroundColor:'#cdcdcd',alignItems:'center',justifyContent:'center',}}>
 							  <View style={{width:110,height:110,borderRadius:55,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',}}>
-								  <Text style={{color:'#fff',fontSize:20,}}>签到</Text>  
+								  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:20,}}>签到</Text>  
 							  </View>   
 						   </View> 
 						  </TouchableOpacity>
@@ -581,13 +580,13 @@ render() {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										<TouchableOpacity onPress={this._xz.bind(this,false)}>
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
+													<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
 											  </View>
 										</TouchableOpacity>  
 								  </View>    
 								  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 											 
-											  <Text style={{color:'white',fontSize:18}}>选择客户</Text>
+											  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>选择客户</Text>
 											 
 								  </View> 
 								  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -602,6 +601,7 @@ render() {
 								  tabBarActiveTextColor ='#4385f4' 
 								  tabBarUnderlineStyle={{backgroundColor: '#4385f4'}}
 								  tabBarTextStyle={{fontSize: 16}}
+								  locked={true}
 								>     
 									{this.state.isshows ? <View  style={{marginTop:50,flex:1,backgroundColor:'#fff'}} tabLabel='客户'>
 										 <Scustomera  _select={this._select.bind(this)}/>
@@ -627,13 +627,13 @@ render() {
 							  <View style={{flex:1,justifyContent:'center'}}>
 									<TouchableOpacity onPress={this._lxr.bind(this,false)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-												<Text style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
+												<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
 										  </View>
 									</TouchableOpacity>  
 							  </View>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:18}}>联系人</Text>
+										  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>联系人</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -656,13 +656,13 @@ render() {
 							  <View style={{flex:1,justifyContent:'center'}}>
 									<TouchableOpacity onPress={this._qiandao.bind(this,false)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-												<Text style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
+												<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,paddingLeft:10,}}>取消</Text>
 										  </View>
 									</TouchableOpacity>  
 							  </View>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:18}}>签到</Text>
+										  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>签到</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -672,23 +672,23 @@ render() {
 						  <View  style={{flex:1,}}>
 						      <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
 									<Icon name="ios-time-outline" color="#999"size={20}  />
-									<Text style={{paddingLeft:10,}}>签到时间:</Text>
-									<Text style={{paddingLeft:10,}}>{this.state.times}</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>签到时间:</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>{this.state.times}</Text>
 							  </View>
 							  <View style={{flexDirection:'row',paddingTop:10,paddingBottom:10,alignItems:'flex-start',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
 									<Icon name="ios-locate-outline" color="#aaa"size={20}  />
-									<Text style={{paddingLeft:10,}}>签到地点:</Text>
-									<Text style={{paddingLeft:10,flex:1,paddingRight:5,}}>{this.state.map}</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>签到地点:</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,flex:1,paddingRight:5,}}>{this.state.map}</Text>
 							  </View>
                               <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
 									<Icon name="ios-contact-outline" color="#999"size={20}  />
-									<Text style={{paddingLeft:10,}}>客户名称:</Text>
-									<Text style={{paddingLeft:10,}}>{this.state.names}</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>客户名称:</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>{this.state.names}</Text>
 							  </View>
                               {this.state.isfalses ? <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
 									<Icon name="ios-contact" color="#999"size={20}  />
-									<Text style={{paddingLeft:10,}}>联系人:</Text>
-									<Text style={{paddingLeft:10,}}>{this.state.name}</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>联系人:</Text>
+									<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{paddingLeft:10,}}>{this.state.name}</Text>
 							  </View> : <View></View>}							  
 							  <View style={{height:15,backgroundColor:'#ececec'}}></View>
 							  <View style={{padding:10,}}>
@@ -719,7 +719,7 @@ render() {
 							  <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(67, 133, 244, 0.3)')} onPress={this._Tij.bind(this)}  delayPressIn={0} >
 								<View style={{height:55,backgroundColor:'#fff',width:Dimensions.get('window').width,alignItems:'center',justifyContent:'center'}}>
 									 <View>
-										 <Text style={{fontSize:18,color:'#4385f4'}}>
+										 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#4385f4'}}>
 											 提交
 										 </Text>
 									 </View>
@@ -732,18 +732,18 @@ render() {
 				</View>
 				{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				  <Icon name="ios-close-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>{this.state.infos}</Text>   
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>{this.state.infos}</Text>   
 	            </Animated.View> : null}
 				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',backgroundColor: '#F5FCFF',height:80,position:'absolute',top:(Dimensions.get('window').height-80)/2,left:(Dimensions.get('window').width-100)/2,}}>
 						<View style={styles.loading}>
 							<ActivityIndicator color="white"/>                                                                           
-							<Text style={styles.loadingTitle}>加载中……</Text>
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 						</View>                                      
 				  </View> : <View></View>}
 				{this.state.statua ? <Animated.View style={{opacity: this.state.fadeAnim,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				 <TouchableOpacity activeOpacity={1}  style={{justifyContent:'flex-start',alignItems:'center',}} onPress={this._shuax.bind(this)} >
 				  <Icon name="ios-refresh-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
                  </TouchableOpacity>				  
 	           </Animated.View> : <View></View>}
 		</View>		            

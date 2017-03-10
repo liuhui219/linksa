@@ -73,13 +73,13 @@ export default class pan extends React.Component {
 									 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 												<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 										  </View>
 									</TouchableOpacity>  
 						  </View>    
 						  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 									<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-												<Text style={{color:'white',fontSize:18}} allowFontScaling={false}>网盘</Text>
+												<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}>网盘</Text>
 									</View>
 						  </View> 
 						  <View style={{flex:1,justifyContent:'center'}}>   
@@ -95,7 +95,7 @@ export default class pan extends React.Component {
 								   <Image source={require('./imgs/pan_r.png')} style={{width: 20, height: 20,}} />   
 								</View>
 								<View style={{flex:1,marginLeft:15,borderBottomWidth:1,borderColor:'#ddd',height:65,justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:15}}>
-								   <Text style={{color:'#666',fontSize:16}}>个人网盘</Text>
+								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>个人网盘</Text>
 								   <Image source={require('./imgs/right.png')} style={{width: 20, height: 18,}} />   
 								</View>
 							 </View>
@@ -106,7 +106,7 @@ export default class pan extends React.Component {
 								   <Image source={require('./imgs/pan_f.png')} style={{width: 20, height: 20,}} />
 								</View>
 								<View style={{flex:1,marginLeft:15,borderBottomWidth:1,borderColor:'#ddd',height:65,justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:15}}>
-								   <Text style={{color:'#666',fontSize:16}}>共享网盘</Text>
+								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>共享网盘</Text>
 								   <Image source={require('./imgs/right.png')} style={{width: 20, height: 18,}} />   
 								</View>
 							 </View>
@@ -117,7 +117,7 @@ export default class pan extends React.Component {
 								   <Image source={require('./imgs/pan_g.png')} style={{width: 20, height: 20,}} />   
 								</View>
 								<View style={{flex:1,marginLeft:15,borderBottomWidth:1,borderColor:'#ddd',height:65,justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:15}}>
-								   <Text style={{color:'#666',fontSize:16}}>公司网盘</Text>
+								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>公司网盘</Text>
 								   <Image source={require('./imgs/right.png')} style={{width: 20, height: 18,}} />   
 								</View>    
 							 </View>
@@ -128,7 +128,7 @@ export default class pan extends React.Component {
 								   <Image source={require('./imgs/yun.png')} style={{width: 26, height: 26,}} />
 								</View>
 								<View style={{flex:1,marginLeft:15,height:65,justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:15}}>
-								   <Text style={{color:'#666',fontSize:16}}>应用附件</Text>
+								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>应用附件</Text>
 								   <Image source={require('./imgs/right.png')} style={{width: 20, height: 18,}} />   
 								</View>
 							 </View>

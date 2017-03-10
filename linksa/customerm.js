@@ -98,7 +98,7 @@ export default class Customerm extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					 that.setState({
 						loaded:true, 
 						loadedst:true,
@@ -165,7 +165,7 @@ export default class Customerm extends Component {
 	} 
     
     _select(data){
-		console.log(data)
+		 
 		this.setState({ 
 			modalpoeple: false, 
 			modalshows: true,
@@ -202,7 +202,7 @@ export default class Customerm extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					 that.setState({
 						modalshow:false, 
 						tj:'提交', 
@@ -275,7 +275,7 @@ export default class Customerm extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					 that.setState({
 					 	modalshows:false,
 						tj:'提交', 
@@ -322,13 +322,13 @@ export default class Customerm extends Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:16}} allowFontScaling={false}>审批</Text>
+										<Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -342,28 +342,28 @@ export default class Customerm extends Component {
 				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle} allowFontScaling={false}>加载中……</Text>
+						<Text style={styles.loadingTitle} allowFontScaling={false} adjustsFontSizeToFit={false}>加载中……</Text>
 					</View>
 			    </View> : <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 				     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:0}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>操作人</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>操作人</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-								<Text allowFontScaling={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.props.data.from_name}
 								</Text>
 							</View>  
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>来自</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>来自</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.props.data.app_name}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -371,11 +371,11 @@ export default class Customerm extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>创建日期</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>创建日期</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.props.data.stime}
 								</Text>
 							</View>  
@@ -389,11 +389,11 @@ export default class Customerm extends Component {
 							return null;
 						}
 						return <View key={i} style={{flexDirection:'row',paddingTop:18,paddingBottom:18,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.name}</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.name}</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{data.show}
 								</Text>
 							</View>  
@@ -407,7 +407,7 @@ export default class Customerm extends Component {
 
                   
                     
-                    <View style={{paddingTop:10,paddingBottom:10,paddingLeft:10,backgroundColor:'#fff',flexDirection:'row',borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,}}><Text style={{fontSize:16,}} allowFontScaling={false}>订单详情</Text><Text style={{fontSize:14,color:'#aaa',marginLeft:5}} allowFontScaling={false}>(左右滑动查看更多)</Text></View>
+                    <View style={{paddingTop:10,paddingBottom:10,paddingLeft:10,backgroundColor:'#fff',flexDirection:'row',borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,}}><Text style={{fontSize:16,}} allowFontScaling={false} adjustsFontSizeToFit={false}>订单详情</Text><Text style={{fontSize:14,color:'#aaa',marginLeft:5}} allowFontScaling={false} adjustsFontSizeToFit={false}>(左右滑动查看更多)</Text></View>
                     <ScrollView 			          
                       automaticallyAdjustContentInsets={false}
 			          horizontal={true}
@@ -418,35 +418,35 @@ export default class Customerm extends Component {
                     <View style={{flexDirection:'column'}}>
 
                     {this.state.datas.goods.length > 0 ? <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff',paddingBottom:10,paddingTop:10,borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:5,paddingRight:5}}>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}> 维修单</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>条码</Text></View>      
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>序列号</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>商品</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>型号</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>保修情况</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>接收方式</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>处理方式</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false}>收费</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}> 维修单</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>条码</Text></View>      
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>序列号</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>商品</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>型号</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>保修情况</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>接收方式</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>处理方式</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>收费</Text></View>
 					</View> : null}
 					 
 					{this.state.datas.goods.length > 0 ? this.state.datas.goods.map((data,i) =>{ 
 						return  <View key={i} style={{flexDirection:'row',justifyContent:'space-between',flex:1,paddingRight:5,paddingLeft:5,paddingTop:18,paddingBottom:18,backgroundColor:'#fff',borderBottomWidth:1,borderColor:'#dcdcdc',}}>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.r_id}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.batchcode}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.sarinlcode}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.pro_id_show}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.xinhao_show}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.period_type}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.js_method}</Text></View>
-					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.cl_method}</Text></View>
-							<View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>{data.money}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.r_id}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.batchcode}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.sarinlcode}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.pro_id_show}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.xinhao_show}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.period_type}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.js_method}</Text></View>
+					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.cl_method}</Text></View>
+							<View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.money}</Text></View>
 					       
 					</View>
 					}) : null}
 					</View>
                     </ScrollView>
 
-                    <View style={{flexDirection:'row',padding:10,backgroundColor:'#fff',marginTop:15,alignItems:'center'}}><Text style={{color:'red',fontSize:20}} allowFontScaling={false}>*</Text><Text style={{fontSize:14}} allowFontScaling={false}>请进入应用->售后管理进行更精确的操作</Text></View>   
+                    <View style={{flexDirection:'row',padding:10,backgroundColor:'#fff',marginTop:15,alignItems:'center'}}><Text style={{color:'red',fontSize:20}} allowFontScaling={false} adjustsFontSizeToFit={false}>*</Text><Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}>请进入应用->售后管理进行更精确的操作</Text></View>   
 				</ScrollView>}
 				 
 				<View>
@@ -461,14 +461,14 @@ export default class Customerm extends Component {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>审批</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -489,18 +489,18 @@ export default class Customerm extends Component {
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiao.bind(this)} underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight> : <TouchableHighlight  style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
 							   
 							</ScrollView>
 							{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 				            </Animated.View> : null} 
 					   </Modal>
 					</View>
@@ -517,14 +517,14 @@ export default class Customerm extends Component {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>审批</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -545,12 +545,12 @@ export default class Customerm extends Component {
 							  </View>
 							  <View style={{backgroundColor:'#fff',marginTop:15,flexDirection:'column',paddingLeft:10,paddingTop:10,paddingBottom:10,}}>
                                  <View style={{flexDirection:'row',alignItems:'center'}}>
-                                   <Text style={{fontSize:16}} allowFontScaling={false}>审批人</Text>
-                                   <Text style={{fontSize:12,color:'#bbb',marginLeft:5}} allowFontScaling={false}>(点击姓名可删除)</Text>
+                                   <Text style={{fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批人</Text>
+                                   <Text style={{fontSize:12,color:'#bbb',marginLeft:5}} allowFontScaling={false} adjustsFontSizeToFit={false}>(点击姓名可删除)</Text>
                                  </View>
                                  <View style={{marginTop:15,flexDirection:'row',alignItems:'center',}}>
                                      {this.state.poepledata.name ? <TouchableOpacity onPress={this._delets.bind(this)} activeOpacity={1}><View style={{backgroundColor:'#60a9e8',paddingBottom:8,paddingTop:8,paddingLeft:10,paddingRight:10,marginRight:10,borderRadius:3}}>
-                                        <Text style={{color:'#fff'}} allowFontScaling={false}>{this.state.poepledata.name}</Text>
+                                        <Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.poepledata.name}</Text>
                                      </View></TouchableOpacity> : null}  
                                     <TouchableOpacity style={{width:46,height:46,marginTop:5,alignItems:'center',justifyContent:'center'}} onPress={this._xmodalpoeple.bind(this,true)}>
                                       
@@ -561,18 +561,18 @@ export default class Customerm extends Component {
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiaos.bind(this)}  underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight> : <TouchableHighlight  style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
 							   
 							</ScrollView>
 							{this.state.statur ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 				            </Animated.View> : null}
 					   </Modal>
 					   
@@ -592,14 +592,14 @@ export default class Customerm extends Component {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>选择审批人</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>选择审批人</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -613,7 +613,7 @@ export default class Customerm extends Component {
 					</View>
 					{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 					  <Icon name="ios-close-outline" color="#fff"size={36}  />
-					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 		            </Animated.View> : null}
 	  </View>	   
 	  

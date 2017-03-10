@@ -70,7 +70,7 @@ export default class Webviewst extends Component {
 	}                                                                                                                       
 	onNavigationStateChange(navState) {   
 		 
-		this.refs[WEBVIEW_REF].postMessage(JSON.stringify(data)); 
+		 
 		 
 			this.setState({  
 				isfalse:true,
@@ -85,7 +85,7 @@ export default class Webviewst extends Component {
 					 
 				     <View style={styles.loading}>
 						<ActivityIndicator color="#999" size="large"/>
-						<Text style={styles.loadingTitle}>正在加载中...</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>正在加载中...</Text>
 					</View>
 				</View>
 				
@@ -101,7 +101,7 @@ export default class Webviewst extends Component {
 			 <TouchableOpacity activeOpacity={1} onPress={this._shuax.bind(this)}>
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-60,}}>
 				    <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>                  
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>                  
 				</View>
 			  </TouchableOpacity> 
 			   		  
@@ -165,13 +165,13 @@ export default class Webviewst extends Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}></Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}></Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -197,7 +197,7 @@ export default class Webviewst extends Component {
 			 {this.state.isloading ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-60,width:Dimensions.get('window').width,backgroundColor:'#fff',position:'absolute',top:0,left:0,}}>
 				     <View style={styles.loading}>
 						<ActivityIndicator color="#999" size="large"/>
-						<Text style={styles.loadingTitle}>正在加载...</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>正在加载...</Text>
 					</View>
 				</View> : <View></View>}
 			                          

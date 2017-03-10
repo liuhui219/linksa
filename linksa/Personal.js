@@ -39,13 +39,13 @@ export default class Personal extends React.Component {
 									 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 												<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-												<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+												<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 										  </View>
 									</TouchableOpacity>  
 						  </View>    
 						  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 									<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-												<Text style={{color:'white',fontSize:18}}>个人资料</Text>
+												<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>个人资料</Text>
 									</View>
 						  </View> 
 						  <View style={{flex:1,justifyContent:'center'}}>   
@@ -61,7 +61,7 @@ export default class Personal extends React.Component {
 						    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',padding:15,marginTop:15,backgroundColor:'#fff',borderBottomWidth:1,borderTopWidth:1,borderColor:'#ececec'}}>  
 						       <View  style={{alignItems:'center',justifyContent:'flex-start',flex:1,flexDirection:'row',}}>
 							       <View  style={{alignItems:'center',justifyContent:'center',height:50,backgroundColor:'#ccc',width:50,borderRadius:25,}}><Image source={require('./imgs/sp1.png')} style={{width: 50, height: 50,borderRadius:25,}} /></View>
-								   <View style={{marginLeft:10,}}><Text style={{fontSize:16,}}>sdgd</Text></View> 
+								   <View style={{marginLeft:10,}}><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>sdgd</Text></View> 
 							   </View>
 							   <Icon name="ios-arrow-forward" color="#ccc"size={27}  />
 						    </View>
@@ -73,7 +73,7 @@ export default class Personal extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:18,}}>电子邮件：</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>电子邮件：</Text>
 										</View> 
 										 
 									</View>
@@ -84,7 +84,7 @@ export default class Personal extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:18,}}>固定电话：</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>固定电话：</Text>
 										</View> 
 										 
 									</View>
@@ -95,19 +95,7 @@ export default class Personal extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:18,}}>移动电话：</Text>
-										</View> 
-										 
-									</View>
-							   </TouchableNativeFeedback>
-							 </View>
-							   
-							 <View style={{marginTop:15,backgroundColor:'#fff'}}>
-							   <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(222, 222, 222, 0.3)')}  delayPressIn={0} >
-									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
-									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
-										    
-										   <Text style={{fontSize:18,}}>职位名称：</Text>
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>移动电话：</Text>
 										</View> 
 										 
 									</View>
@@ -119,7 +107,19 @@ export default class Personal extends React.Component {
 									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
 									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
 										    
-										   <Text style={{fontSize:18,}}>所在部门：</Text>
+										   <Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>职位名称：</Text>
+										</View> 
+										 
+									</View>
+							   </TouchableNativeFeedback>
+							 </View>
+							   
+							 <View style={{marginTop:15,backgroundColor:'#fff'}}>
+							   <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(222, 222, 222, 0.3)')}  delayPressIn={0} >
+									<View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',padding:15, borderBottomWidth:1,borderColor:'#ececec',justifyContent:'space-between',}}> 
+									    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
+										    
+										   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>所在部门：</Text>
 										</View> 
 										 
 									</View>

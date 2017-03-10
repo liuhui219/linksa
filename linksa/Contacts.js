@@ -83,7 +83,7 @@ export default class Contacts extends Component {
     }
     componentDidMount() {
 		this.fetchData();
-		console.log(data)
+	 
 	  }
 	  
     	
@@ -143,7 +143,7 @@ export default class Contacts extends Component {
 		this.fetchData();         
 	}   
 	layoutH(e){
-		console.log(e.nativeEvent.layout.height)
+		 
 		for (var i = 0; i < secs.length; i++) {
 		  var lengs = this.state.datas.data[i].data;
 		  var sectionNames=secs[i];
@@ -157,7 +157,7 @@ export default class Contacts extends Component {
 	}              
 	moveScroll(e){    
         let num = Math.floor((e.nativeEvent.pageY - 25 - Math.floor((Dimensions.get('window').height-540)/2)) / 15);
-		console.log(num)   
+	 
         if(num<2){
 			num = 2;
 		}
@@ -185,19 +185,28 @@ export default class Contacts extends Component {
 	
     renderLoadingView() {    
 		return (
+		<View>
+		   <View style={styles.card}>  
+			  <View style={{flex:1,alignItems:'center',justifyContent:'center',}}>
+				<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>通讯录</Text>
+				</View>
+			  </View>      
+			</View>		
 		  <View style={{justifyContent: 'center',alignItems: 'center', height:Dimensions.get('window').height-140,overflow:'hidden',}}>
 		    <View style={styles.loading}>
                 <ActivityIndicator color="white"/>
-                <Text style={styles.loadingTitle}>加载中……</Text>
+                <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
             </View>
 		  </View>	
+		 </View> 
 		);
 	  }
     
     renderSectionHeader(sectionData, sectionID){
 		return (
 		  <View   style={{flex:1,height:25,backgroundColor:'#dcdcdc',justifyContent: 'center',paddingLeft:15,}}>
-			<Text style={{fontSize:14,color:'#666'}}>
+			<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,color:'#666'}}>
 			  {sectionData}
 			</Text>  
 		  </View>
@@ -232,12 +241,21 @@ export default class Contacts extends Component {
 		
 		if(this.state.sx){
 			return(
-			  <TouchableOpacity activeOpacity={1}   onPress={this._shuax.bind(this)}>
-			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-150,}}>
-				    <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>
-				</View>
-			  </TouchableOpacity>	
+			  <View style={{flex:1,}}>
+			       <View style={styles.card}>  
+				     <View style={{flex:1,alignItems:'center',justifyContent:'center',}}>
+					  <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>通讯录</Text>
+					  </View>
+				     </View>  
+				  </View>		
+				  <TouchableOpacity activeOpacity={1}   onPress={this._shuax.bind(this)}>
+					<View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-150,}}>
+						<Icon name="ios-refresh-outline" color="#ccc"size={70}  />
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>
+					</View>
+				  </TouchableOpacity>	
+			  </View>
 			)                                               
 		}	                                                                                                                                                 
 		                                                                                                                                                           
@@ -245,7 +263,15 @@ export default class Contacts extends Component {
 		  return this.renderLoadingView();
 		}                                                                                                                                                                   
 		else{
-		return(        
+		return(       
+         <View style={{flex:1,paddingBottom:3}}>	
+          <View style={styles.card}>  
+		      <View style={{flex:1,alignItems:'center',justifyContent:'center',}}>
+			    <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>通讯录</Text>
+			    </View>
+		      </View>  
+		  </View>				 
 		 <View style={{flex:1,flexDirection:'row',overflow:'hidden'}}>
 		  <View style={{flex:1,paddingRight:20,}} >
 			  <ListView
@@ -266,21 +292,21 @@ export default class Contacts extends Component {
 		      {secs.map((tab, i) => {                                                                                                                              
 				return <View key={tab}    style={{height:15,width:20,alignItems: 'center',}}>
 				  
-				  <Text  style={{fontSize:12}}>
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12}}>
 						{tab}
 					</Text>
 				</View>;
 			  })}                        
 			                                                                                           
 		  </View>
-		  
+		  </View>
 		 </View> 
 		)
 		}
     }
 	renderRow(rowData, sectionID, rowID){
 		
-		console.log(rowData)
+		 
 		 
 		return (  
 		 <TouchableNativeFeedback onLayout={(e)=>{this.layoutH(e)}}   onPress={this.info.bind(this,rowData)} delayPressIn={0} >
@@ -290,8 +316,8 @@ export default class Contacts extends Component {
 					 <Image source={rowData.avatar} style={{width: 40, height: 40,borderRadius:20,}} />
 				 </View>			
 				 <View style={{marginLeft:15, flex:1,flexDirection:'column', borderBottomWidth:1,borderColor:'#dcdcdc',justifyContent: 'center',paddingBottom:10,paddingTop:5,}}>
-				     <Text style={{fontSize:16,color:'#555'}}>{rowData.name}</Text> 
-					 <Text style={{fontSize:13,color:'#999'}}>{rowData.departName}</Text> 
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#555'}}>{rowData.name}</Text> 
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:13,color:'#999'}}>{rowData.departName}</Text> 
 				</View>
 			</View>	
 		  

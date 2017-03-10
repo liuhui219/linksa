@@ -76,13 +76,13 @@ export default class Approval extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>办公审批</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>办公审批</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -101,6 +101,7 @@ export default class Approval extends React.Component {
 				  tabBarActiveTextColor ='#4385f4' 
 				  tabBarUnderlineStyle={{backgroundColor: '#4385f4'}}
 				  tabBarTextStyle={{fontSize: 16}}
+				  locked={true}
 				>     
 				  <View  style={{marginTop:50,flex:1,}} tabLabel='未审批'>
 				     <Approvala navigator = {this.props.navigator} {...this.props}/>

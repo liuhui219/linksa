@@ -101,7 +101,7 @@ export default class Scustomerb extends React.Component {
 							   isNull:false,
 						   })
 					   }			   
-					   console.log(responseData)				   
+					 	   
 					  
 				})
 				.catch((error) => {
@@ -127,7 +127,7 @@ export default class Scustomerb extends React.Component {
 		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-170,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
 		  )
@@ -173,7 +173,7 @@ export default class Scustomerb extends React.Component {
 			return(
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-sad-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
 		}	
@@ -181,7 +181,7 @@ export default class Scustomerb extends React.Component {
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)     
 		} 		
@@ -193,15 +193,15 @@ export default class Scustomerb extends React.Component {
 					   <Image source={require('./imgs/ren.png')} style={{width: 20, height: 20, }} />
 				   </View>
 				   <View style={{flexDirection:'column',flex:1,}}>
-					   <Text style={{fontSize:16,color:'#777'}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#777'}}>
 						   {data.name }
 					   </Text>
-					   <Text style={{fontSize:12,color:'#999'}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12,color:'#999'}}>
 						   {data.status}
 					   </Text>
 				   </View>
 				   <View style={{flexDirection:'row',marginRight:15, alignSelf:'flex-start',paddingTop:10,}}> 
-					  <Text style={{color:'#999'}}>{data.phone}</Text>
+					  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#999'}}>{data.phone}</Text>
 				   </View>
 			   </View> 
              </TouchableOpacity>			        
@@ -215,7 +215,7 @@ export default class Scustomerb extends React.Component {
 			 return (
 				<View style={styles.footer}>
 					<ActivityIndicator color="#4385f4"/>
-					<Text style={styles.footerTitle}>正在加载更多……</Text>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.footerTitle}>正在加载更多……</Text>
 				</View>
 		  )
 		 }
@@ -280,7 +280,7 @@ export default class Scustomerb extends React.Component {
 									   })
 									  
 								   }			   
-							   console.log(result)			   
+							  
 							  
 						})
 			            .catch((error) => {

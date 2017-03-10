@@ -112,7 +112,7 @@ export default class Approvalb extends React.Component {
 						   var IMG =  {uri: data.data.domain.slice(0,-6)+Data.from_avatar.slice(1)}
 						   aa.push(IMG)
 						   array.push(Data);
-						   console.log(IMG)
+						  
 						   
 					   })
 					  }
@@ -147,7 +147,7 @@ export default class Approvalb extends React.Component {
 							   isNull:false,
 						   })
 					   }			   
-					   console.log(result)				   
+					  		   
 					  
 				})
 				.catch((error) => {
@@ -280,7 +280,7 @@ export default class Approvalb extends React.Component {
 		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-170,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
 		  )
@@ -315,7 +315,7 @@ export default class Approvalb extends React.Component {
 			return(
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-sad-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
 		}
@@ -323,7 +323,7 @@ export default class Approvalb extends React.Component {
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)     
 		}
@@ -331,19 +331,19 @@ export default class Approvalb extends React.Component {
 		return (
 		    <View style={{paddingTop:15, justifyContent:'center',alignItems:'center',}}>
 			   <View style={{backgroundColor:'#ddd',paddingTop:3,paddingBottom:3,paddingLeft:8,paddingRight:8,borderRadius:3,}}>
-				   <Text style={{color:'#fff'}}>{data.stime}</Text>
+				   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff'}}>{data.stime}</Text>
 			   </View>
 			   <View style={{flexDirection:'row',paddingTop:15,}}>
 				  <View style={{marginLeft:15,marginRight:15,width: 40, height: 40,borderRadius:20,backgroundColor:'#1ADA9A',alignItems:'center', justifyContent:'center'}}>
 					   <Image source={this.state.imgs[rowID]} style={{width: 40, height: 40,borderRadius:20,}} />
 				  </View>
 				  <View style={{flex:1,flexDirection:'column',}}>
-					   <Text style={{fontSize:16,}}>{data.from_name}</Text>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{data.from_name}</Text>
 					   <View style={{backgroundColor:'#fff', borderRadius:3,marginRight:15,marginTop:5,}}>
-						  <Text style={{fontSize:16,color:'#4385f4',paddingTop:15,paddingLeft:15, paddingRight:15,}}>{data.app_name}</Text>
-						  <Text style={{flexWrap:'wrap',marginTop:10,paddingLeft:15, paddingRight:15,}}>{data.content}</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#4385f4',paddingTop:15,paddingLeft:15, paddingRight:15,}}>{data.app_name}</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flexWrap:'wrap',marginTop:10,paddingLeft:15, paddingRight:15,}}>{data.content}</Text>
 						  <TouchableOpacity  activeOpacity={0.8}  onPress={this._InfoBut.bind(this,data)}   style={{flexDirection:'row',justifyContent:'space-between',borderTopWidth:0.5,borderColor:'#bbb',paddingTop:10,paddingBottom:10,marginTop:10,alignItems:'center',paddingLeft:15, paddingRight:15,}}>
-							  <Text>阅读全文</Text>
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>阅读全文</Text>
 							  <Icon name="ios-arrow-forward" color="#ccc"size={25}  />
 						  </TouchableOpacity>
 					   </View>
@@ -360,7 +360,7 @@ export default class Approvalb extends React.Component {
 			 return (
 				<View style={styles.footer}>
 					<ActivityIndicator color="#4385f4"/>
-					<Text style={styles.footerTitle}>正在加载更多……</Text>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.footerTitle}>正在加载更多……</Text>
 				</View>
 		  )
 		 }
@@ -458,7 +458,6 @@ export default class Approvalb extends React.Component {
 												  
 									})
 								   }			   
-							   console.log(result)			   
 							  
 						})
 			            .catch((error) => {

@@ -76,7 +76,7 @@ _Splash() {
               <View style={{position:'absolute', bottom:70,width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}>
               <TouchableHighlight onPress={this._Splash.bind(this)} underlayColor="#1a5fd4" style={{borderRadius:4,}}>
                 <View style={{borderWidth:1,borderColor:'#ececec',borderRadius:4,paddingTop:10,paddingBottom:10,paddingLeft:80,paddingRight:80, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
-                    <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>立 即 登 录</Text>
+                    <Text style={{fontSize:18, color:'#fff'}}  allowFontScaling={false} adjustsFontSizeToFit={false}>立 即 登 录</Text>
                 </View>
               </TouchableHighlight>
               </View>   

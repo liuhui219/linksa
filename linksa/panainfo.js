@@ -149,7 +149,7 @@ export default class Newsb extends React.Component {
 		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-170,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
 		  )
@@ -192,7 +192,7 @@ export default class Newsb extends React.Component {
 			return(
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-sad-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
 		}	
@@ -200,7 +200,7 @@ export default class Newsb extends React.Component {
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)     
 		} 		

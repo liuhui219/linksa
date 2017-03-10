@@ -49,13 +49,13 @@ export default class About extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 										<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}} allowFontScaling={false}>关于</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}} allowFontScaling={false}>关于</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -69,20 +69,20 @@ export default class About extends React.Component {
 					 <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center',marginTop:15,}}>
 					     <Image source={require('./imgs/logo.png')} style={{width: 50, height: 50,}} />
 					     <View  style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:20,}}>
-                              <Text style={{fontSize:12}} allowFontScaling={false}>For Android V2.0.2</Text> 
+                              <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12}} allowFontScaling={false}>For Android V2.0.3</Text> 
 					     </View>
 					 </View>
 
 					 <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center',marginTop:35,}}>
 					     <Image source={require('./imgs/link.png')} style={{width: 150, height: 150,}} />
 					     <View  style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:20,}}>
-                              <Text style={{fontSize:12}} allowFontScaling={false}>扫描二维码，让你的朋友也可以下载客户端！</Text> 
+                              <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12}} allowFontScaling={false}>扫描二维码，让你的朋友也可以下载客户端！</Text> 
 					     </View>   
 					 </View>
 				 </View>   
 				 <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center',position:'absolute',bottom:30,left:0,width:Dimensions.get('window').width}}>
-                       <Text style={{fontSize:12}} allowFontScaling={false}>Copyright©2009-2017</Text>
-                       <Text style={{fontSize:12,marginTop:5,}} allowFontScaling={false}>邻盛管家-linksame版权所有</Text>
+                       <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12}} allowFontScaling={false}>Copyright©2009-2017</Text>
+                       <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:12,marginTop:5,}} allowFontScaling={false}>邻盛管家-linksame版权所有</Text>
 				 </View> 
 			</View>
 	  </View>			  

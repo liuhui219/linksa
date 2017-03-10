@@ -71,13 +71,13 @@ export default class qus extends React.Component {
 									 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 												<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 										  </View>
 									</TouchableOpacity>  
 						  </View>    
 						  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 									<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-												<Text style={{color:'white',fontSize:18}} allowFontScaling={false}>个人网盘</Text>
+												<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}>个人网盘</Text>
 									</View>
 						  </View> 
 						  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>   
@@ -106,13 +106,13 @@ export default class qus extends React.Component {
 						 <TouchableOpacity  onPress={this._Tj.bind(this)}>
 						   <View style={{borderBottomWidth:1,borderColor:'#ccc',width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
 							 
-							  <Text style={{marginLeft:10,fontSize:16,}}>多选</Text>   
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>多选</Text>   
 						   </View>
 						 </TouchableOpacity> 
 						 <TouchableOpacity onPress={this._Tj.bind(this)}>					 
 						   <View style={{width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
 							  
-							  <Text style={{marginLeft:10,fontSize:16,}}>新建文件夹</Text>
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>新建文件夹</Text>
 						   </View>
 						 </TouchableOpacity>    
 					   </View>  		   

@@ -124,7 +124,7 @@ export default class ContactInfo extends React.Component {
 				return response.json();
 			})
 			.then(function (result) {
-				console.log(result);
+				 
 				if(result.statu == 1){
 					that.setState({     
 						textaera: '',   
@@ -144,13 +144,13 @@ export default class ContactInfo extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>日程详情</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>日程详情</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -161,38 +161,38 @@ export default class ContactInfo extends React.Component {
 			    <View style={{backgroundColor:'#fff',flexDirection:'column',}}>
 			      <View style={{borderBottomWidth:0.5,borderColor:'#bbb',flexDirection:'row',height:50,alignItems:'center',paddingLeft:15,flex:1, }}>
 				     <Icon name="calendar" color="#666"size={20}  /> 
-				     <Text style={{fontSize:16,paddingLeft:5,}}>{this.state.datas.type}</Text>
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,paddingLeft:5,}}>{this.state.datas.type}</Text>
 				  </View>
 				  <View style={{borderBottomWidth:0.5,borderColor:'#bbb',flexDirection:'column',height:60,marginLeft:15,justifyContent:'center', }}>
-				     <Text style={{fontSize:16,}}>  
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>  
 					    {this.state.datas.title}
 					 </Text>  
-					 <Text style={{fontSize:14,color:'#aaa',paddingTop:5,}}>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,color:'#aaa',paddingTop:5,}}>
 					    {this.state.datas.start}——{this.state.datas.end}
 					 </Text>
 				  </View>
 				  <View style={{marginLeft:15,flexDirection:'row',borderBottomWidth:0.5,borderColor:'#bbb',alignItems:'center',justifyContent:'space-between',height:50,paddingRight:15,}}>
-				     <Text>优先等级</Text>
-					 <Text>{this.state.datas.important_name}</Text>   
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false}>优先等级</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.datas.important_name}</Text>   
 				  </View>
 				  <View style={{marginLeft:15,flexDirection:'row',borderBottomWidth:0.5,borderColor:'#bbb',alignItems:'center',justifyContent:'space-between',height:50,paddingRight:15,}}>
-				     <Text>提前通知</Text>
-					 <Text>{this.state.datas.tixintime}</Text>
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false}>提前通知</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.datas.tixintime}</Text>
 				  </View>
 				  <View style={{flexDirection:'row',borderBottomWidth:1,borderColor:'#bbb',alignItems:'center',paddingRight:15,paddingTop:15,paddingBottom:15,}}>
-				     <Text style={{width:80,marginLeft:15,alignSelf:'flex-start',}}>内        容</Text>
-					 <Text style={{flexWrap:'wrap',flex:1,fontSize:14}}>{this.state.datas.contents}</Text>
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{width:80,marginLeft:15,alignSelf:'flex-start',}}>内        容</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flexWrap:'wrap',flex:1,fontSize:14}}>{this.state.datas.contents}</Text>
 				  </View>
 				</View>  
 				<View style={{height:15,backgroundColor:'#ececec'}}></View>
                 <View style={{backgroundColor:'#fff',flexDirection:'column',flex:1,}}>				
 				  <View style={{borderBottomWidth:0.5,borderColor:'#bbb',flexDirection:'row',height:50,alignItems:'center',paddingLeft:15,paddingRight:15,}}>
 				     <Icon name="comments-o" color="#666"size={20}  /> 
-				     <Text style={{fontSize:16,paddingLeft:5,}}>评论</Text>
-					 <Text style={{fontSize:14,paddingLeft:5,paddingLeft:10,color:'#bbb',flex:1,textAlign:'right',}}>共有{this.state.dataA == null ? 0 : this.state.dataA.length}条回复</Text>     
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,paddingLeft:5,}}>评论</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,paddingLeft:5,paddingLeft:10,color:'#bbb',flex:1,textAlign:'right',}}>共有{this.state.dataA == null ? 0 : this.state.dataA.length}条回复</Text>     
 				  </View>
 				  {this.state.dataA == null ? <View style={{height:100,alignItems:'center', justifyContent:'center'}}>
-				          <Text style={{fontSize:18,}}>暂无评论</Text>
+				          <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>暂无评论</Text>
 				    </View> : this.state.dataA.map((tab, i) => {
 					return  <View key={i} style={{flexDirection:'row',paddingTop:15,paddingLeft:15,}}>
 								<View style={{width: 40, height: 40,borderRadius:20,backgroundColor:'#718DC1',alignItems:'center', justifyContent:'center'}}>
@@ -200,10 +200,10 @@ export default class ContactInfo extends React.Component {
 								</View>
 								<View style={{flexDirection:'column',marginLeft:15,flex:1, borderBottomWidth:0.5,borderColor:'#aaa',paddingBottom:15,paddingRight:15,}}>
 								   <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
-									  <Text>{tab.u_name}</Text>
-									  <Text>{tab.time}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{tab.u_name}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{tab.time}</Text>
 								   </View>
-								   <Text style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,}}>{tab.comment}
+								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,}}>{tab.comment}
 								   </Text> 
 								</View>
 							  </View>
@@ -216,7 +216,7 @@ export default class ContactInfo extends React.Component {
 			{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height,overflow:'hidden',position:'absolute',top:0,left:0,width:Dimensions.get('window').width,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				</View> : <View></View>}
 			<View style={{height:60,flexDirection:'row',paddingLeft:10,paddingRight:10, backgroundColor:'#ededed',justifyContent:'center',paddingTop:10, }}>
@@ -231,7 +231,7 @@ export default class ContactInfo extends React.Component {
 				   />
 			   </View>
 			   <TouchableOpacity onPress={this._send.bind(this)} style={{backgroundColor:'#4385f4',height:40,width:70,borderRadius:3,marginLeft:10,alignItems:'center',justifyContent:'center',}}>
-			       <Text style={{color:'#fff',fontSize:16,}}>发送</Text>
+			       <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff',fontSize:16,}}>发送</Text>
 			   </TouchableOpacity>
 			</View>	 
 	  </View>			  

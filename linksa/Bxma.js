@@ -109,7 +109,7 @@ export default class Bxma extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					if(result.data.pj.data.length>0){  
 					result.data.pj.data.forEach((datas,i)=>{
 						var IMG={uri: data.data.domain.slice(0,-6)+datas.fileid.slice(1)};
@@ -147,7 +147,6 @@ export default class Bxma extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
 					 
 					 that.setState({
 						historydata: result.data.slice(0,-1), 				
@@ -210,7 +209,7 @@ export default class Bxma extends Component {
 	} 
     
     _select(data){
-		console.log(data)
+		 
 		this.setState({ 
 			modalpoeple: false, 
 			modalshows: true,
@@ -247,7 +246,7 @@ export default class Bxma extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					 that.setState({
 						modalshow:false, 
 						tj:'提交', 
@@ -320,7 +319,7 @@ export default class Bxma extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result)
+					 
 					  
 					 if(result.status == 0){
 					 	that.setState({
@@ -377,7 +376,7 @@ export default class Bxma extends Component {
 }
 
 closest(){
-	console.log(this.state.bottoms._value)
+	 
 	if(this.state.bottoms._value == 0){
 		Animated.timing(           
        this.state.bottoms,     
@@ -410,7 +409,7 @@ sures(){
 	const downloadDest = `${RNFS.DocumentDirectoryPath}/${(new Date().getTime())}.jpg`;   
 	var files = 'file://' + downloadDest;
 	RNFS.downloadFile({ fromUrl: this.state.bcimg, toFile: downloadDest}).promise.then(res => {
-      console.log(JSON.stringify(res));
+       
       CameraRoll.saveToCameraRoll(files);
           that.setState({
           	statu:true,		   
@@ -460,13 +459,13 @@ showActionSheet() {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:16}} allowFontScaling={false}>已审批</Text>
+										<Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>已审批</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -480,28 +479,28 @@ showActionSheet() {
 				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle} allowFontScaling={false}>加载中……</Text>
+						<Text style={styles.loadingTitle} allowFontScaling={false} adjustsFontSizeToFit={false}>加载中……</Text>
 					</View>
 			    </View> : <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 				     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:0}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>操作人</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>操作人</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-								<Text allowFontScaling={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.props.data.from_name}
 								</Text>
 							</View>  
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>来自</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>来自</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.props.data.app_name}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -509,22 +508,22 @@ showActionSheet() {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>创建日期</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>创建日期</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.time}
 								</Text>     
 							</View>  
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:15,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>报销名</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>报销名</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.expensename}
 								</Text>
 							</View>  
@@ -532,33 +531,33 @@ showActionSheet() {
 					</View>
 
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>报销金额</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>报销金额</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.money}
 								</Text>
 							</View>  
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>报销人</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>报销人</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.userid}
 								</Text>
 							</View>  
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>报销状态</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>报销状态</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center',color:'red'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center',color:'red'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datasx.audit_status}
 								</Text>
 							</View>  
@@ -566,11 +565,11 @@ showActionSheet() {
 					</View>
 				   
 				   <View style={{flexDirection:'row',paddingTop:18,paddingBottom:18,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>时间</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>时间</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.time}
 								</Text>
 							</View>  
@@ -578,11 +577,11 @@ showActionSheet() {
 					</View>
 
 					<View  style={{flexDirection:'row',paddingTop:18,paddingBottom:18,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false}>备注</Text>
+					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>备注</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,}}> 
 						 
 							<View style={{flex:1,}}>
-							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false}>
+							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.bx.bz}
 								</Text>
 							</View>  
@@ -600,7 +599,7 @@ showActionSheet() {
 				                </TouchableOpacity>  
 				                {this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 								  <Icon name="ios-checkmark-outline" color="#fff"size={50}  />
-								  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+								  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 					            </Animated.View> : null} 
 								   
 								<Animated.View style={{bottom:this.state.bottoms,left:0,width:Dimensions.get('window').width,backgroundColor:'#fff',position:'absolute',justifyContent:'center',alignItems:'center',position:'absolute',}}> 
@@ -620,21 +619,21 @@ showActionSheet() {
                     {this.state.datas.pj.count > 0 ? this.state.datas.pj.data.map((data,i)=>{
                     	return <View key={i} style={{flexDirection:'column',borderBottomWidth:1,borderColor:'#ccc'}}>   
                     	    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:10,paddingRight:10,paddingTop:7,paddingBottom:7,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
-                                <Text style={{fontSize:14,color:'#aaa'}} allowFontScaling={false}>{data.documentsname}</Text>
-                                <Text style={{fontSize:14,color:'#aaa'}} allowFontScaling={false}>{data.time}</Text>
+                                <Text style={{fontSize:14,color:'#aaa'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.documentsname}</Text>
+                                <Text style={{fontSize:14,color:'#aaa'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.time}</Text>
                     	    </View>
                     	    <View style={{flexDirection:'row',padding:10}}>
                                 <TouchableOpacity onPress={this.tup.bind(this,this.state.imgs[i])}><View style={{height:60,width:60,overflow:'hidden'}}><Image source={this.state.imgs[i]} style={{height:60,width:60,}} /></View></TouchableOpacity>
                                 <View style={{marginLeft:10,flexDirection:'column',justifyContent:'space-between'}}>
-                                   <Text style={{fontSize:14}} allowFontScaling={false}>票据号：{data.documentsid}</Text>
-                                   <Text style={{fontSize:14}} allowFontScaling={false}>来源：{data.projectid}</Text>
-                                   <Text style={{fontSize:14}} allowFontScaling={false}>分类：{data. cateid}</Text>
+                                   <Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}>票据号：{data.documentsid}</Text>
+                                   <Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}>来源：{data.projectid}</Text>
+                                   <Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}>分类：{data. cateid}</Text>
                                 </View> 
                     	    </View>
                     	    {data.docbz != '无' ? <View style={{paddingRight:10,paddingLeft:10,paddingBottom:10,paddingTop:10,borderTopWidth:1,borderColor:'#ececec',flexDirection:'row'}}>
-                                <Text style={{fontSize:14,}} allowFontScaling={false}>备注：</Text> 
+                                <Text style={{fontSize:14,}} allowFontScaling={false} adjustsFontSizeToFit={false}>备注：</Text> 
 
-                                <Text style={{fontSize:14,flex:1,}} allowFontScaling={false}>{data.docbz}</Text>
+                                <Text style={{fontSize:14,flex:1,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.docbz}</Text>
                             </View> : null}
                     	</View>
                     }) : null}
@@ -642,8 +641,8 @@ showActionSheet() {
 
                    <View style={{marginTop:15,backgroundColor:'#fff',}}>
                         {this.state.historydata.length > 0 ? <View style={{paddingLeft:10,paddingRight:10,paddingTop:7,paddingBottom:7,borderBottomWidth:1,borderColor:'#ececec',flexDirection:'row',justifyContent:'space-between'}}>
-                              <Text style={{fontSize:14}} allowFontScaling={false}> 评论</Text>
-                              <Text style={{fontSize:14}} allowFontScaling={false}>共有{this.state.historydata.length}条评论</Text>
+                              <Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}> 评论</Text>
+                              <Text style={{fontSize:14}} allowFontScaling={false} adjustsFontSizeToFit={false}>共有{this.state.historydata.length}条评论</Text>
                            </View> : null}
 					    {this.state.historydata.length > 0 ? this.state.historydata.map((data,i) => {
 							return  <View key={i} style={{flexDirection:'row',paddingTop:15,paddingLeft:15,}}>
@@ -652,10 +651,10 @@ showActionSheet() {
 								</View>
 								<View style={{flexDirection:'column',marginLeft:15,flex:1, borderBottomWidth:1,borderColor:'#ececec',paddingBottom:15,paddingRight:15,}}>
 								   <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
-									  <Text allowFontScaling={false}>{data.apply_name}</Text>
-									  <Text allowFontScaling={false}>{data.inserttime}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{data.apply_name}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{data.inserttime}</Text>
 								   </View>
-								   <Text style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,paddingTop:5,}} allowFontScaling={false}>{data.reply_text}
+								   <Text style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,paddingTop:5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.reply_text}
 								   </Text> 
 								</View>
 							  </View>
@@ -677,14 +676,14 @@ showActionSheet() {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>审批</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -705,18 +704,18 @@ showActionSheet() {
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiao.bind(this)} underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight> : <TouchableHighlight  style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
 							   
 							</ScrollView>
 							{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 				            </Animated.View> : null} 
 					   </Modal>
 					</View>
@@ -733,14 +732,14 @@ showActionSheet() {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>审批</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -761,12 +760,12 @@ showActionSheet() {
 							  </View>
 							  <View style={{backgroundColor:'#fff',marginTop:15,flexDirection:'column',paddingLeft:10,paddingTop:10,paddingBottom:10,}}>
                                  <View style={{flexDirection:'row',alignItems:'center'}}>
-                                   <Text style={{fontSize:16}} allowFontScaling={false}>审批人</Text>
-                                   <Text style={{fontSize:12,color:'#bbb',marginLeft:5}} allowFontScaling={false}>(点击姓名可删除)</Text>
+                                   <Text style={{fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批人</Text>
+                                   <Text style={{fontSize:12,color:'#bbb',marginLeft:5}} allowFontScaling={false} adjustsFontSizeToFit={false}>(点击姓名可删除)</Text>
                                  </View>
                                  <View style={{marginTop:15,flexDirection:'row',alignItems:'center',}}>
                                      {this.state.poepledata.name ? <TouchableOpacity onPress={this._delets.bind(this)} activeOpacity={1}><View style={{backgroundColor:'#60a9e8',paddingBottom:8,paddingTop:8,paddingLeft:10,paddingRight:10,marginRight:10,borderRadius:3}}>
-                                        <Text style={{color:'#fff'}} allowFontScaling={false}>{this.state.poepledata.name}</Text>
+                                        <Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.poepledata.name}</Text>
                                      </View></TouchableOpacity> : null}  
                                     <TouchableOpacity style={{width:46,height:46,marginTop:5,alignItems:'center',justifyContent:'center'}} onPress={this._xmodalpoeple.bind(this,true)}>
                                       
@@ -777,18 +776,18 @@ showActionSheet() {
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiaos.bind(this)}  underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight> : <TouchableHighlight  style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
 					            <View style={{borderRadius:5, justifyContent:'center',alignItems:'center',}}>
-					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false}>{this.state.tj}</Text>
+					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
 							   
 							</ScrollView>
 							{this.state.statur ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 				            </Animated.View> : null}
 					   </Modal>
 					   
@@ -808,14 +807,14 @@ showActionSheet() {
 								  <View style={{flex:1,justifyContent:'center'}}>
 										
 											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
-													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false}>取消</Text>
+													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
 										 
 								  </View> 
 							  </TouchableOpacity>    
 							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
 										 
-										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false}>选择审批人</Text>
+										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>选择审批人</Text>
 										 
 							  </View> 
 							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
@@ -829,7 +828,7 @@ showActionSheet() {
 					</View>
 					{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 					  <Icon name="ios-close-outline" color="#fff"size={36}  />
-					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
 		            </Animated.View> : null}
 	  </View>	   
 	  

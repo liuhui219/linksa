@@ -62,13 +62,13 @@ export default class qus extends React.Component {
 									 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 												<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 										  </View>
 									</TouchableOpacity>  
 						  </View>    
 						  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 									<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-												<Text style={{color:'white',fontSize:18}} allowFontScaling={false}></Text>
+												<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}></Text>
 									</View>
 						  </View> 
 						  <View style={{flex:1,justifyContent:'center'}}>   
@@ -77,7 +77,7 @@ export default class qus extends React.Component {
 					</View>
 					
 					<View style={{flex:1,flexDirection:'column',backgroundColor:'#ececec',justifyContent:'center',alignItems:'center',width:Dimensions.get('window').width,height:Dimensions.get('window').height}}>
-						 <Text style={{fontSize:24,color:'#666'}} allowFontScaling={false}>正在开发中</Text>
+						 <Text style={{fontSize:24,color:'#666'}} allowFontScaling={false} adjustsFontSizeToFit={false}>正在开发中</Text>
 					</View>
 	            </View>
            	)

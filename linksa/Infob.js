@@ -145,17 +145,17 @@ export default class Info extends Component {
 				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 			    </View> : <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 				     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:15}}>
-					    <Text style={{fontSize:16,color:'#666',}}>操作人</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>操作人</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-								{this.state.datas.log[0].uidname ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								{this.state.datas.log[0].uidname ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.datas.log[0].uidname}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -163,13 +163,13 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>来自</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>来自</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.props.data.app_name ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.props.data.app_name}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -177,13 +177,13 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>创建日期</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>创建日期</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.log[0].datatime ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.log[0].datatime ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.datas.log[0].datatime}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -192,13 +192,13 @@ export default class Info extends Component {
 					</View>
 					
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:15}}>
-					    <Text style={{fontSize:16,color:'#666',}}>订单号</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>订单号</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.orderinfo.number ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.orderinfo.number ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									 {this.state.datas.orderinfo.number}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -206,13 +206,13 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>开始时间</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>开始时间</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.orderinfo.starttime ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.orderinfo.starttime ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									 {this.state.datas.orderinfo.starttime}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -220,26 +220,26 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>完成时间</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>完成时间</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.orderinfo.endtime ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.orderinfo.endtime ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									 {this.state.datas.orderinfo.endtime}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
 							</View>  
 						</View>  
 					</View><View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>状态</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>状态</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.Status ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.Status ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.Status}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -247,13 +247,13 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>订单来源</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>订单来源</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.orderinfo.from ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.orderinfo.from ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									 {this.state.datas.orderinfo.from}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -261,13 +261,13 @@ export default class Info extends Component {
 						</View>  
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
-					    <Text style={{fontSize:16,color:'#666',}}>生产数量</Text>
+					    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#666',}}>生产数量</Text>
 						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
 						 
 							<View style={{flex:1,}}>
-							    {this.state.datas.orderinfo.total_num ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+							    {this.state.datas.orderinfo.total_num ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.datas.orderinfo.total_num}
-								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
+								</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.state.stat}
 								</Text>
 								} 
@@ -277,17 +277,17 @@ export default class Info extends Component {
 					
 					{this.state.product.length > 0 ? <View style={{marginTop:15,backgroundColor:'#fff',paddingLeft:10,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
 					    <View style={{flex:1,paddingTop:10,paddingBottom:10,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
-					        <Text style={{color:'#999',fontSize:16,}}>产品详情</Text>
+					        <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#999',fontSize:16,}}>产品详情</Text>
 						</View>
 						{this.state.product.map((data, i) => {
 							return  <View key={i} style={{borderBottomWidth:1,borderColor:'#dcdcdc',}}>
 							<View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start',height:30,}}>
-								<Text style={{flex:1,}}>名称：{data.goodsinfo.name}</Text>
-								<Text style={{flex:1,}}>数量：{data.num}</Text>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flex:1,}}>名称：{data.goodsinfo.name}</Text>
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flex:1,}}>数量：{data.num}</Text>
 							</View>
 							 
 							<View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start',height:30,}}>
-								<Text style={{flex:1,}}>规格：{data.xinhao.y_code}</Text> 
+								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flex:1,}}>规格：{data.xinhao.y_code}</Text> 
 							</View>
 						</View>
 						})}
@@ -302,11 +302,11 @@ export default class Info extends Component {
 							  </View>
 							  <View style={{flex:1,flexDirection:'column',}}>
 								   <View style={{flexDirection:'row',justifyContent:'space-between',}}>
-									  <Text style={{fontSize:16,}}>{data.apply_name}</Text>
-									  <Text style={{fontSize:14,color:'#bbb'}}>{data.inserttime}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{data.apply_name}</Text>
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,color:'#bbb'}}>{data.inserttime}</Text>
 								   </View>	  
 								   <View style={{backgroundColor:'#fff', borderRadius:3,marginTop:5,}}> 
-									  <Text style={{flexWrap:'wrap', paddingRight:15,}}>{data.reply_text}</Text> 
+									  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flexWrap:'wrap', paddingRight:15,}}>{data.reply_text}</Text> 
 								   </View> 
 							  </View>
 						</View>

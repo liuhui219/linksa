@@ -149,7 +149,7 @@ export default class YTjinfo extends React.Component {
 		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-90,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
 		  )
@@ -195,7 +195,7 @@ export default class YTjinfo extends React.Component {
 			return(
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-sad-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
 		}	
@@ -203,7 +203,7 @@ export default class YTjinfo extends React.Component {
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)     
 		} 		
@@ -217,11 +217,11 @@ export default class YTjinfo extends React.Component {
 					  </View>
 					  <View style={{flex:1,flexDirection:'column',}}>
 					       <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-						      <Text style={{fontSize:14,}}>{data.userid}</Text>
-							  <Text style={{color:'#999',paddingRight:15,}}>{data.time}</Text>
+						      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>{data.userid}</Text>
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#999',paddingRight:15,}}>{data.time}</Text>
 						   </View>          
 						   <View style={{ borderRadius:3,}}> 
-							  <Text style={{flexWrap:'wrap',marginTop:5,fontSize:14, paddingRight:15,}}>{data.address}</Text>    
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flexWrap:'wrap',marginTop:5,fontSize:14, paddingRight:15,}}>{data.address}</Text>    
 						   </View>
 						   
 					  </View>
@@ -238,7 +238,7 @@ export default class YTjinfo extends React.Component {
 			 return (
 				<View style={styles.footer}>
 					<ActivityIndicator color="#4385f4"/>
-					<Text style={styles.footerTitle}>正在加载更多……</Text>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.footerTitle}>正在加载更多……</Text>
 				</View>
 		  )
 		 }

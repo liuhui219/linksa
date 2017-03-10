@@ -247,13 +247,13 @@ export default class Calendar extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>{this.state.year}年{this.state.month}月</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>{this.state.year}年{this.state.month}月</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -267,13 +267,13 @@ export default class Calendar extends React.Component {
 			</View>
 			<Netinfo  {...this.props}/>
             <View style={styles.dateTitle}>
-				<Text style={styles.dateTitleText}>日</Text>
-				<Text style={styles.dateTitleText}>一</Text>
-				<Text style={styles.dateTitleText}>二</Text>                                                                                                           
-				<Text style={styles.dateTitleText}>三</Text>
-				<Text style={styles.dateTitleText}>四</Text>
-				<Text style={styles.dateTitleText}>五</Text>
-				<Text style={styles.dateTitleText}>六</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>日</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>一</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>二</Text> 
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>三</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>四</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>五</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>六</Text>
 			</View>
 			<ViewPagerAndroid   
 			        initialPage={1}
@@ -305,8 +305,8 @@ export default class Calendar extends React.Component {
 					     <Icon name="ios-clock-outline" color="#fff"size={22}  />
 					  </View>
 					  <View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',justifyContent:'space-between',paddingLeft:10,paddingRight:10}}>  
-					     <Text style={{fontSize:16,fontWeight:'600'}}>今日日程</Text> 
-						 <Text style={{fontSize:14, color:'#666'}}>{this.state.datet}</Text>
+					     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,fontWeight:'600'}}>今日日程</Text> 
+						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14, color:'#666'}}>{this.state.datet}</Text>
 					  </View>
 			</View>
 		    <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#fff'}}>
@@ -314,21 +314,21 @@ export default class Calendar extends React.Component {
 				  {!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:150,}}>
 						<View style={styles.loading}>
 							<ActivityIndicator color="white"/>
-							<Text style={styles.loadingTitle}>加载中……</Text>
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 						</View>
 					  </View> : this.state.datas.length>0 ? this.state.datas.map((data, i) => {
 						 
 						 return <View key={i} style={{flexDirection:'row',marginLeft:10,borderBottomWidth:0.5,borderColor:'#bbb',height:50,alignItems:'center',}}>
 									 <Icon name="ios-alarm-outline" color="#333"size={20}  /> 
-									 <Text style={{fontSize:14,marginLeft:10,flex:1,}}>{data.startime} —— {data.title}</Text> 
+									 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,marginLeft:10,flex:1,}}>{data.startime} —— {data.title}</Text> 
 									 <TouchableOpacity onPress={this._xqButton.bind(this,data.id,data.uid)} style={{paddingRight:10,height:50,justifyContent:'center', }} activeOpacity={0.4}  >
-										 <Text style={{color:'#4385f4',}}>查看详情</Text>
+										 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',}}>查看详情</Text>
 									 </TouchableOpacity>
 								</View>
 						                                 
 					  }): <View style={{flexDirection:'row',height:80,alignItems:'center',justifyContent:'center',}}>
 								 
-								 <Text style={{fontSize:20,color:'#ccc',}}>暂无日程</Text> 
+								 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:20,color:'#ccc',}}>暂无日程</Text> 
 								 
 						</View>
 					  
@@ -339,7 +339,7 @@ export default class Calendar extends React.Component {
 			</ScrollView>
 			{this.state.statu ? <Animated.View style={{opacity: this.state.fadeAnim,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				  <Icon name="ios-close-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
 	           </Animated.View> : <View></View>}
 	  </View>			  
     )                                                     
@@ -370,7 +370,7 @@ class DateBoard extends Component {
 		     arr.push(
 			    <TouchableOpacity onPress={this.props._datet.bind(this,_thisDay.getDate())} key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,	}}>  
 					<View style={{height:30,width:30, borderWidth:1,borderColor:'#fff',borderRadius:15,alignItems:'center',justifyContent:'center',backgroundColor:'#fff',}}>
-						<Text style={{color: '#000', fontSize:14,}}>{_thisDay.getDate()}</Text> 
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color: '#000', fontSize:14,}}>{_thisDay.getDate()}</Text> 
 					</View>
 				 </TouchableOpacity>
 			 )
@@ -379,7 +379,7 @@ class DateBoard extends Component {
 			 arr.push(
 			    <TouchableOpacity onPress={this.props._datet.bind(this,_thisDay.getDate())} key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,}}>
 					 
-						<Text  style={{color: '#fff',  fontSize:14,}}>{_thisDay.getDate()}</Text>    
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color: '#fff',  fontSize:14,}}>{_thisDay.getDate()}</Text>    
 					 
 				 </TouchableOpacity>
 			 )
@@ -387,7 +387,7 @@ class DateBoard extends Component {
 			arr.push(
 			   <View key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,}}>
 					 
-						<Text style={{color: '#ccc', fontSize:14,}}>{_thisDay.getDate()}</Text> 
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color: '#ccc', fontSize:14,}}>{_thisDay.getDate()}</Text> 
 					 
 			   </View>
 			 )

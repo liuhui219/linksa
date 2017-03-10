@@ -97,13 +97,13 @@ export default class Gonggao extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>公告信息</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>公告信息</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -114,18 +114,18 @@ export default class Gonggao extends React.Component {
 				<View style={{flex:1,backgroundColor:'#ececec',}}>
 				     <View style={{flexDirection:'column',flex:1, }}>
 					    <View style={{justifyContent:'center',alignItems:'center',height:40,}}>
-					     <Text style={{fontSize:16}}>{this.state.data.title}</Text>
+					     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16}}>{this.state.data.title}</Text>
 						</View> 
 						<View style={{flexDirection:'row',paddingLeft:10,paddingRight:10,height:30,borderBottomWidth:0.6,borderColor:'#bbb',alignItems:'center',}}>
-						   <Text>
+						   <Text allowFontScaling={false} adjustsFontSizeToFit={false}>
 						      发布人：{this.state.data.name}
 						   </Text>
-						   <Text style={{marginLeft:15,}}>
+						   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:15,}}>
 						      发布时间：{this.state.data.worktime}
 						   </Text>
 						</View>
 						<ScrollView style={{flex:1,}}>
-						    <Text style={{marginTop:5,flexWrap:'wrap',lineHeight:20,paddingLeft:5,paddingRight:5,color:'#666',fontSize:14,}}  > <HTMLView value={this.state.data.content} /></Text>
+						    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:5,flexWrap:'wrap',lineHeight:20,paddingLeft:5,paddingRight:5,color:'#666',fontSize:14,}}  > <HTMLView value={this.state.data.content} /></Text>
 						</ScrollView>
 					 </View>
 				</View>   

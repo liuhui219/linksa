@@ -88,7 +88,7 @@ export default class SelectPoeple extends Component {
 		fetch('' + data.data.domain + '/index.php?app=Comtxl&m=MobileApi&a=phoneBookAndroid&access_token=' + data.data.token + '')
 		  .then((response) => response.json())   
 		  .then((responseData) => { 
-		  	console.log(responseData)
+		  	 
                             this.setState({
 								datas:responseData,
 							})
@@ -110,7 +110,7 @@ export default class SelectPoeple extends Component {
 							    
 								dataBlob[rowNames] = lengths[jj];
 								 
-								console.log(dataBlob) 
+								 
 								    
 							  }
 							}
@@ -140,7 +140,7 @@ export default class SelectPoeple extends Component {
 	}
 	
     layoutH(e){
-		console.log(e.nativeEvent.layout.height)
+		 
 		for (var i = 0; i < secs.length; i++) {
 		  var lengs = this.state.datas.data[i].data;
 		  var sectionNames=secs[i];
@@ -155,7 +155,7 @@ export default class SelectPoeple extends Component {
 
     moveScroll(e){    
         let num = Math.floor((e.nativeEvent.pageY - 45 - Math.floor((Dimensions.get('window').height-513)/2)) / 14);
-		console.log(num)   
+		 
         if(num<1){
 			num = 1;
 		}
@@ -186,7 +186,7 @@ export default class SelectPoeple extends Component {
 		  <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-140,overflow:'hidden',}}>
 		    <View style={styles.loading}>
                 <ActivityIndicator color="white"/>
-                <Text style={styles.loadingTitle} allowFontScaling={false}>加载中……</Text>
+                <Text style={styles.loadingTitle}  allowFontScaling={false} adjustsFontSizeToFit={false}>加载中……</Text>
             </View>
 		  </View>	
 		 </View> 
@@ -196,7 +196,7 @@ export default class SelectPoeple extends Component {
     renderSectionHeader(sectionData, sectionID){
 		return (
 		  <View style={{flex:1,height:25,backgroundColor:'#eee',justifyContent: 'center',paddingLeft:15,}}>
-			<Text style={{fontSize:14,color:'#666'}} allowFontScaling={false}>
+			<Text style={{fontSize:14,color:'#666'}}  allowFontScaling={false} adjustsFontSizeToFit={false}>
 			  {sectionData}
 			</Text>  
 		  </View>
@@ -209,7 +209,7 @@ export default class SelectPoeple extends Component {
       <TouchableOpacity onPress={this._onPressHeader} style={styles.header}>
         
         <View style={{height:0}}>
-          <Text  allowFontScaling={false}>
+          <Text   allowFontScaling={false} adjustsFontSizeToFit={false}>
             
           </Text>
         </View>
@@ -219,7 +219,7 @@ export default class SelectPoeple extends Component {
 	renderFooter(){
     return (
       <View style={{height:0}}>
-        <Text allowFontScaling={false}>
+        <Text  allowFontScaling={false} adjustsFontSizeToFit={false}>
           
         </Text>
       </View>
@@ -236,7 +236,7 @@ export default class SelectPoeple extends Component {
 			  <TouchableOpacity activeOpacity={1}   onPress={this._shuax.bind(this)}>
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-150,}}>
 				    <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:14,color:'#ccc'}} allowFontScaling={false}>点击屏幕，重新加载</Text>
+				    <Text style={{fontSize:14,color:'#ccc'}}  allowFontScaling={false} adjustsFontSizeToFit={false}>点击屏幕，重新加载</Text>
 				</View>
 			  </TouchableOpacity>	
 			 </View> 
@@ -271,7 +271,7 @@ export default class SelectPoeple extends Component {
 		      {secs.map((tab, i) => {                                                                                                                              
 				return <View key={tab}    style={{height:14,width:20,alignItems: 'center',}}>
 				  
-				  <Text  style={{fontSize:12,color:'#4385f4'}} allowFontScaling={false}>
+				  <Text  style={{fontSize:12,color:'#4385f4'}}  allowFontScaling={false} adjustsFontSizeToFit={false}>
 						{tab}  
 					</Text>
 				</View>;
@@ -296,8 +296,8 @@ export default class SelectPoeple extends Component {
 					 <Image source={rowData.avatar} style={{width: 40, height: 40,borderRadius:20,}} />
 				 </View>			
 				 <View style={{marginLeft:15, flex:1,flexDirection:'column',height:51, borderBottomWidth:1,borderColor:'#dcdcdc',justifyContent: 'center',paddingBottom:5,paddingTop:2,}}>
-				     <Text style={{fontSize:14,color:'#555'}} allowFontScaling={false}>{rowData.name}</Text> 
-					 <Text style={{fontSize:12,color:'#999',paddingTop:5,}} allowFontScaling={false}>{rowData.departName}</Text> 
+				     <Text style={{fontSize:14,color:'#555'}}  allowFontScaling={false} adjustsFontSizeToFit={false}>{rowData.name}</Text> 
+					 <Text style={{fontSize:12,color:'#999',paddingTop:5,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>{rowData.departName}</Text> 
 				</View>
 			</View>	
 		  

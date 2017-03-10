@@ -165,7 +165,7 @@ export default class Newsb extends React.Component {
 		     <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-170,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
 		  )
@@ -200,7 +200,7 @@ export default class Newsb extends React.Component {
 			return(
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-sad-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
 		}	
@@ -208,7 +208,7 @@ export default class Newsb extends React.Component {
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
-				    <Text style={{fontSize:18,}}>{data}</Text>
+				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)     
 		} 		
@@ -216,17 +216,17 @@ export default class Newsb extends React.Component {
 		return (
 		    <View style={{paddingTop:15, justifyContent:'center',alignItems:'center',}}>
 			   <View style={{backgroundColor:'#ddd',paddingTop:3,paddingBottom:3,paddingLeft:8,paddingRight:8,borderRadius:3,}}>
-				   <Text style={{color:'#fff'}}>{data.stime}</Text>
+				   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#fff'}}>{data.stime}</Text>
 			   </View>
 			   <View style={{flexDirection:'row',paddingTop:15,}}>
 				  <View style={{marginLeft:15,marginRight:15,width: 40, height: 40,borderRadius:20,backgroundColor:'#1ADA9A',alignItems:'center', justifyContent:'center'}}>
 					   <Image source={this.state.imgs[rowID]} style={{width: 40, height: 40,borderRadius:20,}} />
 				  </View>
 				  <View style={{flex:1,flexDirection:'column',}}>
-					   <Text style={{fontSize:16,}}>{data.from_name}</Text>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{data.from_name}</Text>
 					   <View style={{backgroundColor:'#fff', borderRadius:3,marginRight:15,marginTop:5,padding:15,}}>
-						  <Text style={{fontSize:16,color:'#4385f4'}}>{data.app_name}</Text>
-						  <Text style={{flexWrap:'wrap',marginTop:10,}}>{data.content}</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#4385f4'}}>{data.app_name}</Text>
+						  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{flexWrap:'wrap',marginTop:10,}}>{data.content}</Text>
 					   </View>
 				  </View>
 			   </View>
@@ -240,7 +240,7 @@ export default class Newsb extends React.Component {
 			 return (
 				<View style={styles.footer}>
 					<ActivityIndicator color="#4385f4"/>
-					<Text style={styles.footerTitle}>正在加载更多……</Text>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.footerTitle}>正在加载更多……</Text>
 				</View>
 		  )
 		 }

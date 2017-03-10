@@ -79,7 +79,7 @@ export default class KqTj extends React.Component {
 		fetch(url)
 		  .then((response) => response.json())   
 		  .then((responseData) => { 
-             console.log(responseData)	
+            
          	DataA=responseData.data;	 
 		  
               	      		
@@ -102,7 +102,7 @@ export default class KqTj extends React.Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					  console.log(result)
+				 
 					  var array_color=[];
 					  responseData.data.forEach((data,i)=>{
 					  	array_color.push('#4385f4'); 
@@ -129,7 +129,7 @@ export default class KqTj extends React.Component {
 					  	}
 					  })
 					     
-					   console.log(result)
+					 
                        			   
 				})
 				.catch((error) => {
@@ -167,7 +167,7 @@ export default class KqTj extends React.Component {
 	_addApp(data){
 		
 		var that=this;
-		 console.log(data)
+		 
 		fetch('' + this.state.domain + '/index.php?app=Home&m=MobileUserApps&a=add&access_token=' + this.state.token + '', {
 				  method: 'POST',
 				  headers: {
@@ -183,7 +183,7 @@ export default class KqTj extends React.Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					 console.log(result);
+					 
                       var { navigator } = that.props;
 					  if(that.props.getUser) {
 						let user = true;
@@ -236,23 +236,23 @@ export default class KqTj extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>添加应用</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>添加应用</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
 							  
 				  </View>      
 				</View>
-				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-140,}}>
+				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-110,}}>
 					<View style={styles.loading}>
 						<ActivityIndicator color="white"/>
-						<Text style={styles.loadingTitle}>加载中……</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>      
 				</View> : <View></View>}                                     
 				<ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ededed'}}>   
@@ -263,11 +263,11 @@ export default class KqTj extends React.Component {
 									   <Image source={{uri: data.appicon}} style={{width: 50, height: 50,borderRadius:3,}} />
 									</View>
 									<View style={{marginLeft:15,flex:1,}}>
-									   <Text style={{fontSize:16,}}>{data.appname}</Text>                               
+									   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{data.appname}</Text>                               
 									</View>   
 							   </View>	
-							   {data.hasOwnProperty('isshow') ? <View style={{width:70,borderWidth:1,height:35,borderColor:'#ccc',justifyContent: 'center',alignItems:'center',borderRadius:3,}}><Text style={{color:'#ccc'}} allowFontScaling={false}>已添加</Text></View> : <TouchableHighlight underlayColor="#4385f4"  onShowUnderlay = {this.onShowUnderlay.bind(this,i)} onHideUnderlay = {this.onHideUnderlay.bind(this,i)} onPress={this._addApp.bind(this,data)} style={{width:70,borderWidth:1,height:35,borderColor:'#4385f4',justifyContent: 'center',alignItems:'center',borderRadius:3,}}>
-									<Text   style={{color:this.state.color[i],}} allowFontScaling={false}>添加</Text>
+							   {data.hasOwnProperty('isshow') ? <View style={{width:70,borderWidth:1,height:35,borderColor:'#ccc',justifyContent: 'center',alignItems:'center',borderRadius:3,}}><Text style={{color:'#ccc'}} allowFontScaling={false} adjustsFontSizeToFit={false}>已添加</Text></View> : <TouchableHighlight underlayColor="#4385f4"  onShowUnderlay = {this.onShowUnderlay.bind(this,i)} onHideUnderlay = {this.onHideUnderlay.bind(this,i)} onPress={this._addApp.bind(this,data)} style={{width:70,borderWidth:1,height:35,borderColor:'#4385f4',justifyContent: 'center',alignItems:'center',borderRadius:3,}}>
+									<Text   style={{color:this.state.color[i],}} allowFontScaling={false} adjustsFontSizeToFit={false}>添加</Text>
 							   </TouchableHighlight >}                                                
 						</View>
 					})}                                           
@@ -275,7 +275,7 @@ export default class KqTj extends React.Component {
 				</ScrollView>                         
 				{this.state.statu ? <TouchableOpacity activeOpacity={1}  style={{justifyContent:'flex-start',alignItems:'center',}} onPress={this._shuax.bind(this)} ><View style={{padding:10,justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-50,width:Dimensions.get('window').width,}}> 
 				  <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
-				  <Text style={{fontSize:16,color:'#ccc',}}>点击屏幕，重新刷新</Text>   		  
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc',}}>点击屏幕，重新刷新</Text>   		  
 	           </View></TouchableOpacity>	 : <View></View>} 
 	  </View>			  
     );   

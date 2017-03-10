@@ -140,13 +140,13 @@ showActionSheet() {
 									 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 										  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 												<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-												<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false}>返回</Text>
+												<Text style={{color:'white',fontSize:16,marginLeft:-5,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 										  </View>
 									</TouchableOpacity>  
 						  </View>    
 						  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 									<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-												<Text style={{color:'white',fontSize:18}} allowFontScaling={false}> 详情</Text>
+												<Text style={{color:'white',fontSize:18}}  allowFontScaling={false} adjustsFontSizeToFit={false}> 详情</Text>
 									</View>
 						  </View> 
 						  <View style={{flex:1,justifyContent:'center'}}>   
@@ -157,32 +157,32 @@ showActionSheet() {
 					<View style={{flex:1,flexDirection:'column',backgroundColor:'#fff',width:Dimensions.get('window').width,height:Dimensions.get('window').height}}>
 						  <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                     <Icon name="ios-time-outline" color="#999"size={20}  />
-                                    <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>签到时间:</Text>
-                                    <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>{this.props.data.time}</Text>
+                                    <Text style={{paddingLeft:10,fontSize:14,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>签到时间:</Text>
+                                    <Text style={{paddingLeft:10,fontSize:14,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.data.time}</Text>
                           </View>
                           <View style={{flexDirection:'row',paddingTop:10,paddingBottom:10,alignItems:'flex-start',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                 <Icon name="ios-locate-outline" color="#aaa"size={20}  />
-                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>签到地点:</Text>
-                                <Text style={{paddingLeft:10,flex:1,paddingRight:5,fontSize:14,}} allowFontScaling={false}>{this.props.data.address}</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false} adjustsFontSizeToFit={false}>签到地点:</Text>
+                                <Text style={{paddingLeft:10,flex:1,paddingRight:5,fontSize:14,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.data.address}</Text>
                           </View>
                           <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                 <Icon name="ios-contact-outline" color="#999"size={20}  />
-                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>客户名称:</Text>
-                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>{this.props.data.gsy_id}</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>客户名称:</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,}}  allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.data.gsy_id}</Text>
                           </View>
                           {this.props.data.contacts_id ? <View style={{flexDirection:'row',height:50,alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                 <Icon name="ios-contact" color="#999"size={20}  />
-                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>联系人:</Text>
-                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>{this.props.data.contacts_id}</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false} adjustsFontSizeToFit={false}>联系人:</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.data.contacts_id}</Text>
                           </View> : null}
                           <View style={{flexDirection:'row',paddingTop:10,paddingBottom:10,alignItems:'flex-start',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                 <Icon name="ios-alert-outline" color="#aaa"size={20}  />
-                                <Text style={{paddingLeft:10,fontSize:14,lineHeight:20}} allowFontScaling={false}>备注:</Text>
-                                <Text style={{paddingLeft:10,flex:1,paddingRight:5,fontSize:14,lineHeight:20}} allowFontScaling={false}>{this.props.data.mark}</Text>
+                                <Text style={{paddingLeft:10,fontSize:14,lineHeight:20}} allowFontScaling={false} adjustsFontSizeToFit={false}>备注:</Text>
+                                <Text style={{paddingLeft:10,flex:1,paddingRight:5,fontSize:14,lineHeight:20}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.data.mark}</Text>
                           </View>
                           <View style={{flexDirection:'row',paddingTop:10,paddingBottom:10,alignItems:'flex-start',borderBottomWidth:1,borderColor:'#ececec',paddingLeft:10,}}>
                                     <Icon name="ios-images-outline" color="#999"size={20}  />
-                                    <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false}>图片附件:</Text>
+                                    <Text style={{paddingLeft:10,fontSize:14,}} allowFontScaling={false} adjustsFontSizeToFit={false}>图片附件:</Text>
                                     <TouchableOpacity onPress={this.tup.bind(this)} style={{width: 60, height: 60,alignItems:'center', justifyContent:'center',marginLeft:15}}>
                                         <View style={{width: 60, height: 60,alignItems:'center', justifyContent:'center',}}>
                                            <Image source={this.props.imgs} style={{width: 60, height: 60,}} />
@@ -200,17 +200,17 @@ showActionSheet() {
                                 </TouchableOpacity>  
                                 {this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
                                   <Icon name="ios-checkmark-outline" color="#fff"size={50}  />
-                                  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false}>{this.state.infos}</Text>   
+                                  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
                                 </Animated.View> : null} 
 								<Animated.View style={{bottom:this.state.bottoms,left:0,width:Dimensions.get('window').width,backgroundColor:'#fff',position:'absolute',justifyContent:'center',alignItems:'center',position:'absolute',}}> 
                                     <TouchableOpacity onPress={this.sures.bind(this)} style={{width:Dimensions.get('window').width,}}>								
 										<View style={{borderColor:'#ccc',borderBottomWidth:1,width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}>
-											<Text style={{fontSize:18,paddingTop:15,paddingBottom:15,}}>保存到手机</Text>      
+											<Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,paddingTop:15,paddingBottom:15,}}>保存到手机</Text>      
 										</View>
 									</TouchableOpacity>
 									<TouchableOpacity onPress={this.cancels.bind(this)} style={{width:Dimensions.get('window').width,}}>
 										<View style={{width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}> 
-											<Text style={{fontSize:18,paddingTop:15,paddingBottom:15,}}>取消</Text>
+											<Text  allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,paddingTop:15,paddingBottom:15,}}>取消</Text>
 										</View>
 									</TouchableOpacity>
 					            </Animated.View>

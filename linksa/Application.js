@@ -212,7 +212,7 @@ export default class Application extends Component {
                     return response.json();	
 				})
 				.then(function (result) {
-					  console.log(result)
+					  
 					   that.setState({
 						 datas:result.data,
 						 loaded: true,
@@ -269,7 +269,7 @@ export default class Application extends Component {
                     return response.json();	
 				})
 				.then(function (result) { 
-					  console.log(result)                    
+					         
 					   that.setState({
 						 loaded:true,         
 					   })                
@@ -295,25 +295,19 @@ export default class Application extends Component {
 	render() {
       return (  
 	    <View style={{flex:1,flexDirection:'column',height:Dimensions.get('window').height}}>
-		<StatusBar
-			backgroundColor={'#4385f4'}
-			hidden={false} 
-			barStyle="light-content"   
-			translucent={false}    
-			style={{height: 25}}
-		 />
+		 
 		 <View style={styles.card}>  
 		  <View style={{flex:1,alignItems:'center',justifyContent:'center',}}>
 			<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-						<Text style={{color:'white',fontSize:18}}>应用</Text>
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>应用</Text>
 			</View>
 		  </View>  
 		</View>
 		<Netinfo  {...this.props}/>
-		 <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec',}}> 
+		 <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec',marginBottom:3}}> 
 		     <View style={{backgroundColor:'#fff'}}>
 			    <View style={{borderBottomWidth:1,borderColor:'#dcdcdc'}}>
-					<Text style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
 					   常用应用
 					</Text>
 			    </View>	
@@ -324,7 +318,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#4385f4',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/xiaox.png')} style={{width: 20, height: 20,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>   
 					      通知公告
 					   </Text>
 					  </View> 
@@ -334,7 +328,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#F4BF43',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/dk.png')} style={{width: 22, height: 22,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 					      考勤打卡
 					   </Text>
 					  </View> 
@@ -344,7 +338,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#3BAFDA',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/rc.png')} style={{width: 24, height: 24,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 					      日程
 					   </Text>    
 					  </View> 
@@ -354,7 +348,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#35DCEF',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/kq.png')} style={{width: 26, height: 26,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 					      外勤签到   
 					   </Text>
 					  </View> 
@@ -364,7 +358,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#3ed4ab',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/yun.png')} style={{width: 26, height: 26,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 					      网盘       
 					   </Text>
 					  </View> 
@@ -374,7 +368,7 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#7595ca',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/scanner.png')} style={{width: 26, height: 26,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 					      扫一扫   
 					   </Text>
 					  </View> 
@@ -386,7 +380,7 @@ export default class Application extends Component {
 			 
 			 <View style={{backgroundColor:'#fff',marginTop:15,}}>
 			    <View style={{borderBottomWidth:1,borderColor:'#dcdcdc'}}>
-					<Text style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
+					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
 					   其他应用
 					</Text>
 			    </View>	
@@ -399,14 +393,14 @@ export default class Application extends Component {
 					   <View style={{width: 35, height: 35,borderRadius:7,overflow:'hidden',backgroundColor:'#4385f4',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={{uri:data.appicon}} style={{width: 35, height: 35,borderRadius:7,}} />
 					   </View>
-					   <Text style={{marginTop:8,}}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginTop:8,fontSize:13}}>
 						   {data.appname}
 					   </Text>         
 					  </View> 
 					</TouchableNativeFeedback>
 					}) : <View style={{flexDirection:'row',flex:1,height:150,alignItems:'center',justifyContent:'center',}}>
 								 
-								 <Text style={{fontSize:20,color:'#ccc',}}>暂无应用</Text> 
+								 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:20,color:'#ccc',}}>暂无应用</Text> 
 								 
 						</View>} 
 					
@@ -416,40 +410,41 @@ export default class Application extends Component {
 				 <View style={{flexDirection:'row',height:50,justifyContent:'space-between',alignItems:'center',paddingLeft:10,paddingRight:10,backgroundColor:'#fff',marginTop:15,}}>
 					<View style={{flexDirection:'row',alignItems:'center',}}>
 					  <Icon name="ios-add-outline" color="#666"size={28}  />
-					  <Text style={{marginLeft:10,fontSize:16,}}>添加应用</Text>
+					  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>添加应用</Text>
 					</View>
 					<Icon name="ios-arrow-forward" color="#999"size={27}  />
 				 </View>
 			 </TouchableNativeFeedback>
 			 
 			 
+			 
 		 </ScrollView> 
 			 {this.state.status ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.51)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-230)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
 					 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
-					 <Text style={{fontSize:18,color:'#000'}}>操作</Text>
+					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>操作</Text>
 					 </View>
 					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
-						 <Text style={{fontSize:16,}}>你确定要删除？</Text>
+						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>你确定要删除？</Text>
 					 </View>
 					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
 						<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
-						 <View ><Text style={{color:'#666',fontSize:16}}>取消</Text></View>
+						 <View ><Text  allowFontScaling={false} adjustsFontSizeToFit={false}style={{color:'#666',fontSize:16}}>取消</Text></View>
 						</TouchableOpacity>
 						<TouchableOpacity onPress={this._yes.bind(this)} style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
-						 <View><Text style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
+						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
 						</TouchableOpacity>  
 					 </View>
 			 </View></View> : null}
 			 {!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-100,width:Dimensions.get('window').width,position:'absolute',top:0,left:0,}}>
 						<View style={styles.loading}>    
 							<ActivityIndicator color="white"/>
-							<Text style={styles.loadingTitle}>加载中……</Text>
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 						</View>
 					  </View> : null}
 			 {this.state.statua ? <Animated.View style={{opacity: this.state.fadeAnims,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-175)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				 <TouchableOpacity activeOpacity={1}  style={{justifyContent:'flex-start',alignItems:'center',}} onPress={this._shuax.bind(this)} >
 				  <Icon name="ios-refresh-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请点击重试。</Text>  
                  </TouchableOpacity>				                          
 	           </Animated.View> : null}		  
 		 </View>

@@ -75,13 +75,13 @@ export default class TJ extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>统计</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>统计</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -97,7 +97,7 @@ export default class TJ extends React.Component {
 				<View style={{flex:1,flexDirection:'column',}}>
 				  <View style={{width:260,position:'absolute',left:(Dimensions.get('window').width-260)/2,height:440,top:(Dimensions.get('window').height-510)/2,backgroundColor:'#fff',borderRadius:10,}}>
 				    <View style={{height:70,justifyContent:'center',alignItems:'center'}}>
-				     <Text style={{fontSize:18,}}>选择考勤记录</Text>
+				     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>选择考勤记录</Text>
 					</View> 
 					<TouchableOpacity activeOpacity={0.9}   onPress={this._KqTj.bind(this)}  >
 					<View style={{backgroundColor:'#ececec',borderRadius:10,height:120, marginLeft:20,marginRight:20,alignItems:'center',flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20,}}>
@@ -105,7 +105,7 @@ export default class TJ extends React.Component {
 					   <View style={{alignItems:'center',justifyContent:'center',}}>
 					       <Icon name="md-stats" color="#bbb"size={36}  /> 
 					   </View>
-					   <Text style={{marginLeft:10,fontSize:16,}}>全公司考勤记录</Text>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>全公司考勤记录</Text>
 					  </View> 
 					  <Icon name="ios-arrow-forward" color="#999"size={27}  />
 					</View>
@@ -116,13 +116,13 @@ export default class TJ extends React.Component {
 					   <View style={{alignItems:'center',justifyContent:'center',}}>
 					       <Icon name="md-person" color="#bbb"size={36}  /> 
 					   </View>
-					   <Text style={{marginLeft:10,fontSize:16,}}>个人考勤记录</Text>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>个人考勤记录</Text>
 					  </View> 
 					  <Icon name="ios-arrow-forward" color="#999"size={27}  />
 					</View>
 					</TouchableOpacity>
 					<View style={{justifyContent:'flex-end',alignItems:'center',flex:1,paddingBottom:15,}}>
-					   <Text style={{color:'#999'}}>相信我们，会做得更好。</Text>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#999'}}>相信我们，会做得更好。</Text>
 					</View>  
 				  </View>
 				   

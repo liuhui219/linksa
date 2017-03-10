@@ -241,13 +241,13 @@ export default class CalendarTj extends React.Component {
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
 								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
-										<Text style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:16,marginLeft:-5,}}>返回</Text>
 								  </View>
 							</TouchableOpacity>  
 				  </View>    
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
 							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
-										<Text style={{color:'white',fontSize:18}}>{this.state.year}年{this.state.month}月</Text>
+										<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'white',fontSize:18}}>{this.state.year}年{this.state.month}月</Text>
 							</View>
 				  </View> 
 				  <View style={{flex:1,justifyContent:'center'}}>   
@@ -255,13 +255,13 @@ export default class CalendarTj extends React.Component {
 				  </View>  
 			</View>
             <View style={styles.dateTitle}>
-				<Text style={styles.dateTitleText}>日</Text>
-				<Text style={styles.dateTitleText}>一</Text>
-				<Text style={styles.dateTitleText}>二</Text>
-				<Text style={styles.dateTitleText}>三</Text>
-				<Text style={styles.dateTitleText}>四</Text>
-				<Text style={styles.dateTitleText}>五</Text>
-				<Text style={styles.dateTitleText}>六</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>日</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>一</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>二</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>三</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>四</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>五</Text>
+				<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.dateTitleText}>六</Text>
 			</View>
 			<ViewPagerAndroid   
 			        initialPage={1}
@@ -293,7 +293,7 @@ export default class CalendarTj extends React.Component {
 					     <Icon name="ios-clock-outline" color="#fff"size={22}  />
 					  </View>
 					  <View style={{flex:1,flexDirection:'row',height:50,alignItems:'center',justifyContent:'space-between',paddingLeft:10,paddingRight:10}}>  
-					     <Text style={{fontSize:16,fontWeight:'600'}}>打卡记录</Text> 
+					     <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,fontWeight:'600'}}>打卡记录</Text> 
 					  </View>
 			</View>
 		    <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#fff'}}>
@@ -301,7 +301,7 @@ export default class CalendarTj extends React.Component {
 				  {!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',height:150,}}>
 						<View style={styles.loading}>
 							<ActivityIndicator color="white"/>
-							<Text style={styles.loadingTitle}>加载中……</Text>
+							<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 						</View>
 					  </View> : <View>
 					  {this.state.datax.is_sw_star == 1 ? <View  style={{flexDirection:'row',marginLeft:10,borderBottomWidth:0.5,borderColor:'#bbb',height:60,alignItems:'center',}}>
@@ -309,13 +309,13 @@ export default class CalendarTj extends React.Component {
 									 <View style={{flex:1,justifyContent: 'space-between',alignItems: 'center',flexDirection:'row',}}>
 									    <View style={{flexDirection:'column',marginLeft:10,}}>
 										   <View style={{flexDirection:'row',alignItems:'center',}}>
-										      <Text style={{fontSize:16,color:'#333'}}>上班打卡</Text> 
-											  {this.state.datas != null ? this.state.datas[0].sw_star_status == 0 ? <Text style={{marginLeft:10,color:'red'}}></Text> : <Text style={{marginLeft:10,color:'red'}}>{this.state.datas[0].sw_star_status}</Text> : <Text></Text>}
+										      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#333'}}>上班打卡</Text> 
+											  {this.state.datas != null ? this.state.datas[0].sw_star_status == 0 ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,color:'red'}}></Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,color:'red'}}>{this.state.datas[0].sw_star_status}</Text> : <Text></Text>}
 										   </View>
-											{this.state.datas != null ? <Text style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].qd_time}</Text> : <Text style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
+											{this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].qd_time}</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
 										</View> 
 										 <View style={{paddingRight:10,height:50,justifyContent:'center', }} activeOpacity={0.4}  >
-											 {this.state.datas != null ? <Text style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
+											 {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
 										 </View>
 									 </View>
 									    
@@ -325,13 +325,13 @@ export default class CalendarTj extends React.Component {
 									 <View style={{flex:1,justifyContent: 'space-between',alignItems: 'center',flexDirection:'row',}}>
 									    <View style={{flexDirection:'column',marginLeft:10,}}>
 										   <View style={{flexDirection:'row',alignItems:'center',}}>
-										      <Text style={{fontSize:16,color:'#333'}}>下班打卡</Text> 
-											  {this.state.datas != null ? this.state.datas[0].sw_end_status == 0 ? <Text></Text> : <Text style={{marginLeft:10,color:'red'}}>{this.state.datas[0].sw_end_status}</Text> : <Text></Text>}
+										      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#333'}}>下班打卡</Text> 
+											  {this.state.datas != null ? this.state.datas[0].sw_end_status == 0 ? <Text></Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,color:'red'}}>{this.state.datas[0].sw_end_status}</Text> : <Text></Text>}
 										   </View> 
-											   {this.state.datas != null ? <Text style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].sw_end_time}</Text> : <Text style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
+											   {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].sw_end_time}</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
 										</View> 
 										 <View style={{paddingRight:10,height:50,justifyContent:'center', }} activeOpacity={0.4}  >
-											 {this.state.datas != null ? <Text style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
+											 {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
 										 </View>
 									 </View>
 									 
@@ -341,13 +341,13 @@ export default class CalendarTj extends React.Component {
 									 <View style={{flex:1,justifyContent: 'space-between',alignItems: 'center',flexDirection:'row',}}>
 									    <View style={{flexDirection:'column',marginLeft:10,}}>
 										   <View style={{flexDirection:'row',alignItems:'center',}}>
-										      <Text style={{fontSize:16,color:'#333'}}>上班打卡</Text> 
-											  {this.state.datas != null ? this.state.datas[0].xw_star_status == 0 ? <Text></Text> : <Text style={{marginLeft:10,color:'red'}}>{this.state.datas[0].xw_star_status}</Text> : <Text></Text>}
+										      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#333'}}>上班打卡</Text> 
+											  {this.state.datas != null ? this.state.datas[0].xw_star_status == 0 ? <Text></Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,color:'red'}}>{this.state.datas[0].xw_star_status}</Text> : <Text></Text>}
 										   </View>
-											   {this.state.datas != null ? <Text style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].xw_star_time}</Text> : <Text style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
+											   {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].xw_star_time}</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— 未签到</Text>}
 										</View> 
 										 <View style={{paddingRight:10,height:50,justifyContent:'center', }} activeOpacity={0.4}  >
-											 {this.state.datas != null ? <Text style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
+											 {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}
 										 </View>
 									 </View>
 									 
@@ -357,13 +357,13 @@ export default class CalendarTj extends React.Component {
 									 <View style={{flex:1,justifyContent: 'space-between',alignItems: 'center',flexDirection:'row',}}>
 									    <View style={{flexDirection:'column',marginLeft:10,}}>
 										   <View style={{flexDirection:'row',alignItems:'center',}}>
-										      <Text style={{fontSize:16,color:'#333'}}>下班打卡</Text> 
-											  {this.state.datas != null ? this.state.datas[0].xw_end_status == 0 ? <Text></Text> : <Text style={{marginLeft:10,color:'red'}}>{this.state.datas[0].xw_end_status}</Text> : <Text></Text>}
+										      <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#333'}}>下班打卡</Text> 
+											  {this.state.datas != null ? this.state.datas[0].xw_end_status == 0 ? <Text></Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,color:'red'}}>{this.state.datas[0].xw_end_status}</Text> : <Text></Text>}
 										   </View>
-											   {this.state.datas != null ? <Text style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].xw_end_time}</Text> : <Text style={{fontSize:14,}}>签到时间 —— 未签到</Text>} 
+											   {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— {this.state.datas[0].xw_end_time}</Text> : <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,}}>签到时间 —— 未签到</Text>} 
 										</View> 
 										 <View style={{paddingRight:10,height:50,justifyContent:'center', }} activeOpacity={0.4}  >
-											 {this.state.datas != null ? <Text style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}  
+											 {this.state.datas != null ? <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',}}>{this.state.datas[0].date}</Text> : <Text></Text>}  
 										 </View>
 									 </View>
 									 
@@ -378,7 +378,7 @@ export default class CalendarTj extends React.Component {
 			</ScrollView>
 			{this.state.statu ? <Animated.View style={{opacity: this.state.fadeAnim,padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 				  <Icon name="ios-close-outline" color="#fff"size={36}  />
-				  <Text style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
+				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#fff',marginTop:20,}}>加载失败，请重新加载。</Text>   
 	           </Animated.View> : <View></View>}
 	  </View>			  
     )   
@@ -409,7 +409,7 @@ class DateBoard extends Component {
 		     arr.push(
 			    <TouchableOpacity onPress={this.props._datet.bind(this,_thisDay.getDate())} key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,	}}>  
 					<View style={{height:30,width:30, borderWidth:1,borderColor:'#fff',borderRadius:15,alignItems:'center',justifyContent:'center',}}>
-						<Text style={{color: '#fff', fontSize:14,}}>{_thisDay.getDate()}</Text> 
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color: '#fff', fontSize:14,}}>{_thisDay.getDate()}</Text> 
 					</View>
 				 </TouchableOpacity>
 			 )
@@ -418,7 +418,7 @@ class DateBoard extends Component {
 			 arr.push(
 			    <TouchableOpacity onPress={this.props._datet.bind(this,_thisDay.getDate())} key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,}}>
 					 
-						<Text  style={{color: '#fff', fontSize:14,}}>{_thisDay.getDate()}</Text>    
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false}  style={{color: '#fff', fontSize:14,}}>{_thisDay.getDate()}</Text>    
 					 
 				 </TouchableOpacity>
 			 )
@@ -426,7 +426,7 @@ class DateBoard extends Component {
 			arr.push(
 			   <View key={i} style={{width:Dimensions.get('window').width/7,backgroundColor:'#4385f4',alignItems:'center',justifyContent:'center',height:40,}}>
 					 
-						<Text style={{color: '#ccc',  fontSize:14,}}>{_thisDay.getDate()}</Text> 
+						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color: '#ccc',  fontSize:14,}}>{_thisDay.getDate()}</Text> 
 					 
 			   </View>
 			 )
