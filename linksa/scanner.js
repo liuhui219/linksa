@@ -6,6 +6,7 @@ import {
 	TouchableOpacity,
 	TouchableHighlight,
 	Text,
+	TextInput,
 	StatusBar,
 	ScrollView,
 	ActivityIndicator,
@@ -22,7 +23,8 @@ import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-v
 import Token from './Token';
 import Webviewst from './Webviewst';
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import Barcode from 'react-native-smart-barcode'
+import Barcode from 'react-native-smart-barcode';
+import scanner_info from './scanner_info';
 var array = []; 
 var aa=[];
 export default class Scanner extends React.Component {
@@ -35,6 +37,9 @@ export default class Scanner extends React.Component {
             viewAppear:false,		
             light:true,	
 			bgcolor:'#000',
+			isshows:true,
+			issearch:false,
+			text:'',
 		};
 	}
 	
@@ -65,23 +70,36 @@ export default class Scanner extends React.Component {
          
         this._stopScan()
 		 
-        if(e.nativeEvent.data.code.indexOf("http://")!=-1 || e.nativeEvent.data.code.indexOf("https://")!=-1 || e.nativeEvent.data.code.indexOf("file://")!=-1){
+        if(e.nativeEvent.data.code.toLowerCase().indexOf("http://")!=-1 || e.nativeEvent.data.code.toLowerCase().indexOf("https://")!=-1 || e.nativeEvent.data.code.toLowerCase().indexOf("file://")!=-1){
 			 
 			var url=e.nativeEvent.data.code;
 			var { navigator } = this.props; 
 			if(navigator) {
 				InteractionManager.runAfterInteractions(() => {
 				navigator.replace({
-					name: 'Webviewst',
+					name: 'Webviewst',   
 					component: Webviewst,  
 					params: {
-						url: url
-						 
+						url: url  
 					}				
 				})
 				})
 			}
 			
+		}else{
+			var data=e.nativeEvent.data.code;
+			var { navigator } = this.props; 
+			if(navigator) {
+				InteractionManager.runAfterInteractions(() => {
+				navigator.replace({
+					name: 'scanner_info',
+					component: scanner_info,  
+					params: {
+						data: data  
+					}				
+				})
+				})
+			}
 		} 
     }
 
@@ -94,7 +112,48 @@ export default class Scanner extends React.Component {
     }  
 	 
 	 
+	_search(){
+		 
+		this.setState({
+			viewAppear:false,
+			isshows:false,
+			issearch:true,
+		})
+	}
 	
+	_scanner(){
+		 
+		this.setState({  
+			viewAppear:true,
+			isshows:true,
+			issearch:false,
+		})
+	}
+	Trim(str)
+         { 
+             return str.replace(/(^\s*)|(\s*$)/g, ""); 
+     }
+	_submit(text){
+		var that = this;
+		
+		 if(this.Trim(text) == ''){
+			 return false;
+		 }else{
+			 
+			var { navigator } = this.props; 
+			if(navigator) {
+				InteractionManager.runAfterInteractions(() => {
+				navigator.replace({
+					name: 'scanner_info',
+					component: scanner_info,  
+					params: {
+						data: that.Trim(text)
+					}				
+				})
+				})
+			}
+		 }
+	}
 	
     render() {
            return (
@@ -120,9 +179,39 @@ export default class Scanner extends React.Component {
 								 </View>
 							   </TouchableOpacity>
 							</View> 
+							{this.state.isshows ? <View style={{justifyContent:'center',alignItems:'center',marginRight:15}}>  
+							   <TouchableOpacity activeOpacity={1} onPress={this._search.bind(this)}>
+								 <View style={{justifyContent:'flex-start',alignItems:'center',paddingLeft:0,backgroundColor:'transparent',flexDirection:'row'}}> 
+								   <Icon name="ios-search-outline" color="#fff"size={28}  />
+								 </View>
+							   </TouchableOpacity>
+							</View> : <View style={{justifyContent:'center',alignItems:'center',marginRight:15}}>  
+							   <TouchableOpacity activeOpacity={1} onPress={this._scanner.bind(this)}>
+								 <View style={{justifyContent:'flex-start',alignItems:'center',paddingLeft:0,backgroundColor:'transparent',flexDirection:'row'}}> 
+								    <Image source={require('./imgs/scanners.png')} style={{width: 24, height: 24,}} />
+								 </View>
+							   </TouchableOpacity>
+							</View>}
 					  </View>
+					  {this.state.issearch ? <View style={{position:'absolute',top:50,left:30,flexDirection:'row',width:Dimensions.get('window').width-60,height:Dimensions.get('window').height-200,alignItems:'center',justifyContent:'center',}}>
+					    <View style={{flexDirection:'column',flex:1}}>
+					     <View style={{height:50}}>
+					      <TextInput 
+						    underlineColorAndroid = 'transparent' 
+							placeholder = '输入订单号查询'   
+							placeholderTextColor = {'#666'}
+							onChangeText={(text) => this.setState({text})}
+							style={{paddingBottom:3,paddingTop:3,lineHeight:15,height:50, borderColor: '#666', borderWidth: 1,color:'#fff',flex:1,fontSize:18,paddingLeft:10,borderRadius:3}}/> 
+                         </View>
+						 <TouchableOpacity onPress={this._submit.bind(this,this.state.text)} activeOpacity={0.8} style={{width:Dimensions.get('window').width-60,alignItems:'center',justifyContent:'center',height:50,marginTop:30,}}>
+							 <View style={{width:Dimensions.get('window').width-60,alignItems:'center',justifyContent:'center',height:50, backgroundColor:'#222',borderRadius:3 }}>
+								 <Text style={{color:'#ccc',fontSize:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>查询</Text>
+							 </View>
+						 </TouchableOpacity>
+						</View> 
+					  </View> : null}
 				</View>
-           	)
+           	)   
 	}
 }
 const styles = StyleSheet.create({  

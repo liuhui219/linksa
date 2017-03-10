@@ -274,7 +274,7 @@ export default class KqTj extends React.Component {
 				                                                                                                                                                         
 				</ScrollView>                         
 				{this.state.statu ? <TouchableOpacity activeOpacity={1}  style={{justifyContent:'flex-start',alignItems:'center',}} onPress={this._shuax.bind(this)} ><View style={{padding:10,justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-50,width:Dimensions.get('window').width,}}> 
-				  <Icon name="ios-refresh-outline" color="#ccc"size={70}  />
+				  <Icon name="ios-refresh-outline" color="#ccc"size={60}  />
 				  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc',}}>点击屏幕，重新刷新</Text>   		  
 	           </View></TouchableOpacity>	 : <View></View>} 
 	  </View>			  

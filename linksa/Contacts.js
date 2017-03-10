@@ -251,7 +251,7 @@ export default class Contacts extends Component {
 				  </View>		
 				  <TouchableOpacity activeOpacity={1}   onPress={this._shuax.bind(this)}>
 					<View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-150,}}>
-						<Icon name="ios-refresh-outline" color="#ccc"size={70}  />
+						<Icon name="ios-refresh-outline" color="#ccc"size={60}  />
 						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,color:'#ccc'}}>点击屏幕，重新加载</Text>
 					</View>
 				  </TouchableOpacity>	
