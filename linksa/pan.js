@@ -19,7 +19,9 @@ import {
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Token from './Token';
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import pana from './pana';
+import panainfo from './panainfo';
+import panainfoa from './panainfoa';
+import panainfob from './panainfob';
 var array = []; 
 var aa=[];
 export default class pan extends React.Component {
@@ -57,13 +59,44 @@ export default class pan extends React.Component {
         if(navigator) {
 			InteractionManager.runAfterInteractions(() => {
             navigator.push({
-                name: 'pana',
-                component: pana			
+                name: 'panainfo',
+                component: panainfo			
             })
-			})
+			})   
         }
 	} 
 	
+	_shares(){
+		var { navigator } = this.props; 
+        if(navigator) {
+			InteractionManager.runAfterInteractions(() => {
+            navigator.push({
+                name: 'panainfoa',
+                component: panainfoa,
+                params: {
+						titles: '共享网盘',
+						url: '/index.php?app=Wangpan&m=MobileApi&a=share_lists',
+					}			
+            })
+			})
+        }
+	}
+	
+	_company(){
+		var { navigator } = this.props; 
+        if(navigator) {
+			InteractionManager.runAfterInteractions(() => {
+            navigator.push({
+                name: 'panainfob',
+                component: panainfob,
+                params: {
+						titles: '公司网盘',
+						url: '/index.php?app=Wangpan&m=MobileApi&a=company_lists',
+					}			
+            })
+			})
+        }
+	}
 	
     render() {
            return (
@@ -98,9 +131,9 @@ export default class pan extends React.Component {
 								   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#666',fontSize:16}}>个人网盘</Text>
 								   <Image source={require('./imgs/right.png')} style={{width: 20, height: 18,}} />   
 								</View>
-							 </View>
+							 </View>   
 						 </TouchableHighlight>
-						 <TouchableHighlight onPress={()=>console.log(1)} underlayColor="#d6d6d6">
+						 <TouchableHighlight onPress={this._shares.bind(this)} underlayColor="#d6d6d6">
 							 <View style={{flexDirection:'row',alignItems:'center',height:65,paddingLeft:10}}>
 								<View style={{width: 35, height: 35,backgroundColor:'#5fc7e0',alignItems:'center', justifyContent:'center'}}>
 								   <Image source={require('./imgs/pan_f.png')} style={{width: 20, height: 20,}} />
@@ -111,7 +144,7 @@ export default class pan extends React.Component {
 								</View>
 							 </View>
 						 </TouchableHighlight>
-						 <TouchableHighlight onPress={()=>console.log(1)} underlayColor="#d6d6d6">
+						 <TouchableHighlight onPress={this._company.bind(this)} underlayColor="#d6d6d6">
 							 <View style={{flexDirection:'row',alignItems:'center',height:65,paddingLeft:10}}>
 								<View style={{width: 35, height: 35,backgroundColor:'#5fd9e0',alignItems:'center', justifyContent:'center'}}>
 								   <Image source={require('./imgs/pan_g.png')} style={{width: 20, height: 20,}} />   

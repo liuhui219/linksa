@@ -11,6 +11,7 @@ import {
 	InteractionManager,
 	Dimensions,
 	ToastAndroid,
+	TextInput,
 	BackAndroid,
 	Image,
 	RefreshControl,
@@ -30,6 +31,8 @@ export default class qus extends React.Component {
 			BackAndroid.addEventListener('hardwareBackPress', this._pressButton);
 		this.state = { 
 		 add:false,
+		 status:false,
+		 textaera:'',
 	  };
     }
 
@@ -63,6 +66,46 @@ export default class qus extends React.Component {
 	_Tj(){
 		this.setState({add:false,}); 
 	}
+	/* 新增文件夹 start */
+	new_folder(){
+		this.setState({status:true,add:false,});
+		
+	}
+	_cancer(){
+		this.setState({
+			status:false,
+		})
+	}
+	
+	_yes(){
+		this.addFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=create_folder&name='+this.state.textaera+'&uid='+data.data.uid+'&folder_str=0&access_token=' + data.data.token + '')
+	    this.setState({
+			status:false,
+		})
+	}
+	
+	addFech(url){
+		var that = this;
+		fetch(url, {
+				  method: 'GET',
+				  headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',       
+				  }
+				})
+				.then(function (response) {   
+                    return response.json();	
+				})
+				.then(function (result) {
+					 
+					 ToastAndroid.show('创建成功', ToastAndroid.LONG)
+					 
+				})
+				.catch((error) => {
+					 
+					ToastAndroid.show('创建失败', ToastAndroid.LONG)
+				});
+	}
+	/* 新增文件夹 end */
     render() {
            return (
                 <View style={{flex:1,flexDirection:'column',}}>
@@ -109,7 +152,7 @@ export default class qus extends React.Component {
 							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>多选</Text>   
 						   </View>
 						 </TouchableOpacity> 
-						 <TouchableOpacity onPress={this._Tj.bind(this)}>					 
+						 <TouchableOpacity onPress={this.new_folder.bind(this)}>					 
 						   <View style={{width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
 							  
 							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>新建文件夹</Text>
@@ -117,7 +160,31 @@ export default class qus extends React.Component {
 						 </TouchableOpacity>    
 					   </View>  		   
 					   <View style={{position:'absolute',top:-8,right:13}}><Icon name="md-arrow-dropup" color="#fff"size={30}  /></View>
-				   </View> : <View></View>}
+				   </View> : <View></View>} 
+				   {this.state.status ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.51)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-230)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
+					 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
+					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>文件夹名称</Text>
+					 </View>
+					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',}}>
+						<TextInput
+						  onChangeText={(textaera) => this.setState({textaera})} 
+						  numberOfLines={1}
+						  multiline = {true}    
+						  placeholderTextColor={'#999'} 
+						  style={{ color:'#666',fontSize:14,width:230,borderWidth:1,borderColor:'#ccc',height:35,textAlignVertical:'center',padding: 0,paddingLeft:5,borderRadius:3}}
+						  placeholder='文件夹名称'
+						  underlineColorAndroid={'transparent'} 
+						/>
+					 </View>
+					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
+						<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
+						 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false}style={{color:'#4385f4',fontSize:16}}>取消</Text></View>
+						</TouchableOpacity>
+						<TouchableOpacity  onPress={this._yes.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
+						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
+						</TouchableOpacity>  
+					 </View>
+			 </View></View> : null}
 	            </View>
            	)
 	}

@@ -406,7 +406,7 @@ sures(){
 	 
 	var that=this;
 	
-	const downloadDest = `${RNFS.DocumentDirectoryPath}/${(new Date().getTime())}.jpg`;   
+	const downloadDest = `${RNFS.ExternalStorageDirectoryPath}/DCIM/Camera/${(new Date().getTime())}.jpg`;
 	var files = 'file://' + downloadDest;
 	RNFS.downloadFile({ fromUrl: this.state.bcimg, toFile: downloadDest}).promise.then(res => {
        

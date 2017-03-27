@@ -4,15 +4,20 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.gcrabtree.rctsocketio.SocketIoPackage;
+import cn.reactnative.httpcache.HttpCachePackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.reactlibrary.RNReactNativeDocViewerPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;  
-import com.rnfs.RNFSPackage;
+import com.rnfs.RNFSPackage; 
+import com.filepicker.FilePickerPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage; 
 import com.beefe.picker.PickerViewPackage;
-import com.reactnativecomponent.barcode.RCTCapturePackage;
-import cn.reactnative.httpcache.HttpCachePackage;
+import com.reactnativecomponent.barcode.RCTCapturePackage; 
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import org.lovebing.reactnative.baidumap.BaiduMapPackage;
@@ -32,13 +37,18 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new SocketIoPackage(), 
+          new RNFetchBlobPackage(), 
 		  new RNDeviceInfo(),
 		  new ImagePickerPackage(),
 		  new PickerViewPackage(),
+		  new FilePickerPackage(),
+		  new RNReactNativeDocViewerPackage(),
 		  new BaiduMapPackage(getApplicationContext()),
 		  new RNFSPackage(),
-		  new HttpCachePackage(),
+		  new HttpCachePackage(), 
 		  new RCTCapturePackage(),
+		  new ReactNativePushNotificationPackage(),
 		  new SplashScreenReactPackage()
       );
     }

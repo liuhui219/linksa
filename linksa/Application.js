@@ -306,7 +306,7 @@ export default class Application extends Component {
 		<Netinfo  {...this.props}/>
 		 <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec',marginBottom:3}}> 
 		     <View style={{backgroundColor:'#fff'}}>
-			    <View style={{borderBottomWidth:1,borderColor:'#dcdcdc'}}>
+			    <View style={{borderBottomWidth:1,borderColor:'#ececec'}}>
 					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
 					   常用应用
 					</Text>
@@ -314,7 +314,7 @@ export default class Application extends Component {
 				 
 				<View style={{flexDirection:'row',flex:1,flexWrap:'wrap',}}>
 				    <TouchableNativeFeedback  onPress={this._Gonggao.bind(this)}  >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#4385f4',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/xiaox.png')} style={{width: 20, height: 20,}} />
 					   </View>
@@ -324,7 +324,7 @@ export default class Application extends Component {
 					  </View> 
 					</TouchableNativeFeedback>
 					<TouchableNativeFeedback  onPress={this._Kaoqin.bind(this)} >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#F4BF43',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/dk.png')} style={{width: 22, height: 22,}} />
 					   </View>
@@ -334,7 +334,7 @@ export default class Application extends Component {
 					  </View> 
 					</TouchableNativeFeedback>
 					<TouchableNativeFeedback  onPress={this._datetime.bind(this)}  >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#3BAFDA',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/rc.png')} style={{width: 24, height: 24,}} />
 					   </View>
@@ -344,7 +344,7 @@ export default class Application extends Component {
 					  </View> 
 					</TouchableNativeFeedback>
 					<TouchableNativeFeedback  onPress={this._Mattendance.bind(this)}  >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#35DCEF',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/kq.png')} style={{width: 26, height: 26,}} />
 					   </View>
@@ -354,7 +354,7 @@ export default class Application extends Component {
 					  </View> 
 					</TouchableNativeFeedback>
 					<TouchableNativeFeedback  onPress={this._pan.bind(this)} >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#3ed4ab',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/yun.png')} style={{width: 26, height: 26,}} />
 					   </View>
@@ -364,7 +364,7 @@ export default class Application extends Component {
 					  </View> 
 					</TouchableNativeFeedback>
 					<TouchableNativeFeedback  onPress={this._scanner.bind(this)} >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:5,backgroundColor:'#7595ca',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={require('./imgs/scanner.png')} style={{width: 26, height: 26,}} />
 					   </View>
@@ -379,7 +379,7 @@ export default class Application extends Component {
 			 
 			 
 			 <View style={{backgroundColor:'#fff',marginTop:15,}}>
-			    <View style={{borderBottomWidth:1,borderColor:'#dcdcdc'}}>
+			    <View style={{borderBottomWidth:1,borderColor:'#ececec'}}>
 					<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,paddingTop:10,paddingBottom:10,paddingLeft:10,}}>
 					   其他应用
 					</Text>
@@ -389,7 +389,7 @@ export default class Application extends Component {
 				    
 					{this.state.datas.length>0 ? this.state.datas.map((data, i) => {
 						return <TouchableNativeFeedback key={i}  onLongPress={this._long.bind(this,data)} onPress={this._Webview.bind(this,data.weburl)}  >
-					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#dcdcdc',}}>
+					  <View style={{alignItems:'center', justifyContent:'center',width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,borderRightWidth:1,borderBottomWidth:1,borderColor:'#ececec',}}>
 					   <View style={{width: 35, height: 35,borderRadius:7,overflow:'hidden',backgroundColor:'#4385f4',alignItems:'center', justifyContent:'center'}}>
 					      <Image source={{uri:data.appicon}} style={{width: 35, height: 35,borderRadius:7,}} />
 					   </View>

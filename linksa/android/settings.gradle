@@ -1,4 +1,4 @@
-rootProject.name = 'linksa'
+rootProject.name = 'linksa' 
 
 include ':app'
 include ':react-native-datetime'
@@ -21,3 +21,15 @@ include ':react-native-picker'
 project(':react-native-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-picker/android')
 include ':react-native-smart-barcode'
 project(':react-native-smart-barcode').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-smart-barcode/android')
+include ':react-native-push-notification'
+project(':react-native-push-notification').projectDir = file('../node_modules/react-native-push-notification/android') 
+include ':react-native-socketio'
+project(':react-native-socketio').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-socketio/android')
+include ':react-native-http-cache'
+project(':react-native-http-cache').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-http-cache/android')
+include ':react-native-fetch-blob'
+project(':react-native-fetch-blob').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fetch-blob/android')
+include ':react-native-doc-viewer'
+project(':react-native-doc-viewer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-doc-viewer/android') 
+include ':react-native-file-picker'
+project(':react-native-file-picker').projectDir = new File(settingsDir, '../node_modules/react-native-file-picker/android')
