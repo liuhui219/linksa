@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "react": "15.4.2",
-    "react-native": "0.41.2",
+    "react-native": "^0.41.2",
     "react-native-baidu-map": "^0.4.8",
     "react-native-check-box": "^1.0.4",
     "react-native-checkbox": "^1.1.0",

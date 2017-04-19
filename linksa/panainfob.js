@@ -2,7 +2,7 @@ import React from 'react';
 import {
     View,
 	StyleSheet,
-    Navigator, 
+    Navigator,
 	TouchableOpacity,
 	TouchableHighlight,
 	Text,
@@ -24,8 +24,8 @@ import {
 var FilePickerManager = NativeModules.FilePickerManager;
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Token from './Token';
-import Icon from 'react-native-vector-icons/Ionicons'; 
-import Gonggaob from './Gonggaob';         
+import Icon from 'react-native-vector-icons/Ionicons';
+import Gonggaob from './Gonggaob';
 import Swipeable from 'react-native-swipeable';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import RNFS from 'react-native-fs';
@@ -34,8 +34,8 @@ import panLook from './panLook';
 import panainfosb from './panainfosb';
 import CheckBox from 'react-native-check-box';
 import RNFetchBlob from 'react-native-fetch-blob'
-var array = []; 
-var dataImpor = []; 
+var array = [];
+var dataImpor = [];
 let aa=[];
 var images = [];
 var folder_str = [];
@@ -45,10 +45,10 @@ var file_strs = [];
 var flog = false;
 var flogs = false;
 export default class Newsb extends React.Component {
-    
+
     constructor(props) {
-        super(props); 
-		this.state = { 
+        super(props);
+		this.state = {
 		  dataSource: new ListView.DataSource({
 			rowHasChanged: (row1, row2) => row1 !== row2,
 		  }),
@@ -68,7 +68,7 @@ export default class Newsb extends React.Component {
 		  domain:'',
 		  currentlyOpenSwipeable: null,
 		  status:false,
-		  tp:false, 
+		  tp:false,
 		  bcimg:'',
 		  bottoms: new Animated.Value(-110),
 		  IDS:'',
@@ -81,7 +81,7 @@ export default class Newsb extends React.Component {
 		  textaera:'',
           isfalse:true,
 		  checks:false,
-		  isChecked:false,   
+		  isChecked:false,
 		  imagest:true,
 		  ischeck:true,
 		  file:'',
@@ -89,18 +89,18 @@ export default class Newsb extends React.Component {
 		  typefy:'',
 		  typename:'',
 		  uploading:false,
-	  };   
+	  };
     }
- 
+
     componentDidMount() {
         //这里获取传递过来的参数: name
 		this.setState({domain:data.data.domain})
-		 array = [];                                                    
+		 array = [];
          aa=[];
 		  this.timer = setTimeout(
 			  () => {this.fetchData('' + data.data.domain + ''+this.props.url+'&uid='+data.data.uid+'&folder_id=0&file_type=0&access_token=' + data.data.token + '');  },
 			  500
-			);  
+			);
     }
 	_pressButton() {
         const { navigator } = this.props;
@@ -108,15 +108,15 @@ export default class Newsb extends React.Component {
             //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到了上一个页面了
             navigator.pop();
 			return true;
-        }  
+        }
 		return false;
-    }    
-    
-	 
-	componentWillUnmount() {     
-	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton); 	   
+    }
+
+
+	componentWillUnmount() {
+	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton);
 	  this.timer && clearTimeout(this.timer);
-	}                              
+	}
 	toQueryString(obj) {
 		return obj ? Object.keys(obj).sort().map(function (key) {
 			var val = obj[key];
@@ -137,31 +137,31 @@ export default class Newsb extends React.Component {
 					'Content-Type': 'application/x-www-form-urlencoded',
 				  }
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
 					 console.log(result)
-					   
-					  if(result.data != null){ 
+
+					  if(result.data != null){
 					   result.data.forEach((Data,i) => {
-						   key={i} 
+						   key={i}
 						   array.push(Data);
 						   if(Data.icon){
 							   folder_strs.push(Data.id);
 						   }else{
 							   file_strs.push(Data.id);
 						   }
-						   
+
 					   })
 					  }
-					  
+
 					  if(result.count <= 10){
-						   
+
 									   that.setState({
 										   isReach:true,
 										   isLoadMore:false,
-										   
+
 									   })
 								  }
 					  if(result.data == null){
@@ -180,78 +180,78 @@ export default class Newsb extends React.Component {
 						   })
 					   }else{
 						   that.setState({
-							   datas:result.data, 
+							   datas:result.data,
 							   dataSource: that.state.dataSource.cloneWithRows(array),
 							   loaded: true,
 							   sx:false,
 							   isNull:false,
 						   })
-					   }			   
-					     
+					   }
+
 				})
 				.catch((error) => {
 					that.setState({
-						   isRefreshing:false,	 
-						   loaded: true,  
-						   sx:true,    
-                           isNull:false,						   
+						   isRefreshing:false,
+						   loaded: true,
+						   sx:true,
+                           isNull:false,
 						   dataSource: that.state.dataSource.cloneWithRows(['加载失败，请下拉刷新']),
-						    
+
 					   })
-					  
+
 				  });
-	
-	
+
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	_add(){
 		this.setState({add:!this.state.add,})
 	}
-	
+
 	_adds(){
 		this.setState({add:false,})
-	} 
-	
+	}
+
 	_Tj(){
-		this.setState({add:false,isfalse:false,checks:true,}); 
-		Animated.timing(         
-		   this.state.widths,     
-		   {toValue: 50},           
+		this.setState({add:false,isfalse:false,checks:true,});
+		Animated.timing(
+		   this.state.widths,
+		   {toValue: 50},
 		 ).start();
 	}
 	_quxiao(){
 		folder_str = [];
-        file_str = [];  
+        file_str = [];
 		flog = false;
         flogs = false;
 		this.setState({isfalse:true,checks:false,isChecked:false,ischeck:true,});
-		this._Refresh(); 
-		Animated.timing(         
-		   this.state.widths,     
-		   {toValue: 0},           
+		this._Refresh();
+		Animated.timing(
+		   this.state.widths,
+		   {toValue: 0},
 		 ).start();
 	}
 	/* 新增文件夹 start */
 	new_folder(){
 		this.setState({statusk:true,add:false,});
-		
+
 	}
 	_cancerk(){
 		this.setState({
 			statusk:false,
 		})
 	}
-	
-	trim(str){  
-     return str.replace(/(^\s*)|(\s*$)/g, ""); 
+
+	trim(str){
+     return str.replace(/(^\s*)|(\s*$)/g, "");
    }
-/* 消除空格  end */	
+/* 消除空格  end */
 	_yesk(){
-		if(this.trim(this.state.textaera) == ''){ 
+		if(this.trim(this.state.textaera) == ''){
 			ToastAndroid.show('名称不能为空', ToastAndroid.LONG)
 			return false;
 		}else{
@@ -260,69 +260,69 @@ export default class Newsb extends React.Component {
 				statusk:false,
 			})
 		}
-		
+
 	}
-	
+
 	addFech(url){
 		var that = this;
 		fetch(url, {
 				  method: 'GET',
 				  headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',       
+					'Content-Type': 'application/x-www-form-urlencoded',
 				  }
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 
+
 					 ToastAndroid.show('创建成功', ToastAndroid.LONG)
 					 that._Refresh();
 				})
 				.catch((error) => {
-					 
+
 					ToastAndroid.show('创建失败', ToastAndroid.LONG)
 				});
 	}
 	/* 新增文件夹 end */
-	
-	
+
+
 	/*  全选  start */
 	_allselect(){
 		folder_str = folder_strs;
-        file_str = file_strs;  
+        file_str = file_strs;
 		flog = true;
         flogs = true;
-		this.setState({isChecked:true,ischeck:false,})   
-		this._Refresh();    
+		this.setState({isChecked:true,ischeck:false,})
+		this._Refresh();
 		console.log(folder_str);
 		console.log(file_str);
 	}
-	
+
 	/*  全选  end */
 	/*  全不选  start */
 	_allnoselect(){
 		folder_str = [];
-        file_str = [];  
+        file_str = [];
 		flog = false;
         flogs = false;
-		this.setState({isChecked:false,ischeck:true,})   
-		this._Refresh();    
-		 
+		this.setState({isChecked:false,ischeck:true,})
+		this._Refresh();
+
 	}
-	
+
 	/*  全不选  end */
-	
+
 	allDeletes(){
 		this.setState({isfalse:true,checks:false,isChecked:false,ischeck:true,});
-		Animated.timing(         
-		   this.state.widths,     
-		   {toValue: 0},           
-		 ).start();   
-		if(folder_str.length>0 && file_str.length>0){  
+		Animated.timing(
+		   this.state.widths,
+		   {toValue: 0},
+		 ).start();
+		if(folder_str.length>0 && file_str.length>0){
 			this.deleteFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=delete&uid='+data.data.uid+'&folder_str='+folder_str.join(',')+'&file_str='+file_str.join(',')+'&access_token=' + data.data.token + '');
 		}else if(folder_str.length == 0 && file_str.length>0){
-			 
+
 			this.deleteFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=delete&uid='+data.data.uid+'&file_str='+file_str.join(',')+'&access_token=' + data.data.token + '');
 		}else if(folder_str.length > 0 && file_str.length == 0){
 			this.deleteFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=delete&uid='+data.data.uid+'&folder_str='+folder_str.join(',')+'&access_token=' + data.data.token + '');
@@ -330,18 +330,18 @@ export default class Newsb extends React.Component {
 			return false;
 		}
 	}
-	   
+
 	/*  单个文档删除  start */
 	deleteFech(url){
 		var that = this;
 		fetch(url, {
 				  method: 'GET',
 				  headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',       
+					'Content-Type': 'application/x-www-form-urlencoded',
 				  }
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
 					 console.log(result);
@@ -351,46 +351,46 @@ export default class Newsb extends React.Component {
 						ToastAndroid.show('删除失败', ToastAndroid.LONG)
 					}
 					folder_str = [];
-					file_str = [];  
+					file_str = [];
 					flog = false;
-					flogs = false; 
-					that._Refresh(); 
-					 
+					flogs = false;
+					that._Refresh();
+
 				})
 				.catch((error) => {
-					 
+
 					ToastAndroid.show('删除失败', ToastAndroid.LONG)
 				});
-	} 
-    deletes(data){ 
+	}
+    deletes(data){
 		if(this.state.currentlyOpenSwipeable) {
 		  this.state.currentlyOpenSwipeable.recenter();
-		}   
+		}
 		this.setState({
 			status:true,
 			IDS:data.id,
 			type:data.type,
-		})  
-	} 
+		})
+	}
 	_Yes(){
 		if(this.state.type == 'folder'){
 			this.deleteFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=delete&uid='+data.data.uid+'&folder_str='+this.state.IDS+'&access_token=' + data.data.token + '');
 		}else{
 			this.deleteFech('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=delete&uid='+data.data.uid+'&file_str='+this.state.IDS+'&access_token=' + data.data.token + '');
 		}
-		
-		this.setState({    
-			status:false, 
+
+		this.setState({
+			status:false,
 		})
 	}
 	/*  单个文档删除  end */
-	
+
 	/*  单个文档下载  start */
-	 
-	
-	 
+
+
+
 	/*  单个文档下载  end */
-	
+
 	/*  页面滑动时关闭删除按钮  start */
 	handleScroll(){
 		if(this.state.currentlyOpenSwipeable) {
@@ -405,11 +405,11 @@ export default class Newsb extends React.Component {
 	}
 	_cancers(){
 		this.setState({
-			statust:false,   
+			statust:false,
 		})
 	}
-	
-	
+
+
 	openfile(){
 		const options = {
             title: 'File Picker',
@@ -429,79 +429,79 @@ export default class Newsb extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-				 
+
                 this.setState({
                     file: response.uri,
 					filesd:true,
 					typename:response.path,
 					typefy : response.path.split("/")[response.path.split("/").length-1]
-                });  
-                console.log(response)				
+                });
+                console.log(response)
             }
         });
 	}
-	
-	
+
+
 	_uploads(){
 		var that = this;
 		this.setState({filesd:false,uploading:true,});
-		var type = this.state.file.split("/")[this.state.file.split("/").length-1];   
-        var types = new Date().getTime()+'.'+type;   
+		var type = this.state.file.split("/")[this.state.file.split("/").length-1];
+        var types = new Date().getTime()+'.'+type;
         let formData = new FormData();
         var file = {uri: this.state.file, type: 'multipart/form-data', name:type};
-        formData.append("file",file); 
+        formData.append("file",file);
         fetch('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=uploadify&uid='+data.data.uid+'&fid=0&access_token=' + data.data.token + '', {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'multipart/form-data;',
-				  },  
+				  },
 				  body:formData,
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
-				.then(function (result) { 
+				.then(function (result) {
 					ToastAndroid.show('上传成功', ToastAndroid.LONG)
-                    that._Refresh(); 
+                    that._Refresh();
 					that.setState({uploading:false,});
 				})
-				.catch((error) => { 
-					ToastAndroid.show('上传失败', ToastAndroid.LONG) 
+				.catch((error) => {
+					ToastAndroid.show('上传失败', ToastAndroid.LONG)
 				});
 	}
-	
+
 	_nouploads(){
 		this.setState({
 			file: '',
 			filesd:false,
 		});
 	}
-	
-	
-    render() {		
-		
-		 
-		
+
+
+    render() {
+
+
+
           if(!this.state.loaded){
 		  return (
-		    <View style={{flex:1,backgroundColor:'#ececec'}}>
+		    <View style={{flex:1,backgroundColor:'#fff'}}>
 			      <View style={styles.card}>
 					  <View style={{flex:1,justifyContent:'center'}}>
 								 <TouchableOpacity onPress={this._pressButton.bind(this)}>
-									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 											<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
 											<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 									  </View>
-								</TouchableOpacity>  
-					  </View>    
+								</TouchableOpacity>
+					  </View>
 					  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
 											<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.titles}</Text>
 								</View>
-					  </View> 
-					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>   
-						   				   
-					  </View>      
+					  </View>
+					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>
+
+					  </View>
 			      </View>
 		          <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-110,width:Dimensions.get('window').width}}>
 					<View style={styles.loading}>
@@ -509,7 +509,7 @@ export default class Newsb extends React.Component {
 						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>加载中……</Text>
 					</View>
 				   </View>
-			</View>	   
+			</View>
 		  )
 		}
 		return(
@@ -517,38 +517,38 @@ export default class Newsb extends React.Component {
 		     {this.state.isfalse ? <View style={styles.card}>
 					  <View style={{flex:1,justifyContent:'center'}}>
 								 <TouchableOpacity onPress={this._pressButton.bind(this)}>
-									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 											<Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
 											<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 									  </View>
-								</TouchableOpacity>  
-					  </View>    
+								</TouchableOpacity>
+					  </View>
 					  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
 											<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.titles}</Text>
 								</View>
-					  </View> 
-					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>   
-						   			   
-					  </View>      
+					  </View>
+					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>
+
+					  </View>
 			  </View> : <View style={styles.card}>
 					  <View style={{flex:1,justifyContent:'center'}}>
 								 <TouchableOpacity onPress={this._quxiao.bind(this)}>
-									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',paddingLeft:15,}}>   
+									  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',paddingLeft:15,}}>
 											<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 									  </View>
-								</TouchableOpacity>  
-					  </View>    
+								</TouchableOpacity>
+					  </View>
 					  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+								<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
 											<Text style={{color:'white',fontSize:18}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.props.titles}</Text>
 								</View>
-					  </View> 
-					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>   
-						    
-						   
+					  </View>
+					  <View style={{flex:1,justifyContent:'flex-end',alignItems:'center', flexDirection:'row'}}>
+
+
 						   {this.state.ischeck ? <View style={{paddingRight:5,}}>
-									     
+
 									<CheckBox
 										 style={{width:40, alignItems:'center',justifyContent:'center'}}
 										 onClick={this._allselect.bind(this)}
@@ -559,60 +559,62 @@ export default class Newsb extends React.Component {
 										 unCheckedImage={<Image source={require('./imgs/disabled.png')} style={{width:0,height:0}}/>}
 								   />
 							  </View> : <View style={{paddingRight:5,}}>
-									     
+
 									<CheckBox
 										 style={{width:50, alignItems:'center',justifyContent:'center'}}
 										 onClick={this._allnoselect.bind(this)}
 										 isChecked={this.state.isChecked}
 										 leftTextStyle={{color:'#fff',width:50,fontSize:16}}
-										 leftText={'全不选'}   
+										 leftText={'全不选'}
 										 checkedImage={<Image source={require('./imgs/enabled.png')} style={{width:0,height:0}}/>}
 										 unCheckedImage={<Image source={require('./imgs/disabled.png')} style={{width:0,height:0}}/>}
 								   />
 			                   </View>}
-							 						   
-					  </View>      
+
+					  </View>
 			 </View>}
-			 <ListView  
+       <View style={{backgroundColor:'#fff',flex:1}}>
+			 <ListView
 				onScroll={this.handleScroll.bind(this)}
 				dataSource={this.state.dataSource}
-				renderRow={this.renderMovie.bind(this)}   
-                showsVerticalScrollIndicator={false}				
+				renderRow={this.renderMovie.bind(this)}
+                showsVerticalScrollIndicator={false}
 				removeClippedSubviews = {false}
 				refreshControl={
 				  <RefreshControl
 					refreshing={this.state.isRefreshing}
-					onRefresh={this._onRefresh.bind(this) } 
+					onRefresh={this._onRefresh.bind(this) }
 					colors={['#ff0000', '#00ff00', '#0000ff','#3ad564']}
 					progressBackgroundColor="#ffffff"
 					/>
 				}
 			  />
+       </View>
 			  {!this.state.isfalse ? <TouchableHighlight underlayColor='transparent' activeOpacity ={0.9} onPress={this.allDeletes.bind(this)}><View style={{width:Dimensions.get('window').width,height:50,backgroundColor:'#ddd',borderTopWidth:1,borderColor:'#ddd',alignItems:'center',justifyContent:'center'}}>
 			     <Text style={{fontSize:18,color:'#ff0a0a'}} allowFontScaling={false} adjustsFontSizeToFit={false}>删除</Text>
 			  </View></TouchableHighlight> : null}
-			  <Modal visible={this.state.tp}       
-					  animationType={"fade"}        
-					  onRequestClose={() => {console.log("Modal has been closed.")}} 
-					   transparent={true}>   
-						
+			  <Modal visible={this.state.tp}
+					  animationType={"fade"}
+					  onRequestClose={() => {console.log("Modal has been closed.")}}
+					   transparent={true}>
+
 							<ImageViewer saveToLocalByLongPress={false} onClick={this.closest.bind(this)} imageUrls={images}/>
 							<TouchableOpacity onPress={this.showActionSheet.bind(this)} style={{position:'absolute',bottom:0,right:30}}>
 							   <View ><Icon name="ios-list-outline" color="#fff"size={50}  /></View>
-							</TouchableOpacity>  
+							</TouchableOpacity>
 							{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-checkmark-outline" color="#fff"size={50}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
-							</Animated.View> : null} 
-							   
-							<Animated.View style={{bottom:this.state.bottoms,left:0,width:Dimensions.get('window').width,backgroundColor:'#fff',justifyContent:'center',alignItems:'center',position:'absolute',}}> 
-								<TouchableOpacity onPress={this.sures.bind(this)} style={{width:Dimensions.get('window').width,}}>								
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>
+							</Animated.View> : null}
+
+							<Animated.View style={{bottom:this.state.bottoms,left:0,width:Dimensions.get('window').width,backgroundColor:'#fff',justifyContent:'center',alignItems:'center',position:'absolute',}}>
+								<TouchableOpacity onPress={this.sures.bind(this)} style={{width:Dimensions.get('window').width,}}>
 									<View style={{borderColor:'#ccc',borderBottomWidth:1,width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}>
-										<Text style={{fontSize:18,paddingTop:15,paddingBottom:15,}} allowFontScaling={false} adjustsFontSizeToFit={false}>保存到手机</Text>      
+										<Text style={{fontSize:18,paddingTop:15,paddingBottom:15,}} allowFontScaling={false} adjustsFontSizeToFit={false}>保存到手机</Text>
 									</View>
 								</TouchableOpacity>
-								<TouchableOpacity onPress={this.cancels.bind(this)} style={{width:Dimensions.get('window').width,}}> 
-									<View style={{width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}> 
+								<TouchableOpacity onPress={this.cancels.bind(this)} style={{width:Dimensions.get('window').width,}}>
+									<View style={{width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',}}>
 										<Text style={{fontSize:18,paddingTop:15,paddingBottom:15,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 									</View>
 								</TouchableOpacity>
@@ -625,31 +627,31 @@ export default class Newsb extends React.Component {
 					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
 						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>该文件将从网盘里彻底删除</Text>
 					 </View>
-					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
-						<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
+					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+						<TouchableOpacity onPress={this._cancer.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>
 						 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false}style={{color:'#4385f4',fontSize:16}}>取消</Text></View>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={this._Yes.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
+						<TouchableOpacity onPress={this._Yes.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}>
 						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
-						</TouchableOpacity>  
+						</TouchableOpacity>
 					 </View>
 			 </View></View> : null}
-			 
-			 
+
+
 			 {this.state.filesd ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.51)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-230)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
 					 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
 					 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>上传此文件？</Text>
 					 </View>
 					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec'}}>
-						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{this.state.typefy}</Text>   
+						 <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:16,}}>{this.state.typefy}</Text>
 					 </View>
-					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
-						<TouchableOpacity onPress={this._nouploads.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
+					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+						<TouchableOpacity onPress={this._nouploads.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>
 						 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false}style={{color:'#4385f4',fontSize:16}}>取消</Text></View>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={this._uploads.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
+						<TouchableOpacity onPress={this._uploads.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}>
 						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>上传</Text></View>
-						</TouchableOpacity>  
+						</TouchableOpacity>
 					 </View>
 			 </View></View> : null}
 			 {this.state.uploading ? <View style={{justifyContent: 'center',alignItems: 'center',height:Dimensions.get('window').height-90,width:Dimensions.get('window').width,position:'absolute',top:0,left:0}}>
@@ -658,55 +660,55 @@ export default class Newsb extends React.Component {
 						<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={styles.loadingTitle}>文件上传中……</Text>
 					</View>
 				   </View> : null}
-			 {this.state.add ? <TouchableOpacity onPress={this._adds.bind(this)}  style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,position:'absolute',top:45,left:0,}}><View style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,backgroundColor:'rgba(61, 61, 62, 0)',position:'absolute',top:0,left:0,}}></View></TouchableOpacity> : <View></View>}  
-					{this.state.add ? <View style={{position:'absolute',top:40,right:5,flexDirection:'column',width:120,height:100,}}> 
+			 {this.state.add ? <TouchableOpacity onPress={this._adds.bind(this)}  style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,position:'absolute',top:45,left:0,}}><View style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height-45,backgroundColor:'rgba(61, 61, 62, 0.3)',position:'absolute',top:0,left:0,}}></View></TouchableOpacity> : <View></View>}
+					{this.state.add ? <View style={{position:'absolute',top:40,right:5,flexDirection:'column',width:120,height:100,}}>
 				   <View style={{width:120,height:90,backgroundColor:'#fff',borderRadius:5,flexDirection:'column',alignItems:'center',marginTop:10,}}>
 						 <TouchableOpacity  onPress={this._Tj.bind(this)}>
-						   <View style={{borderBottomWidth:1,borderColor:'#ccc',width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}> 
-							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>多选</Text>   
+						   <View style={{borderBottomWidth:1,borderColor:'#ccc',width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
+							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>多选</Text>
 						   </View>
-						 </TouchableOpacity> 
-						 <TouchableOpacity onPress={this.new_folder.bind(this)}>					 
+						 </TouchableOpacity>
+						 <TouchableOpacity onPress={this.new_folder.bind(this)}>
 						   <View style={{width:120,alignItems:'center',height:45,flexDirection:'row',paddingLeft:10,}}>
-							  
+
 							  <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{marginLeft:10,fontSize:16,}}>新建文件夹</Text>
 						   </View>
-						 </TouchableOpacity>    
-					   </View>  		   
+						 </TouchableOpacity>
+					   </View>
 					   <View style={{position:'absolute',top:-8,right:13}}><Icon name="md-arrow-dropup" color="#fff"size={30}  /></View>
-				   </View> : <View></View>} 
+				   </View> : <View></View>}
 				   {this.state.statusk ? <View style={{backgroundColor:'rgba(119, 119, 119, 0.51)',position:'absolute',width:(Dimensions.get('window').width),height:(Dimensions.get('window').height),top:0,left:0}}><View style={{position:'absolute',backgroundColor:'#fff',width:260,height:150,top:(Dimensions.get('window').height-230)/2,left:(Dimensions.get('window').width-260)/2,borderRadius:5,overflow:'hidden'}}>
 					 <View  style={{height:40,alignItems:'center',justifyContent:'center',flexDirection:'row', }}>
 					   <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,color:'#000'}}>文件夹名称</Text>
 					 </View>
 					 <View style={{flex:1,justifyContent:'center',alignItems:'center',borderBottomWidth:1,borderColor:'#ececec',}}>
 						<TextInput
-						  onChangeText={(textaera) => this.setState({textaera})} 
+						  onChangeText={(textaera) => this.setState({textaera})}
 						  numberOfLines={1}
-						  multiline = {true}    
-						  placeholderTextColor={'#999'} 
+						  multiline = {true}
+						  placeholderTextColor={'#999'}
 						  style={{ color:'#666',fontSize:14,width:230,borderWidth:1,borderColor:'#ccc',height:35,textAlignVertical:'center',padding: 0,paddingLeft:5,borderRadius:3}}
 						  placeholder='文件夹名称'
-						  underlineColorAndroid={'transparent'} 
+						  underlineColorAndroid={'transparent'}
 						/>
 					 </View>
-					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>   
-						<TouchableOpacity onPress={this._cancerk.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>  
+					 <View style={{flexDirection:'row',justifyContent:'space-between',height:50,backgroundColor:'#ececec',borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+						<TouchableOpacity onPress={this._cancerk.bind(this)} style={{flex:1,alignItems:'center',justifyContent:'center',borderBottomLeftRadius:5,backgroundColor:'#fff'}}>
 						 <View ><Text allowFontScaling={false} adjustsFontSizeToFit={false}style={{color:'#4385f4',fontSize:16}}>取消</Text></View>
 						</TouchableOpacity>
-						<TouchableOpacity  onPress={this._yesk.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}> 	
+						<TouchableOpacity  onPress={this._yesk.bind(this)}  style={{flex:1, alignItems:'center',justifyContent:'center', borderBottomRightRadius:5,marginLeft:1,backgroundColor:'#fff'}}>
 						 <View><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{color:'#4385f4',fontSize:16}}>确定</Text></View>
-						</TouchableOpacity>  
+						</TouchableOpacity>
 					 </View>
 			 </View></View> : null}
-			  
-		 </View> 
+
+		 </View>
 		)
-	    
+
     }
-	
-	_ggButton(id){    
-		const { navigator } = this.props; 
+
+	_ggButton(id){
+		const { navigator } = this.props;
         if(navigator) {
 			InteractionManager.runAfterInteractions(() => {
             this.props.navigator.push({
@@ -714,13 +716,13 @@ export default class Newsb extends React.Component {
                 component: Gonggaob,
 				params: {
 					id: id,
-					 
+
 				}
             })
 			})
-        } 
+        }
 	}
-	
+
 	imgAll(img){
 		var ims={url:img};
 		images=[];
@@ -728,54 +730,54 @@ export default class Newsb extends React.Component {
 		this.setState({tp:true,bcimg:img})
 	}
 	sures(){
-	    
+
 		var that=this;
-		
-		const downloadDest = `${RNFS.ExternalStorageDirectoryPath}/DCIM/Camera/${(new Date().getTime())}.jpg`;   
-		var files = 'file://' + downloadDest;   
-		  
+
+		const downloadDest = `${RNFS.ExternalStorageDirectoryPath}/DCIM/Camera/${(new Date().getTime())}.jpg`;
+		var files = 'file://' + downloadDest;
+
 		RNFS.downloadFile({ fromUrl: this.state.bcimg, toFile: downloadDest}).promise.then(res => {
-		     
+
 		  CameraRoll.saveToCameraRoll(files);
 			  that.setState({
-				statu:true,		   
-				infos:'保存成功'	
+				statu:true,
+				infos:'保存成功'
 			  })
-			  Animated.timing(           
-			   this.state.bottoms,     
-			   {toValue: -110},            
-			 ).start(); 
+			  Animated.timing(
+			   this.state.bottoms,
+			   {toValue: -110},
+			 ).start();
 			  that.timerx = setTimeout(() => {
-						  that.setState({   
+						  that.setState({
 							 statu:false,
 						})
-					  },1000) 
+					  },1000)
 
-		  
+
 		}).catch(err => {
 			  that.setState({
-				statu:true,		   
-				infos:'保存失败'	
+				statu:true,
+				infos:'保存失败'
 			  })
-			  Animated.timing(               
-			   this.state.bottoms,     
-			   {toValue: -110},            
-			 ).start(); 
+			  Animated.timing(
+			   this.state.bottoms,
+			   {toValue: -110},
+			 ).start();
 			  that.timerx = setTimeout(() => {
-						  that.setState({   
+						  that.setState({
 							 statu:false,
 						})
-					  },1000) 
+					  },1000)
 		});
-		 
+
 	}
 	closest(){
-	 
+
 		if(this.state.bottoms._value == 0){
-			Animated.timing(           
-		   this.state.bottoms,     
-		   {toValue: -110},            
-		 ).start(); 
+			Animated.timing(
+		   this.state.bottoms,
+		   {toValue: -110},
+		 ).start();
 		}else{
 			this.setState({
 				tp:false,
@@ -783,26 +785,26 @@ export default class Newsb extends React.Component {
 		}
 	}
 	cancels(){
-		Animated.timing(           
-		   this.state.bottoms,     
-		   {toValue: -110},            
-		 ).start();  
+		Animated.timing(
+		   this.state.bottoms,
+		   {toValue: -110},
+		 ).start();
 	}
 	showActionSheet() {
 		var that=this;
-		Animated.timing(           
-		   this.state.bottoms,     
-		   {toValue: 0},            
+		Animated.timing(
+		   this.state.bottoms,
+		   {toValue: 0},
 		 ).start();
     }
-	
+
 
 	looks(data){
 		if(this.state.currentlyOpenSwipeable) {
 		  this.state.currentlyOpenSwipeable.recenter();
 		  this.setState({currentlyOpenSwipeable: null})
 		}else{
-			var { navigator } = this.props; 
+			var { navigator } = this.props;
 			if(navigator) {
 				InteractionManager.runAfterInteractions(() => {
 					navigator.push({
@@ -810,20 +812,20 @@ export default class Newsb extends React.Component {
 						component: panLook,
 						params: {
 							data: data
-						}				
+						}
 					})
 				})
-			} 
+			}
 		}
 	}
-	
-	files_k(data){   
+
+	files_k(data){
 		var that = this;
     	if(this.state.currentlyOpenSwipeable) {
 		  this.state.currentlyOpenSwipeable.recenter();
 		  this.setState({currentlyOpenSwipeable: null})
 		}else{
-			var { navigator } = this.props; 
+			var { navigator } = this.props;
 			if(navigator) {
 				InteractionManager.runAfterInteractions(() => {
 					navigator.push({
@@ -832,57 +834,57 @@ export default class Newsb extends React.Component {
 						params: {
 							dataID: data,
 							urls:that.props.url
-						}				
+						}
 					})
 				})
-			} 
+			}
 		}
     }
-	
-	_check(data){      	
+
+	_check(data){
 		if(!flog){
 			file_str.push(data.id);
-			flog = true; 
-		}else{   
+			flog = true;
+		}else{
 			for(var i in file_str){
-				if(file_str[i] == data.id){   
-					file_str.splice(i,1); 
+				if(file_str[i] == data.id){
+					file_str.splice(i,1);
 					if(file_str.length == 0){
 						flog = false;
 					}
 				}else{
 					if(i == file_str.length-1){
-						return file_str.push(data.id);     
-					}   
+						return file_str.push(data.id);
+					}
 				}
 			}
-		} 	 
+		}
 	}
-	
-	_checks(data){ 
+
+	_checks(data){
 		if(!flogs){
 			folder_str.push(data.id);
 			flogs = true;
-			 
-		}else{   
-			for(var i in folder_str){   
-				if(folder_str[i] == data.id){   
+
+		}else{
+			for(var i in folder_str){
+				if(folder_str[i] == data.id){
 					folder_str.splice(i,1);
-					 
+
 					if(folder_str.length == 0){
 						flogs = false;
 					}
 				}else{
 					if(i == folder_str.length-1){
 						return folder_str.push(data.id);
-						 
-					}   
+
+					}
 				}
 			}
-		} 	 
+		}
 	}
-	
-	
+
+
 	onOpen(event,gestureState,swipeable){
 		const {currentlyOpenSwipeable} = this.state;
         if (currentlyOpenSwipeable && currentlyOpenSwipeable !== swipeable) {
@@ -900,16 +902,16 @@ export default class Newsb extends React.Component {
 				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
 			)
-		}	
+		}
         else if(this.state.isNull){
 			return (
 			    <View style={{justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height-170,}}>
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
 				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
-			)     
-		} 		
-		else{ 
+			)
+		}
+		else{
 		  if(data.icon){
 			return (
 			<View style={{flexDirection:'row'}}>
@@ -918,19 +920,16 @@ export default class Newsb extends React.Component {
 				   <CheckBox
 						 style={{width:50, alignItems:'center',justifyContent:'center'}}
 						 onClick={this._checks.bind(this,data)}
-						 isChecked={this.state.isChecked}    
-						 leftText={''} 
+						 isChecked={this.state.isChecked}
+						 leftText={''}
 						 checkedImage={<Image source={require('./imgs/enabled.png')} style={{width:30,height:30}}/>}
                          unCheckedImage={<Image source={require('./imgs/disabled.png')} style={{width:30,height:30}}/>}
-				  />  
-				</View>  
+				  />
+				</View>
 			  </Animated.View>
 			  <View style={{width:(Dimensions.get('window').width)}}>
-			  <Swipeable rightActionActivationDistance={75} onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)}  
-			       rightButtons={[
-						  <TouchableHighlight underlayColor='transparent' activeOpacity ={0.9} onPress={this.deletes.bind(this,data)} style={{justifyContent: 'flex-start',flex:1,backgroundColor:'#ff0a0a',flexDirection:'row',alignItems:'center'}}><View style={{width:75,alignItems:'center'}}><Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>删除</Text></View></TouchableHighlight>  
-				   ]}
-				    
+			  <Swipeable rightActionActivationDistance={75} onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)}
+			        
 				>
 				<TouchableHighlight underlayColor='#ddd' onPress={this.files_k.bind(this,data)}>
 					<View style={{alignItems:'center',flexDirection:'row'}}>
@@ -943,17 +942,17 @@ export default class Newsb extends React.Component {
 									{decodeURI(data.name)}
 								</Text>
 								<Text style={{fontSize:12,color:'#aaa'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.inputtime}   {data.size}</Text>
-						   </View>	
+						   </View>
 						   <View style={{alignItems:'center'}}>
 							  <Image source={require('./imgs/right.png')} style={{width: 14, height: 14,}} />
 						   </View>
 						</View>
-					</View>  
-				</TouchableHighlight>				
-			 </Swipeable>	
+					</View>
+				</TouchableHighlight>
+			 </Swipeable>
 			 </View>
-			</View>  
-			)	
+			</View>
+			)
 		  }else if(data.file_extension == 1){
 			  return (
 			  <View style={{flexDirection:'row'}}>
@@ -966,16 +965,14 @@ export default class Newsb extends React.Component {
 						 leftText={''}
 						 checkedImage={<Image source={require('./imgs/enabled.png')} style={{width:30,height:30}}/>}
                          unCheckedImage={<Image source={require('./imgs/disabled.png')} style={{width:30,height:30}}/>}
-				  />  
-				</View>  
+				  />
+				</View>
 			  </Animated.View>
 			  <View style={{width:(Dimensions.get('window').width)}}>
-			  <Swipeable  rightButtonWidth={75} onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)} rightButtons={[ 
-						  <TouchableHighlight underlayColor='transparent' activeOpacity ={0.9} onPress={this.deletes.bind(this,data)} style={{justifyContent: 'flex-start',flex:1,backgroundColor:'#ff0a0a',flexDirection:'row',alignItems:'center'}}><View style={{width:75,alignItems:'center'}}><Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>删除</Text></View></TouchableHighlight> 
-				   ]}
+			  <Swipeable  rightButtonWidth={75} onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)}  
 				>
-				<TouchableHighlight underlayColor='#ddd' onPress={this.imgAll.bind(this,this.state.domain.slice(0,-6)+data.preview_url.slice(1))}>   
-					<View style={{alignItems:'center',flexDirection:'row'}}>   
+				<TouchableHighlight underlayColor='#ddd' onPress={this.imgAll.bind(this,this.state.domain.slice(0,-6)+data.preview_url.slice(1))}>
+					<View style={{alignItems:'center',flexDirection:'row'}}>
 						<View style={{paddingLeft:10}}>
 						   <Image source={{uri:this.state.domain.slice(0,-6)+data.imgUrl.slice(1)}} style={{width: 36, height: 36,}} />
 						</View>
@@ -985,16 +982,16 @@ export default class Newsb extends React.Component {
 									{decodeURI(data.name)}
 								</Text>
 								<Text style={{fontSize:12,color:'#aaa'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.inputtime}   {data.size}</Text>
-						   </View>	
+						   </View>
 						   <View style={{alignItems:'center'}}>
 							  <Image source={require('./imgs/right.png')} style={{width: 14, height: 14,}} />
 						   </View>
 						</View>
-					</View>    
-                </TouchableHighlight>				
-			 </Swipeable>	
+					</View>
+                </TouchableHighlight>
+			 </Swipeable>
 			 </View>
-			</View> 
+			</View>
 			)
 		  }else{
 			  return (
@@ -1008,14 +1005,11 @@ export default class Newsb extends React.Component {
 						 leftText={''}
 						 checkedImage={<Image source={require('./imgs/enabled.png')} style={{width:30,height:30}}/>}
                          unCheckedImage={<Image source={require('./imgs/disabled.png')} style={{width:30,height:30}}/>}
-				  />  
-				</View>  
+				  />
+				</View>
 			  </Animated.View>
 			  <View style={{width:(Dimensions.get('window').width)}}>
-			  <Swipeable rightActionActivationDistance={75}  onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)} rightButtons={[
-						  
-						  <TouchableHighlight underlayColor='transparent' activeOpacity ={0.9} onPress={this.deletes.bind(this,data)} style={{justifyContent: 'flex-start',flex:1,backgroundColor:'#ff0a0a',flexDirection:'row',alignItems:'center'}}><View style={{width:75,alignItems:'center'}}><Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>删除</Text></View></TouchableHighlight>
-				   ]}
+			  <Swipeable rightActionActivationDistance={75}  onRightButtonsOpenRelease={this.onOpen.bind(this)} onRightButtonsCloseRelease={this.onClose.bind(this)}  
 				>
 				<TouchableHighlight underlayColor='#ddd' onPress={this.looks.bind(this,data)}>
 					<View style={{alignItems:'center',flexDirection:'row'}}>
@@ -1028,77 +1022,77 @@ export default class Newsb extends React.Component {
 									{decodeURI(data.name)}
 								</Text>
 								<Text style={{fontSize:12,color:'#aaa'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.inputtime}   {data.size}</Text>
-						   </View>	
+						   </View>
 						   <View style={{alignItems:'center'}}>
 							  <Image source={require('./imgs/right.png')} style={{width: 14, height: 14,}} />
 						   </View>
 						</View>
-					</View>  
-				</TouchableHighlight>				
-			 </Swipeable>	
+					</View>
+				</TouchableHighlight>
+			 </Swipeable>
 			 </View>
-			</View> 
+			</View>
 			)
-		  }		
-        }			
+		  }
+        }
 	  }
-	
-	  
-	  
+
+
+
 	   // 下拉刷新
 	  _onRefresh() {
 		 this.setState({
-			   isRefreshing:true, 
-               p:1,			   
-		  }) 
-		  var that=this 
+			   isRefreshing:true,
+               p:1,
+		  })
+		  var that=this
 		  this.fresh();
 	  }
-	  
-	  
+
+
 	   _Refresh() {
 		 this.setState({
-			   isRefreshing:false, 
-               p:1,			   
-		  }) 
-		 var that=this 
-		 this.fresh(); 
+			   isRefreshing:false,
+               p:1,
+		  })
+		 var that=this
+		 this.fresh();
 	  }
-	  
+
 	  fresh(){
 		  var that=this;
-		  fetch('' + data.data.domain + ''+this.props.url+'&uid='+data.data.uid+'&folder_id=0&file_type=0&access_token=' + data.data.token + '&p='+that.state.p, { 
+		  fetch('' + data.data.domain + ''+this.props.url+'&uid='+data.data.uid+'&folder_id=0&file_type=0&access_token=' + data.data.token + '&p='+that.state.p, {
 						  method: 'POST',
 						  headers: {
 							'Content-Type': 'application/x-www-form-urlencoded',
-						  } 
+						  }
 						})
-						.then(function (response) {   
-							return response.json();	
+						.then(function (response) {
+							return response.json();
 						})
 						.then(function (result) {
 							  folder_strs = [];
 							  file_strs = [];
 							  array=[];
 							  array.length = 0;
-							   
-							   if(result.data != null){ 
+
+							   if(result.data != null){
 								   result.data.forEach((Data,i) => {
-									   key={i} 
+									   key={i}
 									   array.push(Data);
 									   if(Data.icon){
 										   folder_strs.push(Data.id);
 									   }else{
 										   file_strs.push(Data.id);
 									   }
-									   
+
 								   })
 								  }
 							      if(result.count <= 10){
 									   that.setState({
 										   isReach:true,
 										   isLoadMore:false,
-										  
+
 									   })
 								  }
 								  if(result.data == null){
@@ -1112,52 +1106,52 @@ export default class Newsb extends React.Component {
 										   isNull:true,
 									   })
 								  }else if(array.length > Number(result.count)+Number(result.folders_count)){
-						                
+
 									   that.setState({
 										   isReach:true,
 										   isLoadMore:false,
 										   isNull:false,
 									   })
 								   }else{
-									   that.setState({ 
+									   that.setState({
 										   imgs: aa,
 										   dataSource: that.state.dataSource.cloneWithRows(array),
 										   loaded: true,
-										   sx:false, 
+										   sx:false,
 										   isRefreshing:false,
 										   isNull:false,
 									   })
-									  
-								   }			   
-							   console.log(result)			   
-							  
+
+								   }
+							   console.log(result)
+
 						})
 			            .catch((error) => {
 					that.setState({
-						    
-						   loaded: true,  
+
+						   loaded: true,
 						   sx:true,
-						   isReach:true,   
-                           isRefreshing:false,						   
+						   isReach:true,
+                           isRefreshing:false,
 						   dataSource: that.state.dataSource.cloneWithRows(['加载失败，请下拉刷新']),
-						    
+
 					   })
-					  
-				  }); 
+
+				  });
 	  }
-	  
-	 
-	  
-	    
-	
+
+
+
+
+
 }
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   tabView: {
     flex: 1,
-    flexDirection: 'column', 
-	backgroundColor:'#fafafa', 
-  },   
-  card: { 
+    flexDirection: 'column',
+	backgroundColor:'#fafafa',
+  },
+  card: {
     height:45,
 	backgroundColor:'#4385f4',
 	flexDirection:'row'
@@ -1169,8 +1163,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-       
-    },    
+
+    },
 
     loadingTitle: {
         marginTop: 10,
@@ -1183,7 +1177,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 40,
     },
- 
+
     footerTitle: {
         marginLeft: 10,
         fontSize: 15,
@@ -1195,6 +1189,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.55)',
     flex: 1,
     fontSize: 13,
-    
+
   },
 });

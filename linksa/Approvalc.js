@@ -2,7 +2,7 @@ import React from 'react';
 import {
     View,
 	StyleSheet,
-    Navigator, 
+    Navigator,
 	TouchableOpacity,
 	TouchableHighlight,
 	Text,
@@ -16,7 +16,7 @@ import {
 	RefreshControl,
 	ListView,
 } from 'react-native';
- 
+
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Token from './Token';
 import Workflowa from './Workflowa';
@@ -25,20 +25,20 @@ import Bxma from './Bxma';
 import qus from './qus';
 import Attendancema from './Attendancema';
 import Icon from 'react-native-vector-icons/Ionicons';
-let array = []; 
+let array = [];
 let aa=[];
 export default class Approvalb extends React.Component {
-    
+
     constructor(props) {
         super(props);
 		this._pressButton = this._pressButton.bind(this);
 			BackAndroid.addEventListener('hardwareBackPress', this._pressButton);
-		this.state = { 
+		this.state = {
 		  dataSource: new ListView.DataSource({
 			rowHasChanged: (row1, row2) => row1 !== row2,
 		  }),
 		  id: '',
-		  uid:'', 
+		  uid:'',
 		  datas:[],
 		  imgs:[],
 		  loaded: false,
@@ -57,18 +57,18 @@ export default class Approvalb extends React.Component {
             //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到了上一个页面了
             navigator.pop();
 			return true;
-        }  
+        }
 		return false;
     }
     componentDidMount() {
         //这里获取传递过来的参数: name
-		 array = []; 
+		 array = [];
          aa=[];
-		 
-	       this.fetchData('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '&p='+this.state.p); 
-		 
+
+	       this.fetchData('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '&p='+this.state.p);
+
     }
-	
+
 	toQueryString(obj) {
 		return obj ? Object.keys(obj).sort().map(function (key) {
 			var val = obj[key];
@@ -87,32 +87,32 @@ export default class Approvalb extends React.Component {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
-				  },  
-				  body: this.toQueryString({ 
-					'type': 3, 
-					'status': 2, 
-					'perPage': 10, 			
+				  },
+				  body: this.toQueryString({
+					'type': 3,
+					'status': 2,
+					'perPage': 10,
 				  })
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 if(result.data != ''){ 
+					 if(result.data != ''){
 					   result.data.forEach((Data,i) => {
 						   key={i}
 						   var IMG =  {uri: data.data.domain.slice(0,-6)+Data.from_avatar.slice(1)}
 						   aa.push(IMG)
 						   array.push(Data);
-						    
-						   
+
+
 					   })
 					  }
 					  if(result.count <= 10){
 						   that.setState({
 							   isReach:true,
 							   isLoadMore:false,
-							    
+
 						   })
 					  }
 					  if(result.data.length == 0){
@@ -124,45 +124,45 @@ export default class Approvalb extends React.Component {
 							   isNull:true,
 						   })
 					  }else if(array.length > result.count){
-						  
+
 						   that.setState({
 							   isReach:true,
 							   isLoadMore:false,
 							   isNull:false,
-							   
+
 						   })
 					   }else{
-						  
+
 						   that.setState({
 							   datas:result.data,
 							   imgs: aa,
 							   dataSource: that.state.dataSource.cloneWithRows(array),
 							   loaded: true,
-							   sx:false, 
+							   sx:false,
 							   isNull:false,
 						   })
-					   }			   
-					   		   
-					  
+					   }
+
+
 				})
 				.catch((error) => {
 					that.setState({
-						    
-						   loaded: true,  
+
+						   loaded: true,
 						   sx:true,
-						   isReach:true,                           
+						   isReach:true,
 						   dataSource: that.state.dataSource.cloneWithRows(['加载失败，请下拉刷新']),
-						    
+
 					   })
-					  
+
 				  });
-	
-	
+
+
 	}
-	 
-	   
-	_InfoBut(data){  
-		var { navigator } = this.props; 
+
+
+	_InfoBut(data){
+		var { navigator } = this.props;
 		var _this=this;
         if(navigator) {
 			InteractionManager.runAfterInteractions(() => {
@@ -171,46 +171,46 @@ export default class Approvalb extends React.Component {
 	                name: 'Workflowa',
 	                component: Workflowa,
 					params: {
-						data: data,             
+						data: data,
 					}
 	            })
 			 }else if(data.app_name == '报销管理'){
-				navigator.push({     
+				navigator.push({
 	                name: ' Bxma',
 	                component: Bxma,
 					params: {
-						data: data,     
-					}   
+						data: data,
+					}
 	            })
 			 }else if(data.app_name == '资产管理'){
-				navigator.push({     
+				navigator.push({
 	                name: '  Assetm',
 	                component: Assetm,
 					params: {
-						data: data,    
+						data: data,
 					}
 	            })
 			 }else if(data.app_name == '考勤管理'){
-				navigator.push({     
+				navigator.push({
 	                name: '  Attendancema',
 	                component: Attendancema,
 					params: {
-						data: data,    
+						data: data,
 					}
 	            })
 			 }else{
 			 	navigator.push({
 	                name: 'qus',
-	                component: qus 
+	                component: qus
 	            })
-			 }	
-              
+			 }
+
 			})
         }
-	}  
-	 
-	
-	
+	}
+
+
+
     render() {
           if(!this.state.loaded){
 		  return (
@@ -225,28 +225,28 @@ export default class Approvalb extends React.Component {
 		return(
 		 <ListView
 			dataSource={this.state.dataSource}
-			renderRow={this.renderMovie.bind(this)}  
-			onEndReached={this._onEndReach.bind(this) } 
+			renderRow={this.renderMovie.bind(this)}
+			onEndReached={this._onEndReach.bind(this) }
 			onEndReachedThreshold={2}
 			renderFooter={this._renderFooter.bind(this)}
 			refreshControl={
               <RefreshControl
                 refreshing={this.state.isRefreshing}
-                onRefresh={this._onRefresh.bind(this) } 
+                onRefresh={this._onRefresh.bind(this) }
                 colors={['#ff0000', '#00ff00', '#0000ff','#3ad564']}
 				progressBackgroundColor="#ffffff"
                 />
             }
 		  />
 		)
-	   
-		 
-				  
-				  
-     
+
+
+
+
+
     }
-	
-	
+
+
 	 renderMovie(data,sectionID: number, rowID: number) {
 		if(this.state.sx){
 			return(
@@ -262,9 +262,9 @@ export default class Approvalb extends React.Component {
 				    <Icon name="ios-folder-outline" color="#ccc"size={70}  />
 				    <Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18,}}>{data}</Text>
 				</View>
-			)     
+			)
 		}
-        else{		                                       
+        else{
 		return (
 		    <View style={{paddingTop:15, justifyContent:'center',alignItems:'center',}}>
 			   <View style={{backgroundColor:'#ddd',paddingTop:3,paddingBottom:3,paddingLeft:8,paddingRight:8,borderRadius:3,}}>
@@ -284,15 +284,15 @@ export default class Approvalb extends React.Component {
 							  <Icon name="ios-arrow-forward" color="#ccc"size={25}  />
 						  </TouchableOpacity>
 					   </View>
-					   
+
 				  </View>
 			   </View>
-			</View>  
-			)	
-		}			
+			</View>
+			)
+		}
 	  }
-	
-	  _renderFooter() { 
+
+	  _renderFooter() {
 		 if(this.state.isLoadMore){
 			 return (
 				<View style={styles.footer}>
@@ -301,58 +301,58 @@ export default class Approvalb extends React.Component {
 				</View>
 		  )
 		 }
-		  
-		 
+
+
 	  }
-	  
+
 	   // 下拉刷新
 	  _onRefresh() {
 		 this.setState({
 			   isRefreshing:true,
-			   isReach:false,  
+			   isReach:false,
 			   isLoadMore:false,
-               p:1,			   
+               p:1,
 		  })
-		  var that=this 
+		  var that=this
 		    fetch('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&p=1&access_token=' + data.data.token + '', {
 						  method: 'POST',
 						  headers: {
 							'Content-Type': 'application/x-www-form-urlencoded',
-						  },  
-						  body: this.toQueryString({ 
-							'type': 3, 
-							'status': 2, 
-							'perPage': 10, 			
+						  },
+						  body: this.toQueryString({
+							'type': 3,
+							'status': 2,
+							'perPage': 10,
 						  })
 						})
-						.then(function (response) {   
-							return response.json();	
+						.then(function (response) {
+							return response.json();
 						})
 						.then(function (result) {
-							  
+
 							  array=[];
 							  array.length = 0;
 							  aa=[];
 							  aa.length=0;
-							  if(result.data != ''){ 
+							  if(result.data != ''){
 								   result.data.forEach((Data,i) => {
-									   datax.push(Data.id);
 									   key={i}
 									   var IMG =  {uri: data.data.domain.slice(0,-6)+Data.from_avatar.slice(1)}
 									   aa.push(IMG)
 									   array.push(Data);
-									   
+
 								   })
 								  }
+
 							      if(result.count <= 10){
 									   that.setState({
 										   isReach:true,
 										   isLoadMore:false,
-										    
+                       sx:false,
 									   })
 								  }
 								  if(result.data.length == 0){
-								  that.setState({   
+								  that.setState({
 										   dataSource: that.state.dataSource.cloneWithRows(['暂无数据']),
 										   loaded: true,
 										   sx:false,
@@ -362,64 +362,66 @@ export default class Approvalb extends React.Component {
 										   isNull:true,
 									   })
 								  }else if(array.length > result.count){
-						                
+
 									   that.setState({
 										   isReach:true,
+                       sx:false,
 										   isLoadMore:false,
 										   isNull:false,
 									   })
 								   }else{
-									   that.setState({ 
+									   that.setState({
 										   imgs: aa,
 										   dataSource: that.state.dataSource.cloneWithRows(array),
 										   loaded: true,
-										   sx:false, 
+										   sx:false,
 										   isRefreshing:false,
 										   isNull:false,
 									   })
-									   
-								   }			   
-							     
-							  
+
+								   }
+
+
 						})
 			            .catch((error) => {
-					that.setState({
-						    
-						   loaded: true,  
-						   sx:true,
-						   isReach:true,   
-                           isRefreshing:false,						   
-						   dataSource: that.state.dataSource.cloneWithRows(['加载失败，请下拉刷新']),
-						    
-					   })
-					  
+
+        					that.setState({
+
+        						   loaded: true,
+        						   sx:true,
+        						   isReach:true,
+                       isRefreshing:false,
+        						   dataSource: that.state.dataSource.cloneWithRows(['加载失败，请下拉刷新']),
+
+        					   })
+
 				  });
-		   
+
 	  }
-	  
-	  _onEndReach() {  
-		  
+
+	  _onEndReach() {
+
 		  if(!this.state.isReach){
 			  this.setState({
 				  isLoadMore:true,
 				  p:this.state.p+1,
 			  })
 			 InteractionManager.runAfterInteractions(() => {
-				   this.fetchData('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '&p='+this.state.p); 
+				   this.fetchData('' + data.data.domain + '/index.php?app=Home&m=AuditApi&a=getAudit&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + '&p='+this.state.p);
 			})
 		  }
-		  
-		  
+
+
 	  }
-	
+
 }
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   tabView: {
     flex: 1,
-    flexDirection: 'column', 
-	backgroundColor:'#fafafa', 
-  },   
-  card: { 
+    flexDirection: 'column',
+	backgroundColor:'#fafafa',
+  },
+  card: {
     height:45,
 	backgroundColor:'#4385f4',
 	flexDirection:'row'
@@ -431,7 +433,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-       
+
     },
 
     loadingTitle: {
@@ -457,6 +459,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.55)',
     flex: 1,
     fontSize: 13,
-    
+
   },
 });

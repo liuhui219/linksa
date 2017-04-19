@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
     View,
 	StyleSheet,
-    Navigator, 
+    Navigator,
 	TouchableOpacity,
 	Text,
 	DatePickerAndroid,
@@ -14,13 +14,13 @@ import {
 	Animated,
 	TextInput,
 	ActivityIndicator,
-	BackAndroid, 
+	BackAndroid,
 	Dimensions,
 	Image
 } from 'react-native';
 import SelectPoeple from './SelectPoeple';
-import Icon from 'react-native-vector-icons/Ionicons';   
-var dataImpor = []; 
+import Icon from 'react-native-vector-icons/Ionicons';
+var dataImpor = [];
 export default class Marketm extends Component {
 
     constructor(props) {
@@ -28,7 +28,7 @@ export default class Marketm extends Component {
 		super(props);
 		this._pressButton = this._pressButton.bind(this);
 		BackAndroid.addEventListener('hardwareBackPress', this._pressButton);
-        this.state = {    
+        this.state = {
             datas:{},
             datasx:{},
 			Status:'',
@@ -39,9 +39,9 @@ export default class Marketm extends Component {
 			product:[],
 			poepledata:{},
 			modalshow:false,
-			modalshows:false,   
+			modalshows:false,
 			modalpoeple:false,
-			zidan:[],  
+			zidan:[],
 			zidan_id:'',
 			tj:'提交',
 			tjstatus:true,
@@ -55,19 +55,19 @@ export default class Marketm extends Component {
 			url:'',
 		};
     }
-    
-	componentDidMount() {  
+
+	componentDidMount() {
 	  this.timer = setTimeout(
-		  () => { this.fetchDataa(data.data.domain + this.props.data.checkInfo.detail_url+ '&access_token=' + data.data.token); 
-                  this.fetchDatab(data.data.domain + this.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);  
-                 },800); 
+		  () => { this.fetchDataa(data.data.domain + this.props.data.checkInfo.detail_url+ '&access_token=' + data.data.token);
+                  this.fetchDatab(data.data.domain + this.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);
+                 },800);
 	}
-	
-    componentWillUnmount() {        
-	  
+
+    componentWillUnmount() {
+
 	  this.timer && clearTimeout(this.timer);
-	  this.timerx && clearTimeout(this.timerx); 
-	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton);    
+	  this.timerx && clearTimeout(this.timerx);
+	  BackAndroid.removeEventListener('hardwareBackPress', this._pressButton);
 	}
 
 	toQueryString(obj) {
@@ -88,93 +88,93 @@ export default class Marketm extends Component {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
-				  },  
-				  body: this.toQueryString({ 
-					'id': this.props.data.con_id, 
-					'notify_id': this.props.data.id,		
+				  },
+				  body: this.toQueryString({
+					'id': this.props.data.con_id,
+					'notify_id': this.props.data.id,
 				  })
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 
+
 					 that.setState({
-						loaded:true, 
+						loaded:true,
 						loadedst:true,
 						datas: result.data,
-						datasx:result,						   
-					});  
-					         
+						datasx:result,
+					});
+
 				})
 				.catch((error) => {
-					that.setState({ 
-						   loaded:true,   
-						   statu:true,	 
-						   infos:'加载失败'  
+					that.setState({
+						   loaded:true,
+						   statu:true,
+						   infos:'加载失败'
 					   })
 					that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					  
+				  },1000)
+
 				  });
-	   
-	
+
+
 	}
-	
+
     fetchDatab(url) {
 		var that=this;
 		fetch(url, {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
-				  },  
-				  body: this.toQueryString({ 
-					'id': this.props.data.con_id, 
-					'notify_id': this.props.data.id,		
+				  },
+				  body: this.toQueryString({
+					'id': this.props.data.con_id,
+					'notify_id': this.props.data.id,
 				  })
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 
+
 					 that.setState({
-						historydata: result.data.slice(0,-1), 				
-					});  
+						historydata: result.data.slice(0,-1),
+					});
 					var aa=[];
-			        
+
 					if(result.data != null){
 					result.data.forEach((img, i) => {
 						key={i}
 						var IMG =  {uri:data.data.domain.slice(0,-6)+ img.img.slice(1)}
 						aa.push(IMG)
-						that.setState({     
-							imgsx: aa,   
-						});	
-					}) 
-				   }  
-					        
+						that.setState({
+							imgsx: aa,
+						});
+					})
+				   }
+
 				})
 				.catch((error) => {
-					that.setState({ 
-						   loaded:true,   
-						   statu:true,	 
-						   infos:'加载失败'  
+					that.setState({
+						   loaded:true,
+						   statu:true,
+						   infos:'加载失败'
 					   })
 					that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					  
+				  },1000)
+
 				  });
-	   
-	
+
+
 	}
-	
+
     _pressButton() {
 		dataImpor = [];
         var { navigator } = this.props;
@@ -182,211 +182,211 @@ export default class Marketm extends Component {
             //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到了上一个页面了
             navigator.pop();
 			return true;
-        }  
+        }
 		return false;
     }
-     
-	 
-    _lxr(visible){ 
-		 this.setState({modalshow: visible,url:''}); 
-	} 
 
-	_xz(url){  
-		 this.setState({modalshow: true,url:url}); 
-	} 
-   
-	_lxrs(visible){ 
-		 this.setState({modalshows: visible,poepledata:{},}); 
-	} 
 
-	_xzs(visible){ 
-		 this.setState({modalshows: visible,}); 
-	} 
+    _lxr(visible){
+		 this.setState({modalshow: visible,url:''});
+	}
 
-	_lmodalpoeple(visible){  
-		 this.setState({modalpoeple: visible,modalshows: true}); 
-		 
-	} 
+	_xz(url){
+		 this.setState({modalshow: true,url:url});
+	}
 
-	_xmodalpoeple(visible){  
-		 this.setState({modalpoeple: visible,modalshows: false}); 
-		 
-	} 
-    
+	_lxrs(visible){
+		 this.setState({modalshows: visible,poepledata:{},});
+	}
+
+	_xzs(visible){
+		 this.setState({modalshows: visible,});
+	}
+
+	_lmodalpoeple(visible){
+		 this.setState({modalpoeple: visible,modalshows: true});
+
+	}
+
+	_xmodalpoeple(visible){
+		 this.setState({modalpoeple: visible,modalshows: false});
+
+	}
+
     _select(data){
-		 
-		this.setState({ 
-			modalpoeple: false, 
+
+		this.setState({
+			modalpoeple: false,
 			modalshows: true,
 			poepledata:data,
-			}); 
-		
+			});
+
 	}
-    
+
     _delets(){
-    	this.setState({  
+    	this.setState({
 			poepledata:{},
-			}); 
+			});
     }
 
 
     tijiao(){
     	var that=this;
-    	this.setState({  
+    	this.setState({
 			tj:'正在提交...',
 			tjstatus:false,
-			}); 
+			});
 		fetch(this.state.url, {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
-				  },  
-				  body: this.toQueryString({ 
-					'id': this.props.data.con_id, 
-					'reply_text': this.state.textaera,	
-					'next_uid':0,	
+				  },
+				  body: this.toQueryString({
+					'id': this.props.data.con_id,
+					'reply_text': this.state.textaera,
+					'next_uid':0,
 				  })
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 
+
 					 that.setState({
-						modalshow:false, 
-						tj:'提交', 
-						tjstatus:true,	
-						statu:true,		
+						modalshow:false,
+						tj:'提交',
+						tjstatus:true,
+						statu:true,
 						loadedst:false,
-						infos:'审批成功'   
-					}); 
-					that.fetchDatab(data.data.domain + that.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);  
+						infos:'审批成功'
+					});
+					that.fetchDatab(data.data.domain + that.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);
 					if(that.props.getUser) {
 							let user = true;
-							that.props.getUser(user);         
-						} 
+							that.props.getUser(user);
+						}
 					that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					         
+				  },1000)
+
 				})
 				.catch((error) => {
-					that.setState({ 
-						   
-						   tjstatus:true,   
-						   statu:true,	
-						   tj:'提交', 
-						   infos:'审批失败'  
+					that.setState({
+
+						   tjstatus:true,
+						   statu:true,
+						   tj:'提交',
+						   infos:'审批失败'
 					   })
 					that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					  
+				  },1000)
+
 				  });
-		 
+
     }
 
     tijiaos(){
     	var that=this;
     	if(JSON.stringify(this.state.poepledata) == "{}"){
 
-    		this.setState({ 
-						statur:true,		
-						infos:'请选择审批人'						   
-					});  
+    		this.setState({
+						statur:true,
+						infos:'请选择审批人'
+					});
 					 this.timerx = setTimeout(() => {
-						  this.setState({   
+						  this.setState({
 							 statur:false,
 						})
-					  },1500) 
-    		
+					  },1500)
+
     	}else{
-    	this.setState({  
+    	this.setState({
 			tj:'正在提交...',
 			tjstatus:false,
-			}); 
+			});
 		fetch(data.data.domain + this.props.data.checkInfo.next_check_url + '&access_token=' + data.data.token, {
 				  method: 'POST',
 				  headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
-				  },  
-				  body: this.toQueryString({ 
-					'id': this.props.data.con_id, 
-					'reply_text': this.state.textaeras,	
+				  },
+				  body: this.toQueryString({
+					'id': this.props.data.con_id,
+					'reply_text': this.state.textaeras,
 					'next_uid':this.state.poepledata.uid,
 				  })
 				})
-				.then(function (response) {   
-                    return response.json();	
+				.then(function (response) {
+                    return response.json();
 				})
 				.then(function (result) {
-					 
+
 					 that.setState({
 					 	modalshows:false,
-						tj:'提交', 
-						tjstatus:true,	
+						tj:'提交',
+						tjstatus:true,
 						loadedst:false,
 						poepledata:{},
-						statu:true,		
-						infos:'审批成功'						   
-					});  
-					that.fetchDatab(data.data.domain + that.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);  
+						statu:true,
+						infos:'审批成功'
+					});
+					that.fetchDatab(data.data.domain + that.props.data.checkInfo.check_history_url+ '&access_token=' + data.data.token);
 					if(that.props.getUser) {
 							let user = true;
-							that.props.getUser(user);         
-						} 
+							that.props.getUser(user);
+						}
 					 that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					         
+				  },1000)
+
 				})
 				.catch((error) => {
-					that.setState({ 
-						    
-						   tjstatus:true,   
-						   statu:true,	
-						   tj:'提交',              
-						   infos:'审批失败'  
+					that.setState({
+
+						   tjstatus:true,
+						   statu:true,
+						   tj:'提交',
+						   infos:'审批失败'
 					   })
 					that.timerx = setTimeout(() => {
-					  that.setState({   
+					  that.setState({
 						 statu:false,
 					})
-				  },1000) 
-					  
+				  },1000)
+
 				  });
     }
 }
     render() {
-    return ( 
+    return (
 	   <View style={{flex:1,flexDirection:'column',backgroundColor:'#fff'}}>
                 <View style={styles.card}>
 				  <View style={{flex:1,justifyContent:'center'}}>
 							 <TouchableOpacity onPress={this._pressButton.bind(this)}>
-								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+								  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 								        <Image source={require('./imgs/back.png')} style={{width: 25, height: 25,marginLeft:5,}} />
 										<Text style={{color:'white',fontSize:16,marginLeft:-5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>返回</Text>
 								  </View>
-							</TouchableOpacity>  
-				  </View>    
+							</TouchableOpacity>
+				  </View>
 				  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>  
+							<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
 										<Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>已审批</Text>
 							</View>
-				  </View> 
-				  <View style={{flex:1,justifyContent:'center'}}>   
-							 <TouchableOpacity>  
-								  <View style={{justifyContent:'flex-end',flexDirection:'row',alignItems:'center'}}>  
-										 
+				  </View>
+				  <View style={{flex:1,justifyContent:'center'}}>
+							 <TouchableOpacity>
+								  <View style={{justifyContent:'flex-end',flexDirection:'row',alignItems:'center'}}>
+
 								  </View>
-							</TouchableOpacity>  
-				  </View>  
+							</TouchableOpacity>
+				  </View>
 				</View>
 				{!this.state.loaded ? <View style={{justifyContent: 'center',alignItems: 'center',flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 					<View style={styles.loading}>
@@ -396,116 +396,116 @@ export default class Marketm extends Component {
 			    </View> : <ScrollView style={{flex:1,flexDirection:'column',backgroundColor:'#ececec'}}>
 				     <View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:0}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>操作人</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 								<Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}}>
 									{this.props.data.from_name}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>来自</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    {this.props.data.app_name ? <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.props.data.app_name}
 								</Text> : <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.stat}
 								</Text>
-								} 
-							</View>  
-						</View>  
+								}
+							</View>
+						</View>
 					</View>
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>创建日期</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.props.data.stime}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,marginTop:15,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>客户</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.gys}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
-					 
+
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>金额</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.count_price}
 								</Text>
-							</View>  
-						</View>  
-					</View> 
-					
+							</View>
+						</View>
+					</View>
+
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>抹零金额</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.ml_price}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>数量</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.num}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 
 					<View style={{flexDirection:'row',height:50,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>订单类型</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,height:50,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.ordercates}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 
                     <View style={{flexDirection:'row',paddingTop:18,paddingBottom:18,backgroundColor:'#fff',alignItems:'center',justifyContent:'center',borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:10,}}>
 					    <Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>备注</Text>
-						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,}}> 
-						 
+						<View  style={{flex:1,marginLeft:15,flexDirection:'row',alignItems:'center',paddingRight:10,}}>
+
 							<View style={{flex:1,}}>
 							    <Text style={{fontSize:14,textAlign:'right',paddingRight:15, alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>
 									{this.state.datas.info.mark}
 								</Text>
-							</View>  
-						</View>  
+							</View>
+						</View>
 					</View>
 
-					 
+
                     {this.state.datas.product.list.length > 0 ? <View style={{paddingTop:10,paddingBottom:10,paddingLeft:10,backgroundColor:'#fff',flexDirection:'row',borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:15,}}><Text style={{fontSize:16,}} allowFontScaling={false} adjustsFontSizeToFit={false}>订单详情</Text><Text style={{fontSize:14,color:'#aaa',marginLeft:5}} allowFontScaling={false} adjustsFontSizeToFit={false}>(左右滑动查看更多)</Text></View> : null}
-                    <ScrollView 			          
+                    <ScrollView
                       automaticallyAdjustContentInsets={false}
 			          horizontal={true}
 			          directionalLockEnabled ={true}
@@ -516,27 +516,27 @@ export default class Marketm extends Component {
 
                     {this.state.datas.product.list.length > 0 ? <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff',paddingBottom:10,paddingTop:10,borderBottomWidth:1,borderColor:'#dcdcdc',paddingLeft:5,paddingRight:5}}>
                         <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>产品</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>规格</Text></View>      
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>规格</Text></View>
                         <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>销售价</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>生产数量</Text></View>
-                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>损耗数量</Text></View>
- 
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>销售数</Text></View>
+                        <View style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,alignItems:'center'}} allowFontScaling={false} adjustsFontSizeToFit={false}>已出库</Text></View>
+
 					</View> : null}
-					 
-					{this.state.datas.product.list.length > 0 ? this.state.datas.product.list.map((data,i) =>{ 
+
+					{this.state.datas.product.list.length > 0 ? this.state.datas.product.list.map((data,i) =>{
 						return  <View key={i} style={{flexDirection:'row',justifyContent:'space-between',flex:1,paddingRight:5,paddingLeft:5,paddingTop:18,paddingBottom:18,backgroundColor:'#fff',borderBottomWidth:1,borderColor:'#dcdcdc',}}>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.proName}</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.formatname}</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.price}</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.num}/({data.xxnum}{data.unitName}/{data.relation})</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.intoStoreNum}</Text></View>
-	
-					       
+
+
 					</View>
 					}) : null}
                     {this.state.datas.product.zidan_id.length > 0 ?<View style={{paddingTop:10,paddingBottom:10,paddingLeft:10,backgroundColor:'#fff',flexDirection:'row',borderBottomWidth:1,borderColor:'#dcdcdc',marginTop:2}}><Text style={{fontSize:16,}} allowFontScaling={false} adjustsFontSizeToFit={false}>子单</Text></View> : null}
-					{this.state.datas.product.zidan_id.length > 0 ? this.state.datas.product.zidan_id.map((datas,i) =>{ 
-						  
+					{this.state.datas.product.zidan_id.length > 0 ? this.state.datas.product.zidan_id.map((datas,i) =>{
+
 						 return datas.data.map((data,i) =>{
                              return  <View key={i} style={{flexDirection:'row',justifyContent:'space-between',flex:1,paddingRight:5,paddingLeft:5,paddingTop:18,paddingBottom:18,backgroundColor:'#fff',borderBottomWidth:1,borderColor:'#dcdcdc',}}>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.proName}</Text></View>
@@ -544,17 +544,17 @@ export default class Marketm extends Component {
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.price}</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.num}/({data.xxnum}{data.unitName}/{data.relation})</Text></View>
 					        <View  style={{flex:1,alignItems:'center',width:(Dimensions.get('window').width)/4,}}><Text style={{fontSize:14,color:'#666',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.intoStoreNum}</Text></View>
-	
-					       
+
+
 					</View>
 						   })
-						
+
 					}) : null}
 					</View>
                     </ScrollView>
 
-                     
-                    
+
+
 
                    <View style={{marginTop:15,backgroundColor:'#fff',}}>
                         {this.state.historydata.length > 0 ? <View style={{paddingLeft:10,paddingRight:10,paddingTop:7,paddingBottom:7,borderBottomWidth:1,borderColor:'#ececec',flexDirection:'row',justifyContent:'space-between'}}>
@@ -571,54 +571,54 @@ export default class Marketm extends Component {
 									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{data.apply_name}</Text>
 									  <Text allowFontScaling={false} adjustsFontSizeToFit={false}>{data.inserttime}</Text>
 								   </View>
-								   <Text style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,paddingTop:5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.reply_text} 
-								   </Text> 
+								   <Text style={{color:'#aaa',fontSize:14,flexWrap:'wrap',flex:1,paddingTop:5,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{data.reply_text}
+								   </Text>
 								</View>
 							  </View>
-						}) : null}    
-						
+						}) : null}
+
 					</View>
-                    
-                    
-                     
+
+
+
 				</ScrollView>}
-				 
+
 				<View>
 					   <Modal
 					      animationType={"slide"}
 						  transparent={false}
-						  visible={this.state.modalshow}            
-						  onRequestClose={() => {console.log("Modal has been closed.")}} 
+						  visible={this.state.modalshow}
+						  onRequestClose={() => {console.log("Modal has been closed.")}}
 					   >
 					      <View style={styles.card}>
 					          <TouchableOpacity onPress={this._lxr.bind(this,false)} style={{flex:1}}>
 								  <View style={{flex:1,justifyContent:'center'}}>
-										
-											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+
+											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
-										 
-								  </View> 
-							  </TouchableOpacity>    
-							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
-										 
+
+								  </View>
+							  </TouchableOpacity>
+							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+
 										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
-										 
-							  </View> 
-							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
-																  
-							  </View>         
+
+							  </View>
+							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>
+
+							  </View>
 							</View>
 							<ScrollView style={{flex:1,backgroundColor:'#ececec'}}>
-							   <View style={{padding:10,backgroundColor:'#fff'}}>  
-							        <TextInput 
+							   <View style={{padding:10,backgroundColor:'#fff'}}>
+							        <TextInput
 									  onChangeText={(textaera) => this.setState({textaera})}
 									  multiline={true}
 									  numberOfLines={5}
-									  placeholderTextColor={'#ccc'} 
+									  placeholderTextColor={'#ccc'}
 									  style={{ color:'#666',fontSize:14,textAlignVertical:'top',height:170,}}
 									  placeholder='不说点什么...'
-									  underlineColorAndroid={'transparent'} 
+									  underlineColorAndroid={'transparent'}
 									/>
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiao.bind(this)} underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
@@ -630,12 +630,12 @@ export default class Marketm extends Component {
 					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
-							   
+
 							</ScrollView>
 							{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
-				            </Animated.View> : null} 
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>
+				            </Animated.View> : null}
 					   </Modal>
 					</View>
 
@@ -643,38 +643,38 @@ export default class Marketm extends Component {
 					   <Modal
 					      animationType={"slide"}
 						  transparent={false}
-						  visible={this.state.modalshows}            
-						  onRequestClose={() => {console.log("Modal has been closed.")}} 
+						  visible={this.state.modalshows}
+						  onRequestClose={() => {console.log("Modal has been closed.")}}
 					   >
 					      <View style={styles.card}>
 					          <TouchableOpacity onPress={this._lxrs.bind(this,false)} style={{flex:1}}>
 								  <View style={{flex:1,justifyContent:'center'}}>
-										
-											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+
+											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
-										 
-								  </View> 
-							  </TouchableOpacity>    
-							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
-										 
+
+								  </View>
+							  </TouchableOpacity>
+							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+
 										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>审批</Text>
-										 
-							  </View> 
-							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
-																  
-							  </View>         
+
+							  </View>
+							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>
+
+							  </View>
 							</View>
 							<ScrollView style={{flex:1,backgroundColor:'#ececec'}}>
-							   <View style={{padding:10,backgroundColor:'#fff'}}>  
-							        <TextInput 
+							   <View style={{padding:10,backgroundColor:'#fff'}}>
+							        <TextInput
 									  onChangeText={(textaeras) => this.setState({textaeras})}
 									  multiline={true}
 									  numberOfLines={5}
-									  placeholderTextColor={'#ccc'} 
+									  placeholderTextColor={'#ccc'}
 									  style={{ color:'#666',fontSize:14,textAlignVertical:'top',height:170,}}
 									  placeholder='不说点什么...'
-									  underlineColorAndroid={'transparent'} 
+									  underlineColorAndroid={'transparent'}
 									/>
 							  </View>
 							  <View style={{backgroundColor:'#fff',marginTop:15,flexDirection:'column',paddingLeft:10,paddingTop:10,paddingBottom:10,}}>
@@ -685,12 +685,12 @@ export default class Marketm extends Component {
                                  <View style={{marginTop:15,flexDirection:'row',alignItems:'center',}}>
                                      {this.state.poepledata.name ? <TouchableOpacity onPress={this._delets.bind(this)} activeOpacity={1}><View style={{backgroundColor:'#60a9e8',paddingBottom:8,paddingTop:8,paddingLeft:10,paddingRight:10,marginRight:10,borderRadius:3}}>
                                         <Text style={{color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.poepledata.name}</Text>
-                                     </View></TouchableOpacity> : null}  
+                                     </View></TouchableOpacity> : null}
                                     <TouchableOpacity style={{width:46,height:46,marginTop:5,alignItems:'center',justifyContent:'center'}} onPress={this._xmodalpoeple.bind(this,true)}>
-                                      
+
                                       <Icon name="ios-add-circle-outline" color="#ccc"size={46}  />
- 
-                                    </TouchableOpacity> 
+
+                                    </TouchableOpacity>
                                  </View>
 							  </View>
 							  {this.state.tjstatus ? <TouchableHighlight onPress={this.tijiaos.bind(this)}  underlayColor="rgba(82, 132, 216,0.7)" style={{marginLeft:10,marginRight:10,marginTop:40, borderWidth:1,borderColor:'#ececec',borderRadius:5,paddingTop:10,paddingBottom:10, justifyContent:'center',alignItems:'center',backgroundColor:'#4385f4'}}>
@@ -702,14 +702,14 @@ export default class Marketm extends Component {
 					                <Text style={{fontSize:18, color:'#fff'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.tj}</Text>
 					            </View>
 					          </TouchableHighlight>}
-							   
+
 							</ScrollView>
 							{this.state.statur ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 							  <Icon name="ios-close-outline" color="#fff"size={36}  />
-							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
+							  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>
 				            </Animated.View> : null}
 					   </Modal>
-					   
+
 					</View>
 
 
@@ -718,27 +718,27 @@ export default class Marketm extends Component {
 					   <Modal
 					      animationType={"slide"}
 						  transparent={false}
-						  visible={this.state.modalpoeple}            
-						  onRequestClose={() => {console.log("Modal has been closed.")}} 
+						  visible={this.state.modalpoeple}
+						  onRequestClose={() => {console.log("Modal has been closed.")}}
 					   >
 					      <View style={styles.card}>
 					          <TouchableOpacity onPress={this._lmodalpoeple.bind(this,false)} style={{flex:1}}>
 								  <View style={{flex:1,justifyContent:'center'}}>
-										
-											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>  
+
+											  <View style={{justifyContent:'flex-start',flexDirection:'row',alignItems:'center',}}>
 													<Text style={{color:'white',fontSize:16,paddingLeft:10,}} allowFontScaling={false} adjustsFontSizeToFit={false}>取消</Text>
 											  </View>
-										 
-								  </View> 
-							  </TouchableOpacity>    
-							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>   
-										 
+
+								  </View>
+							  </TouchableOpacity>
+							  <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+
 										  <Text style={{color:'white',fontSize:16}} allowFontScaling={false} adjustsFontSizeToFit={false}>选择审批人</Text>
-										 
-							  </View> 
-							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>   
-																  
-							  </View>         
+
+							  </View>
+							  <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>
+
+							  </View>
 							</View>
 							<View style={{flex:1}}>
                                <SelectPoeple _select={this._select.bind(this)}/>
@@ -747,22 +747,22 @@ export default class Marketm extends Component {
 					</View>
 					{this.state.statu ? <Animated.View style={{ padding:10,width:200,backgroundColor:'rgba(23, 22, 22, 0.7)',justifyContent:'flex-start',alignItems:'center',position:'absolute',top:(Dimensions.get('window').height-150)/2,left:(Dimensions.get('window').width-200)/2,}}>
 					  <Icon name="ios-close-outline" color="#fff"size={36}  />
-					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>   
+					  <Text style={{fontSize:16,color:'#fff',marginTop:20,}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.infos}</Text>
 		            </Animated.View> : null}
-	  </View>	   
-	  
+	  </View>
+
     );
-    }    
+    }
 }
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   tabView: {
     flex: 1,
-    flexDirection: 'column', 
-	backgroundColor:'#fafafa', 
-  },   
-  card: { 
+    flexDirection: 'column',
+	backgroundColor:'#fafafa',
+  },
+  card: {
     height:45,
-	backgroundColor:'#4385f4', 
+	backgroundColor:'#4385f4',
 	flexDirection:'row'
   },
   default: {
@@ -771,7 +771,7 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.55)',
     flex: 1,
     fontSize: 13,
-    
+
   },
   loading: {
         backgroundColor: 'gray',
@@ -780,7 +780,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-       
+
     },
 
     loadingTitle: {

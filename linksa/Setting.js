@@ -88,7 +88,7 @@ export default class Setting extends React.Component {
 		fetch('http://www.linksame.com/phone/update.php')
 		  .then((response) => response.json())   
 		  .then((responseData) => { 
-               if(responseData.cache == '2.0.2'){
+               if(responseData.cache == '2.0.5'){
 				   this.setState({statust:false,_update:false,_infos:true,info:'已是最新版'})
 			   }else{
 				   this.setState({statust:true,_update:false,_infos:false,info:'',})

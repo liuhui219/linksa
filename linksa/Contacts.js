@@ -275,7 +275,7 @@ export default class Contacts extends Component {
 		 <View style={{flex:1,flexDirection:'row',overflow:'hidden'}}>
 		  <View style={{flex:1,paddingRight:20,}} >
 			  <ListView
-			    ref="myScroll"
+			    ref="myScroll" 
 				dataSource={this.state.dataSource}
 				renderRow={this.renderRow.bind(this)}
 				renderHeader={this.renderHeader} 
@@ -283,6 +283,7 @@ export default class Contacts extends Component {
 				renderSectionHeader={this.renderSectionHeader} 
 				initialListSize={3}
 				showsVerticalScrollIndicator={false}
+				stickySectionHeadersEnabled={true}
 				pageSize={10} 
 			  />  
 		  </View>    

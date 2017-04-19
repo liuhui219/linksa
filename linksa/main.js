@@ -1,10 +1,10 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react';
 import {
   StyleSheet,
   AppRegistry,
   Text,
-  TouchableOpacity, 
-  View, 
+  TouchableOpacity,
+  View,
   Image,
   NetInfo,
   ListView,
@@ -17,6 +17,7 @@ import {
   ToastAndroid,
   BackAndroid,
   DatePickerAndroid,
+  ActivityIndicator,
   Easing,
   TouchableHighlight,
 } from 'react-native';
@@ -25,7 +26,7 @@ import Home from './Home';
 import FacebookTabBar from './FacebookTabBar';
 import SecondPageComponent from './SecondPageComponent';
 import TabNavigator from 'react-native-tab-navigator';
-import Calendar from './Calendar'; 
+import Calendar from './Calendar';
 import Contacts from './Contacts';
 import News from './News';
 import Add from './Add';
@@ -34,50 +35,58 @@ import Application from './Application';
 import Approval from './Approval';
 import Operation from './Operation';
 import Token from './Token';
+import qus from './qus';
+import leave from './leave';
+import business from './business';
+import out from './out';
+import Bcard from './Bcard';
+import creatBX from './creatBX';
+import jiaB from './jiaB';
+import SQoffice from './SQoffice';
 import Icon from 'react-native-vector-icons/Ionicons';
 import weather from './weather';
 import PushNotification from 'react-native-push-notification';
-import ScrollableTabView from 'react-native-scrollable-tab-view'; 
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import {
   MapView,
   MapTypes,
   Geolocation
-} from 'react-native-baidu-map'; 
+} from 'react-native-baidu-map';
 import io from "socket.io-client/socket.io";
 window.navigator.userAgent = "react-native";
 const socket = io('http://192.168.1.156:3000',{ jsonp:false});
 
 socket.on('newMsg',(user, msg, color) => {
 			PushNotification.localNotification({
-			 
-				id: '0', 
-				ticker: "My Notification Ticker", 
-				autoCancel: true, 
-				largeIcon: "ic_launcher", 
-				smallIcon: "ic_notification", 
-				bigText: "My big text that will be shown when notification is expanded", 
-				subText: msg, 
-				color: "blue", 
-				vibrate: true,  
-				vibration: 300, 
-				tag: 'some_tag', 
-				group: "group", 
-				ongoing: false,  
-				title: msg, 
-				message: "今天天气很好！！！",  
-				playSound: true,    
-				soundName: 'default',            
+
+				id: '0',
+				ticker: "My Notification Ticker",
+				autoCancel: true,
+				largeIcon: "ic_launcher",
+				smallIcon: "ic_notification",
+				bigText: "My big text that will be shown when notification is expanded",
+				subText: msg,
+				color: "blue",
+				vibrate: true,
+				vibration: 300,
+				tag: 'some_tag',
+				group: "group",
+				ongoing: false,
+				title: msg,
+				message: "今天天气很好！！！",
+				playSound: true,
+				soundName: 'default',
 				number: '1' // (Android only) See the doc for notification actions to know more
-			}); 
+			});
 		})
- 
+
 export default class FacebookExample extends Component {
-	constructor(props) { 
+	constructor(props) {
 		super(props);
         BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
-		this.state = {   
-			tabNames: ['消息', '通讯录', '应用',  '我的'], 
-			Barleft: '消息',  
+		this.state = {
+			tabNames: ['消息', '通讯录', '应用',  '我的'],
+			Barleft: '消息',
 			selectedTab:'home',
 			isshow:false,
 			bars:'light-content',
@@ -90,6 +99,10 @@ export default class FacebookExample extends Component {
 			bot2: new Animated.Value(-120),
 			bot3: new Animated.Value(-120),
 			bot4: new Animated.Value(-120),
+      bot5: new Animated.Value(-120),
+      bot6: new Animated.Value(-120),
+      bot7: new Animated.Value(-120),
+      bot8: new Animated.Value(-120),
 			weekday:['日','一','二','三','四','五','六'],
 			bgc:'#4385f4',
 			isshows:false,
@@ -102,57 +115,58 @@ export default class FacebookExample extends Component {
 			infos:'',
 			times:'',
 			weathers:false,
+      reloadsd:true,
 		};
 	}
-	
+
     componentDidMount() {
-		
+
 		this.location();
 	}
-	componentWillUnmount() { 
-	    
-	    BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid); 
-	
+	componentWillUnmount() {
+
+	    BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+
 	}
-    
-	
+
+
 	location(){
 		var that = this;
 		Geolocation.getCurrentPosition()
-              .then(data => { 
-				  if(data.country == undefined){  
+              .then(data => {
+				  if(data.country == undefined){
 					  this.setState({
-						 
-						  statua: true,                                                          
+
+						  statua: true,
 			              loaded: true,
 					  })
-                      
-				  }else{    
-					 this.setState({    
+
+				  }else{
+					 this.setState({
 						  map:data.address,
 						  longitude:data.longitude,
 						  latitude:data.latitude,
-						  isfalse:true, 
-						  location:data.latitude +':'+ data.longitude,  
+						  isfalse:true,
+						  location:data.latitude +':'+ data.longitude,
 					  })
 					  that.fetchData();
 				  }
               })
               .catch(e =>{
-               
+
               })
-		
-		
-	 
+
+
+
  }
-	
+
 	fetchData(){
      fetch('https://api.thinkpage.cn/v3/weather/now.json?key=ptzo3jrfv3tq1wez&location='+this.state.location+'&language=zh-Hans&unit=c')
-		  .then((response) => response.json())   
-		  .then((responseData) => {  
-		  
+		  .then((response) => response.json())
+		  .then((responseData) => {
+
               console.log(responseData)
-              this.setState({Datas:responseData.results[0],times:responseData.results[0].last_update.slice(11,16),weathers:true,});
+              this.setState({Datas:responseData.results[0],times:responseData.results[0].last_update.slice(11,16),weathers:true,reloadsd:true,});
               if(responseData.results[0].now['code'] == 0){
                  this.setState({images:require('./imgs/weather/0.png'),infos:'晴'})
               }else if(responseData.results[0].now['code'] == 1){
@@ -230,22 +244,23 @@ export default class FacebookExample extends Component {
               }
 		  })
 		  .catch((error) => {
-			  
-			                                                                      
+
+
 		  });
  }
-	
-	
+
+
 	reloads(){
 		this.location();
+    this.setState({reloadsd:false,})
 	 }
-	 
+
 	 ck(){
 		var that = this;
 		this.setState({
 		  bgc:'#4385f4',
 	    })
-		var { navigator } = this.props; 
+		var { navigator } = this.props;
 			if(navigator) {
 				InteractionManager.runAfterInteractions(() => {
 				navigator.push({
@@ -269,17 +284,21 @@ export default class FacebookExample extends Component {
 				bot2: new Animated.Value(-120),
 				bot3: new Animated.Value(-120),
 				bot4: new Animated.Value(-120),
+        bot5: new Animated.Value(-120),
+        bot6: new Animated.Value(-120),
+        bot7: new Animated.Value(-120),
+        bot8: new Animated.Value(-120),
 	        })
        },800);
 	 }
-	
-	
+
+
     onBackAndroid = () => {
-       
-        if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {  
-            return false; 
+
+        if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+            return false;
         }
-                  
+
 		this.lastBackPressed = Date.now();
 
 		ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
@@ -287,17 +306,17 @@ export default class FacebookExample extends Component {
 		return true;
 
 	};
-    
-	adds(){
+
+	adds(demo){
 		this.setState({
 		  bgc:'#4385f4',
 	  })
-	var { navigator } = this.props; 
+	var { navigator } = this.props;
         if(navigator) {
 			InteractionManager.runAfterInteractions(() => {
             navigator.push({
-                name: 'Add',
-                component: Add,
+                name: demo,
+                component: demo,
             })
 			})
         }
@@ -311,20 +330,56 @@ export default class FacebookExample extends Component {
 				bot2: new Animated.Value(-120),
 				bot3: new Animated.Value(-120),
 				bot4: new Animated.Value(-120),
+        bot5: new Animated.Value(-120),
+        bot6: new Animated.Value(-120),
+        bot7: new Animated.Value(-120),
+        bot8: new Animated.Value(-120),
 	        })
        },800);
 }
-	
-	
-    Gdate(n){   
+    gust(){
+		this.setState({
+		  bgc:'#4385f4',
+	  })
+	var { navigator } = this.props;
+        if(navigator) {
+			InteractionManager.runAfterInteractions(() => {
+            navigator.push({
+                name: 'qus',
+                component: qus,
+            })
+			})
+        }
+        setTimeout(()=>{
+	        this.setState({
+	          isshow: false,
+	          bars:'light-content',
+	          opacitys:new Animated.Value(0),
+				bot1: new Animated.Value(-120),
+				spin: new Animated.Value(0),
+				bot2: new Animated.Value(-120),
+				bot3: new Animated.Value(-120),
+				bot4: new Animated.Value(-120),
+        bot5: new Animated.Value(-120),
+        bot6: new Animated.Value(-120),
+        bot7: new Animated.Value(-120),
+        bot8: new Animated.Value(-120),
+	        })
+       },800);
+}
+
+
+
+
+    Gdate(n){
 	  if(n<10){
 	     return '0'+n;
-	  }  
-	   else{ 
+	  }
+	   else{
 	       return ''+n;
 	  }
-	}	
-	
+	}
+
   oncancel(){
 	  this.setState({
 		  bgc:'#4385f4',
@@ -333,127 +388,197 @@ export default class FacebookExample extends Component {
       this.setState({
           isshow: false,
           bars:'light-content',
-		  
+
         })
        },450);
       Animated.parallel([
-    Animated.timing(         
-       this.state.bot1,    
+    Animated.timing(
+       this.state.bot1,
        {toValue: -120,
         duration: 300,
         delay:250,
         easing: Easing.elastic(1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot2,    
+    Animated.timing(
+       this.state.bot2,
        {toValue: -120,
         duration: 300,
         delay:200,
         easing: Easing.elastic(1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot3,    
+    Animated.timing(
+       this.state.bot3,
        {toValue: -120,
         duration: 300,
         delay:150,
         easing: Easing.elastic(1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot4,    
+    Animated.timing(
+       this.state.bot4,
        {toValue: -120,
         duration: 300,
         delay:100,
         easing: Easing.elastic(1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.opacitys,    
+    Animated.timing(
+       this.state.bot5,
+       {toValue: -120,
+        duration: 300,
+        delay:250,
+        easing: Easing.elastic(1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.bot6,
+       {toValue: -120,
+        duration: 300,
+        delay:200,
+        easing: Easing.elastic(1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.bot7,
+       {toValue: -120,
+        duration: 300,
+        delay:150,
+        easing: Easing.elastic(1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.bot8,
+       {toValue: -120,
+        duration: 300,
+        delay:100,
+        easing: Easing.elastic(1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.opacitys,
        {toValue: -0,
         duration: 300,
-        delay:200, 
-      },          
+        delay:200,
+      },
     ),
-    Animated.timing(         
-       this.state.spin,    
+    Animated.timing(
+       this.state.spin,
        {toValue: 0,
         duration: 400,
         easing: Easing.elastic(1),
-      },          
+      },
     )
     ]).start();
   }
 
-  
+
   onclick(){
   	this.setState({
 	  bgc:'rgb(230,230,230)',
-      isshow: true, 
+      isshow: true,
       bars:'default',
       day:'星期'+this.state.weekday[new Date().getDay()],
       date:this.Gdate(new Date().getDate()),
       yearM:this.Gdate(new Date().getMonth()+1)+'/'+ new Date().getFullYear(),
     });
   Animated.parallel([
-    Animated.timing(         
-       this.state.bot1,    
-       {toValue: 200,
+    Animated.timing(
+       this.state.bot1,
+       {toValue: 220,
         duration: 300,
         delay:100,
         easing: Easing.elastic(1.1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot2,    
-       {toValue: 200,
+    Animated.timing(
+       this.state.bot2,
+       {toValue: 220,
         duration: 300,
         delay:150,
         easing: Easing.elastic(1.1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot3,    
-       {toValue: 200,
+    Animated.timing(
+       this.state.bot3,
+       {toValue: 220,
         duration: 300,
         delay:200,
         easing: Easing.elastic(1.1),
-      },          
+      },
     ),
 
-    Animated.timing(         
-       this.state.bot4,    
-       {toValue: 200,
+    Animated.timing(
+       this.state.bot4,
+       {toValue: 220,
         duration: 300,
         delay:250,
         easing: Easing.elastic(1.1),
-      },          
+      },
+    ),
+    Animated.timing(
+       this.state.bot5,
+       {toValue: 110,
+        duration: 300,
+        delay:100,
+        easing: Easing.elastic(1.1),
+      },
+    ),
+    Animated.timing(
+       this.state.bot6,
+       {toValue: 110,
+        duration: 300,
+        delay:150,
+        easing: Easing.elastic(1.1),
+      },
     ),
 
-    Animated.timing(         
-       this.state.opacitys,    
+    Animated.timing(
+       this.state.bot7,
+       {toValue: 110,
+        duration: 300,
+        delay:200,
+        easing: Easing.elastic(1.1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.bot8,
+       {toValue: 110,
+        duration: 300,
+        delay:250,
+        easing: Easing.elastic(1.1),
+      },
+    ),
+
+    Animated.timing(
+       this.state.opacitys,
        {toValue: 1,
-        duration: 400,  
-      },          
+        duration: 400,
+      },
     ),
 
-    Animated.timing(         
-       this.state.spin,    
+    Animated.timing(
+       this.state.spin,
        {toValue: 1,
         duration: 900,
         easing: Easing.elastic(1),
-      },          
+      },
     )
     ]).start();
   }
-	
+
   render() {
 	  let tabNames = this.state.tabNames;
 	  let Barleft = this.state.Barleft;
@@ -464,22 +589,22 @@ export default class FacebookExample extends Component {
     return (
 	         <View style={{height:Dimensions.get('window').height-25,width:Dimensions.get('window').width}}>
 				<StatusBar
-					animated = {true} 
-					hidden={false} 
+					animated = {true}
+					hidden={false}
 					backgroundColor={this.state.bgc}
-					barStyle={this.state.bars}   
-					translucent={false}    
-					 
-				 /> 
+					barStyle={this.state.bars}
+					translucent={false}
+
+				 />
 	            <TabNavigator tabBarStyle={{ height: 52,}} sceneStyle={{backgroundColor:'#fff'}}>
 				  <TabNavigator.Item
 					selected={this.state.selectedTab === 'home'}
 					title="消息"
 					renderIcon={() => <Image source={require('./imgs/newsx.png')} />}
                     renderSelectedIcon={() => <Image source={require('./imgs/news.png')} />}
-					selectedTitleStyle={{color:'#4385f4'}} 
+					selectedTitleStyle={{color:'#4385f4'}}
 					titleStyle={{color:'#aaa'}}
-                    allowFontScaling={false}					
+                    allowFontScaling={false}
 					onPress={() => this.setState({ selectedTab: 'home' })}>
 					<Home {...this.props}/>
 				  </TabNavigator.Item>
@@ -487,36 +612,36 @@ export default class FacebookExample extends Component {
 					selected={this.state.selectedTab === 'Contacts'}
 					title="通讯录"
 					renderIcon={() => <Image source={require('./imgs/contacts.png')} />}
-                    renderSelectedIcon={() => <Image source={require('./imgs/contact.png')} />} 
-					selectedTitleStyle={{color:'#4385f4'}} 
+                    renderSelectedIcon={() => <Image source={require('./imgs/contact.png')} />}
+					selectedTitleStyle={{color:'#4385f4'}}
 					titleStyle={{color:'#aaa'}}
-                    allowFontScaling={false}					
+                    allowFontScaling={false}
 					onPress={() => this.setState({ selectedTab: 'Contacts' })}>
 					<Contacts {...this.props}/>
 				  </TabNavigator.Item>
-				  <TabNavigator.Item 
-					renderIcon={() => <Image source={require('./imgs/add.png')} style={{top:8,width:50,height:47}}/>} 
-					onPress={this.onclick.bind(this)}>  
+				  <TabNavigator.Item
+					renderIcon={() => <Image source={require('./imgs/add.png')} style={{top:8,width:50,height:47}}/>}
+					onPress={this.onclick.bind(this)}>
 					tabStyle={{marginTop:15,backgroundColor:'red'}}
 				  </TabNavigator.Item>
 				  <TabNavigator.Item
 					selected={this.state.selectedTab === 'Application'}
-					title="应用" 
+					title="应用"
 					renderIcon={() => <Image source={require('./imgs/keypad.png')} />}
                     renderSelectedIcon={() => <Image source={require('./imgs/keypads.png')} />}
-                    selectedTitleStyle={{color:'#4385f4'}} 
-					titleStyle={{color:'#aaa'}}					
-                    allowFontScaling={false}					
+                    selectedTitleStyle={{color:'#4385f4'}}
+					titleStyle={{color:'#aaa'}}
+                    allowFontScaling={false}
 					onPress={() => this.setState({ selectedTab: 'Application' })}>
-					<Application {...this.props}/> 
+					<Application {...this.props}/>
 				  </TabNavigator.Item>
 				  <TabNavigator.Item
 					selected={this.state.selectedTab === 'Setting'}
 					title="我的"
 					renderIcon={() => <Image source={require('./imgs/person.png')} />}
                     renderSelectedIcon={() => <Image source={require('./imgs/persons.png')} />}
-                    selectedTitleStyle={{color:'#4385f4'}} 
-					titleStyle={{color:'#aaa'}}					
+                    selectedTitleStyle={{color:'#4385f4'}}
+					titleStyle={{color:'#aaa'}}
 					allowFontScaling={false}
 					onPress={() => this.setState({ selectedTab: 'Setting' })}>
 					<Setting   {...this.props}/>
@@ -524,13 +649,13 @@ export default class FacebookExample extends Component {
 				</TabNavigator>
 				{this.state.isshow ? <Animated.View style={{opacity:this.state.opacitys,height:Dimensions.get('window').height,width:Dimensions.get('window').width,position:'absolute',top:0,left:0,backgroundColor:'rgb(230,230,230)'}}>
                      <View style={{width:Dimensions.get('window').width,position:'absolute',bottom:25,left:0,height:50,alignItems:'center',justifyContent:'center'}}>
-                     <TouchableHighlight onPress={this.oncancel.bind(this)} activeOpacity = {1} underlayColor='transparent' style={{height:50,alignItems:'center',justifyContent:'center',}}> 
+                     <TouchableHighlight onPress={this.oncancel.bind(this)} activeOpacity = {1} underlayColor='transparent' style={{height:50,alignItems:'center',justifyContent:'center',}}>
                           <Animated.Image source={require('./imgs/plus.png')} style={{width: 30, height: 30,transform: [{rotate: spins}]}} />
-                              
-                         
-                     </TouchableHighlight> 
+
+
+                     </TouchableHighlight>
                      </View>
-                     <View style={{flexDirection:'row',marginTop:30,marginLeft:15,}}>
+                     <View style={{flexDirection:'row',marginTop:10,marginLeft:15,}}>
                          <View>
                              <Text style={{fontSize:54,color:'#555',letterSpacing:-2,  }} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.date}</Text>
                          </View>
@@ -539,42 +664,42 @@ export default class FacebookExample extends Component {
                              <Text style={{marginTop:10,color:'#777',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.yearM}</Text>
                          </View>
                      </View>
-                     {this.state.weathers ? <TouchableHighlight onPress={this.reloads.bind(this)} underlayColor='transparent' activeOpacity = {1} style={{position:'absolute',top:45,right:20,alignItems:'center',flexDirection:'column'}}>
+                     {this.state.weathers ? <TouchableHighlight onPress={this.reloads.bind(this)} underlayColor='transparent' activeOpacity = {1} style={{position:'absolute',top:25,right:20,alignItems:'center',flexDirection:'column'}}>
 	                     <View style={{alignItems:'center',flexDirection:'column'}}>
-	                         
-	                            <Text style={{fontSize:12}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.times}更新</Text>    
-	                            <Icon name="ios-refresh-outline" color="#666"size={30}  />
-	                          
+
+	                            <Text style={{fontSize:12}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.times}更新</Text>
+	                            {this.state.reloadsd ? <Icon name="ios-refresh-outline" color="#666"size={30}  /> : <ActivityIndicator style={{marginTop:5}} color="#666"/>}
+
 	                     </View>
-                     </TouchableHighlight> : null}                                                                          
+                     </TouchableHighlight> : null}
                      {this.state.weathers ? <View style={{marginTop:20,flexDirection:'row',marginRight:18,width:Dimensions.get('window').width}}>
-                         <View style={{flexDirection:'column',flex:1,alignItems:'flex-start',justifyContent:'flex-start',position:'absolute',top:10,left:15}}> 
+                         <View style={{flexDirection:'column',flex:1,alignItems:'flex-start',justifyContent:'flex-start',position:'absolute',top:10,left:15}}>
                             <Text style={{marginBottom:5,fontSize:12}} allowFontScaling={false} adjustsFontSizeToFit={false}>所在城市</Text>
                             <Text style={{fontSize:16,fontFamily:'CourierNewPSMT',}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.Datas.location['name']}</Text>
                          </View>
-                         <View style={{alignItems:'center',flexDirection:'column',justifyContent:'center',width:Dimensions.get('window').width}}>    
+                         <View style={{alignItems:'center',flexDirection:'column',justifyContent:'center',width:Dimensions.get('window').width}}>
                             <View>
                                 <Image source={this.state.images} style={{width: 80, height: 80,}} />
                             </View>
-                            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center', }}> 
+                            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center', }}>
                                 <Text style={{fontSize:24,color:'#666'}} allowFontScaling={false} adjustsFontSizeToFit={false}>{this.state.Datas.now['temperature']}° / {this.state.Datas.now['text']}</Text>
-                            
-                            </View> 
+
+                            </View>
                          </View>
-                         <View style={{flex:1}}> 
-                               
+                         <View style={{flex:1}}>
+
                          </View>
                      </View> : null}
-                     {this.state.weathers ? <View style={{alignItems:'center',marginTop:10}}> 
+                     {this.state.weathers ? <View style={{alignItems:'center',marginTop:10}}>
                        <TouchableHighlight onPress={this.ck.bind(this)} underlayColor='transparent' activeOpacity = {1}>
                         <View style={{alignItems:'center',}}>
                           <Text style={{color:'#666',fontSize:12,}} allowFontScaling={false} adjustsFontSizeToFit={false}>查看详情></Text>
-                        </View>  
-                        </TouchableHighlight> 
+                        </View>
+                        </TouchableHighlight>
                      </View> : null}
-                    
+
                            <Animated.View style={[styles.posisa,{bottom:this.state.bot1}]}>
-                             <TouchableHighlight onPress={this.adds.bind(this)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                             <TouchableHighlight onPress={this.adds.bind(this,Add)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
                                <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
                                <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#3BAFDA',alignItems:'center', justifyContent:'center'}}>
 							      <Image source={require('./imgs/rc.png')} style={{width: 26, height: 26,}} />
@@ -583,52 +708,118 @@ export default class FacebookExample extends Component {
 							      新建日程
 							   </Text>
 							   </View>
-							 </TouchableHighlight> 
+							 </TouchableHighlight>
                            </Animated.View>
 
                            <Animated.View style={[styles.posisb,{bottom:this.state.bot2}]}>
-                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#cc3932',alignItems:'center', justifyContent:'center'}}>
-							      <Image source={require('./imgs/gust.png')} style={{width: 26, height: 26,}} />
+						     <TouchableHighlight onPress={this.adds.bind(this,jiaB)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#32ccb5',alignItems:'center', justifyContent:'center'}}>
+							      <Image source={require('./imgs/JB.png')} style={{width: 34, height: 34,}} />
 							   </View>
 							   <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
-							      新建客户
+							      加班申请
 							   </Text>
+							   </View>
+							 </TouchableHighlight>
                            </Animated.View>
 
                            <Animated.View style={[styles.posisc,{bottom:this.state.bot3}]}>
-                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#cc8732',alignItems:'center', justifyContent:'center'}}>
-							      <Image source={require('./imgs/rc.png')} style={{width: 24, height: 24,}} />
+						     <TouchableHighlight onPress={this.adds.bind(this,leave)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#2fbdb8',alignItems:'center', justifyContent:'center'}}>
+							      <Image source={require('./imgs/jia.png')} style={{width: 34, height: 34,}} />
 							   </View>
-							   <Text style={{marginTop:8,fontSize:12}}allowFontScaling={false} adjustsFontSizeToFit={false}>
-							      新建日程
+							   <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+							      请假申请
 							   </Text>
+							   </View>
+							 </TouchableHighlight>
                            </Animated.View>
 
                            <Animated.View style={[styles.posisd,{bottom:this.state.bot4}]}>
-                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#32ccb6',alignItems:'center', justifyContent:'center'}}>
-							      <Image source={require('./imgs/rc.png')} style={{width: 24, height: 24,}} />
+						     <TouchableHighlight  onPress={this.adds.bind(this,creatBX)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#1aecb9',alignItems:'center', justifyContent:'center'}}>
+							      <Image source={require('./imgs/bx.png')} style={{width: 30, height: 30,}} />
 							   </View>
-							   <Text style={{marginTop:8,fontSize:12}}allowFontScaling={false} adjustsFontSizeToFit={false}>
-							      新建日程
+							   <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+							      报销申请
 							   </Text>
+							   </View>
+							 </TouchableHighlight>
                            </Animated.View>
-                           
-                      
-                      
+
+                           <Animated.View style={[styles.posise,{bottom:this.state.bot5}]}>
+                             <TouchableHighlight  onPress={this.adds.bind(this,out)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#559f36',alignItems:'center', justifyContent:'center'}}>
+							      <Image source={require('./imgs/out.png')} style={{width: 38, height: 38,}} />
+							   </View>
+							   <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+							      外出申请
+							   </Text>
+							   </View>
+							 </TouchableHighlight>
+                           </Animated.View>
+
+                           <Animated.View style={[styles.posisf,{bottom:this.state.bot6}]}>
+                <TouchableHighlight onPress={this.adds.bind(this,SQoffice)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#32cc79',alignItems:'center', justifyContent:'center'}}>
+                   <Image source={require('./imgs/bgsq.png')} style={{width: 34, height: 34,}} />
+                </View>
+                <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+                   办公用品申请
+                </Text>
+                </View>
+              </TouchableHighlight>
+                           </Animated.View>
+
+                           <Animated.View style={[styles.posisg,{bottom:this.state.bot7}]}>
+                <TouchableHighlight  onPress={this.adds.bind(this,business)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#1aece6',alignItems:'center', justifyContent:'center'}}>
+                   <Image source={require('./imgs/chuc.png')} style={{width: 30, height: 30,}} />
+                </View>
+                <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+                   出差申请
+                </Text>
+                </View>
+              </TouchableHighlight>
+                           </Animated.View>
+
+                           <Animated.View style={[styles.posish,{bottom:this.state.bot8}]}>
+                <TouchableHighlight onPress={this.adds.bind(this,Bcard)} underlayColor='transparent' style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View   style={{width:Dimensions.get('window').width/4,height:Dimensions.get('window').width/4,alignItems:'center',justifyContent:'center',}}>
+                               <View style={{width: 58, height: 58,borderRadius:29,backgroundColor:'#90ec1a',alignItems:'center', justifyContent:'center'}}>
+                   <Image source={require('./imgs/bc.png')} style={{width: 32, height: 32,}} />
+                </View>
+                <Text style={{marginTop:8,fontSize:12,}}allowFontScaling={false} adjustsFontSizeToFit={false}>
+                   补卡申请
+                </Text>
+                </View>
+              </TouchableHighlight>
+                           </Animated.View>
+
+
+
+
+
 			      </Animated.View> : null}
-				 
-			   </View>	  
-				 
-	 
+
+			   </View>
+
+
 	);
-  }   
+  }
 }
-        
-const styles = StyleSheet.create({  
+
+const styles = StyleSheet.create({
   tabView: {
     flex: 1,
-    flexDirection: 'column', 
-	backgroundColor:'#fafafa', 
+    flexDirection: 'column',
+	backgroundColor:'#fafafa',
   },
 posisa:{
   	width:Dimensions.get('window').width/4,
@@ -636,16 +827,16 @@ posisa:{
   	alignItems:'center',
   	justifyContent:'center',
   	position:'absolute',
-  	bottom:200,
+  	bottom:220,
   	left:0
-  }, 
+  },
   posisb:{
   	width:Dimensions.get('window').width/4,
   	height:Dimensions.get('window').width/4,
   	alignItems:'center',
   	justifyContent:'center',
   	position:'absolute',
-  	bottom:200,
+  	bottom:220,
   	left:Dimensions.get('window').width/4
   },
   posisc:{
@@ -654,7 +845,7 @@ posisa:{
   	alignItems:'center',
   	justifyContent:'center',
   	position:'absolute',
-  	bottom:200,
+  	bottom:220,
   	left:Dimensions.get('window').width/2
   },
   posisd:{
@@ -663,10 +854,46 @@ posisa:{
   	alignItems:'center',
   	justifyContent:'center',
   	position:'absolute',
-  	bottom:200,
+  	bottom:220,
   	left:Dimensions.get('window').width/4*3
-  },  
-  card: { 
+  },
+  posise:{
+    	width:Dimensions.get('window').width/4,
+    	height:Dimensions.get('window').width/4,
+    	alignItems:'center',
+    	justifyContent:'center',
+    	position:'absolute',
+    	bottom:110,
+    	left:0
+    },
+  posisf:{
+  	width:Dimensions.get('window').width/4,
+  	height:Dimensions.get('window').width/4,
+  	alignItems:'center',
+  	justifyContent:'center',
+  	position:'absolute',
+  	bottom:110,
+  	left:Dimensions.get('window').width/4
+  },
+  posisg:{
+  	width:Dimensions.get('window').width/4,
+  	height:Dimensions.get('window').width/4,
+  	alignItems:'center',
+  	justifyContent:'center',
+  	position:'absolute',
+  	bottom:110,
+  	left:Dimensions.get('window').width/2
+  },
+  posish:{
+  	width:Dimensions.get('window').width/4,
+  	height:Dimensions.get('window').width/4,
+  	alignItems:'center',
+  	justifyContent:'center',
+  	position:'absolute',
+  	bottom:110,
+  	left:Dimensions.get('window').width/4*3
+  },
+  card: {
     height:45,
 	backgroundColor:'#4385f4',
 	flexDirection:'row'
@@ -677,6 +904,6 @@ posisa:{
     borderColor: 'rgba(0,0,0,0.55)',
     flex: 1,
     fontSize: 13,
-    
+
   },
 });

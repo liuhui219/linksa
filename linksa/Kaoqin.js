@@ -7,6 +7,7 @@ import {
 	TouchableHighlight,
 	TouchableNativeFeedback,
 	Text,
+	AppState,
 	ActivityIndicator,
 	Animated, 
 	StatusBar,
@@ -35,7 +36,7 @@ export default class ContactInfo extends React.Component {
         super(props);   
 		this._pressButton = this._pressButton.bind(this);
         BackAndroid.addEventListener('hardwareBackPress', this._pressButton);
-        this.state = {map: '正在定位中...',datas:{},data:{},longitude:'',latitude:'',backgroundColor:'#4385f4',times:[],time:'',day:'',weekday:['日','一','二','三','四','五','六'],clock:'',datatime:'',nowas:0,nows:0,nowa:0,fadeAnim: new Animated.Value(0),statu:'',isfalse:false,add:false,fadeAnims: new Animated.Value(0),loaded: false,statua:false,};
+        this.state = {map: '正在定位中...',datas:{},data:{},longitude:'',latitude:'',backgroundColor:'#4385f4',times:[],time:'',day:'',weekday:['日','一','二','三','四','五','六'],clock:'',datatime:'',nowas:0,nows:0,nowa:0,fadeAnim: new Animated.Value(0),statu:'',isfalse:false,add:false,fadeAnims: new Animated.Value(0),loaded: false,statua:false,appState:AppState.currentState,};
     }
 
     _pressButton() {   
@@ -48,7 +49,7 @@ export default class ContactInfo extends React.Component {
 		return false;
     }
     componentDidMount() { 
-	  
+	  AppState.addEventListener('change', this._handleAppStateChange.bind(this));
 	  this.timer = setTimeout(
 		  () => { this.fetchData('' + data.data.domain + '/index.php?app=Kaoqin&m=KaoqinReportApi&a=get_my_set&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + ''); 
           this.fetchDatas();	   
@@ -62,6 +63,16 @@ export default class ContactInfo extends React.Component {
 					   })     
 				}, 1000);  
 	}    
+	 
+	
+	_handleAppStateChange(appState){
+	  	this.setState({appState});
+	  	if(this.state.appState == 'active'){
+	  		this.fetchData('' + data.data.domain + '/index.php?app=Kaoqin&m=KaoqinReportApi&a=get_my_set&uid='+data.data.uid+'&cid='+data.data.cid+'&access_token=' + data.data.token + ''); 
+	          this.fetchDatas();	   
+		      this.location();
+	  	}
+	  }
      
 	location(){
 		

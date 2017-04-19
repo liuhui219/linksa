@@ -77,7 +77,7 @@ export default class Home extends React.Component {
 		fetch(url)
 		  .then((response) => response.json())   
 		  .then((responseData) => { 
-               if(responseData.cache == '2.0.2'){
+               if(responseData.cache == '2.0.5'){
 				   this.setState({statust:false,})
 			   }else{
 				   this.setState({statust:true,})
