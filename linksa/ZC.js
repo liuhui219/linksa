@@ -138,7 +138,7 @@ export default class AllCustomer extends React.Component {
     cancer(){
       this.refs.text.clear();
       Keyboard.dismiss();
-      this.setState({texts:'',isshows:false,})
+      this.setState({texts:'',isshows:false,datasName:[],})
       Animated.timing(
          this.state.width,
          {toValue: 0,
@@ -186,12 +186,12 @@ export default class AllCustomer extends React.Component {
 		}
 		return(
       <View style={{flex:1,flexDirection:'column',}}>
-         <View style={{borderColor:'#ccc',borderWidth:1,backgroundColor:'#ddd',height:50,flexDirection:'row',alignItems:'center'}}>
+         <View style={{borderColor:'#ccc',borderWidth:1,backgroundColor:'#ddd',height:45,flexDirection:'row',alignItems:'center'}}>
            <TextInput
              ref='text'
              onChangeText={(texts) => this.changs.bind(this,texts)()}
              placeholderTextColor={'#ccc'}
-             style={{flex:1, color:'#666',fontSize:16,textAlignVertical:'center',textAlign:'left', backgroundColor:'#fff',margin:7,height:35,borderRadius:5,padding:0,paddingLeft:10}}
+             style={{flex:1, color:'#666',fontSize:14,textAlignVertical:'center',textAlign:'left', backgroundColor:'#fff',margin:7,height:30,borderRadius:5,padding:0,paddingLeft:10}}
              placeholder='搜索/资源名称'
              underlineColorAndroid={'transparent'}
              onFocus={this.Focus.bind(this)}
@@ -213,7 +213,7 @@ export default class AllCustomer extends React.Component {
                       />
                   }
     		  />
-        {this.state.isshows ? <View style={{position:'absolute',top:50,left:0,height:Dimensions.get('window').height,width:Dimensions.get('window').width,backgroundColor:'#fff'}}>
+        {this.state.isshows ? <ScrollView style={{position:'absolute',top:50,left:0,height:Dimensions.get('window').height-115,width:Dimensions.get('window').width,backgroundColor:'#fff'}}>
             {this.state.datasName.length>0 ? this.state.datasName.map((data,i)=>{
 
               if(data.num == 0){
@@ -262,7 +262,7 @@ export default class AllCustomer extends React.Component {
               				)
                       }
             }) : <View style={{height:Dimensions.get('window').height-210,width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center'}}><Text allowFontScaling={false} adjustsFontSizeToFit={false} style={{fontSize:18}}>暂无结果</Text></View>}
-        </View> : null}
+        </ScrollView> : null}
       </View>
 		)
 

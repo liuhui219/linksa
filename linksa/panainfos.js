@@ -445,21 +445,21 @@ export default class Newsb extends React.Component {
 						if(i == all.length-1){
 						 ToastAndroid.show('禁止上传此格式文件', ToastAndroid.LONG)
 						}
-					}    
+					}
 				}
                 console.log(response)
             }
         });
 	}
 
-   
+
 	_uploads(){
 		var that = this;
 		this.setState({filesd:false,uploading:true,});
 		var type = this.state.typename.split("/")[this.state.typename.split("/").length-1];
         var types = new Date().getTime()+'.'+type;
         let formData = new FormData();
-        var file = {uri: this.state.typename, type: 'multipart/form-data', name:type};
+        var file = {uri: this.state.typename, type: 'multipart/form-data', name:encodeURI(type)};
         formData.append("file",file);
         fetch('' + data.data.domain + '/index.php?app=Wangpan&m=MobileApi&a=uploadify&uid='+data.data.uid+'&fid='+this.props.dataID.id+'&access_token=' + data.data.token + '', {
 				  method: 'POST',
@@ -478,6 +478,7 @@ export default class Newsb extends React.Component {
 				})
 				.catch((error) => {
 					ToastAndroid.show('上传失败', ToastAndroid.LONG)
+          that.setState({uploading:false,});
 				});
 	}
 
